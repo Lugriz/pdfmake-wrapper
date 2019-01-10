@@ -66,7 +66,7 @@ export class Img extends StyleDefinition<Img, IImg> {
                         
                         context.drawImage(img, 0, 0);
             
-                        resolve( canvas.toDataURL("image/jpeg") );
+                        resolve( canvas.toDataURL("image/png") );
                     };
             
                     img.onerror = reject;

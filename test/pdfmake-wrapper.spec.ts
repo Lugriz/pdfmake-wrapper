@@ -1,4 +1,4 @@
-import { PdfMakeWrapper } from '../src/lib/pdfmake-wrapper';
+import { PdfMakeWrapper, Img } from '../src/index';
 
 describe('Pdfmake wrapper', () => {
     const pdf = new PdfMakeWrapper();
@@ -34,5 +34,7 @@ describe('Pdfmake wrapper', () => {
             done();
         });
     });
+
+    it('shold be one new line', () => expect( pdf.ln(-1) ).toBe('\n') );
 
 });

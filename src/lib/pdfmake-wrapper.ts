@@ -181,4 +181,17 @@ export class PdfMakeWrapper {
     public create(): ICreatePDF {
         return pdfMake.createPdf( this.definition ) as ICreatePDF;
     }
+
+    // ======================== HELPERS =========================
+
+    /**
+     * It returns new lines
+     * @param num numbers of newline
+     */
+
+    public ln(num: number = 1): string {
+        if (num < 1) num = 1;
+        
+        return '\n'.repeat( num );
+    }
 }
