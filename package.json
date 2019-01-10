@@ -1,6 +1,6 @@
 {
   "name": "pdfmake-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrapper to pdfmake library",
   "main": "index.js",
   "scripts": {

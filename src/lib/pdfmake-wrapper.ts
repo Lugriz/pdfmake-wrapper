@@ -81,7 +81,7 @@ export class PdfMakeWrapper {
      * @param styles Dictionary of default styles
      */
 
-    public defaultStyle(styles: { [propName: string]: { [propName: string]: string | number | boolean } }): void {
+    public defaultStyle(styles: { [propName: string]: string | number | boolean } ): void {
         this.definition.defaultStyle = styles;
     }
 
