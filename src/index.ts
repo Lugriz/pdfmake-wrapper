@@ -2,4 +2,4 @@
 export * from './lib/pdfmake-wrapper';
 
 /** Export the definitions */
-export * from './lib/definitions/definitions';
+export * from './lib/definitions';

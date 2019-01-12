@@ -1,6 +1,6 @@
 {
   "name": "pdfmake-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Wrapper to pdfmake library",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "contributors": [
     {
       "name": "Nestor Lazcano",
-      "email": "nestornes11@gmail.com"
+      "email": "nestor_ronal09@gmail.com"
     }
   ],
   "repository": {

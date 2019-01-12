@@ -1,4 +1,4 @@
-import { IContentDefinition } from './interfaces';
+import { IContentDefinition } from '.';
 
 /**
  * Interface that defines the style definition type

@@ -73,4 +73,49 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
         this.content.margin = true;
         return this as any;
     }
+
+    /**
+     * Set style 
+     */
+
+    public style(style: string | string[]): T {
+        this.content.style = style;
+        return this as any;
+    }
+
+    /**
+     * Set color 
+     */
+
+    public color(color: string): T {
+        this.content.color = color;
+        return this as any;
+    }
+
+    /**
+     * Set background 
+     */
+
+    public background(background: string): T {
+        this.content.background = background;
+        return this as any;
+    }
+
+    /**
+     * Set link 
+     */
+
+    public link(link: string): T {
+        this.content.link = link;
+        return this as any;
+    }
+
+    /**
+     * Set noWrap 
+     */
+
+    public noWrap(noWrap: boolean): T {
+        this.content.noWrap = noWrap;
+        return this as any;
+    }
 }

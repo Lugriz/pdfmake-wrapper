@@ -1,5 +1,5 @@
 import { StyleDefinition } from './style-definition';
-import { IImg } from '../interfaces/interfaces';
+import { IImg } from '../interfaces';
 
 /**
  * Class to create an image definition

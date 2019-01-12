@@ -1,4 +1,4 @@
-import { IStyleDefinition } from './interfaces';
+import { IStyleDefinition } from '.';
 
 /**
  * Interface that defines the Image Type
