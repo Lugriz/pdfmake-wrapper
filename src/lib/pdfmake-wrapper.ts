@@ -81,7 +81,7 @@ export class PdfMakeWrapper {
      * @param styles Dictionary of default styles
      */
 
-    public defaultStyle(styles: { [propName: string]: { [propName: string]: string | number | boolean } }): void {
+    public defaultStyle(styles: { [propName: string]: string | number | boolean } ): void {
         this.definition.defaultStyle = styles;
     }
 
@@ -180,5 +180,18 @@ export class PdfMakeWrapper {
 
     public create(): ICreatePDF {
         return pdfMake.createPdf( this.definition ) as ICreatePDF;
+    }
+
+    // ======================== HELPERS =========================
+
+    /**
+     * It returns new lines
+     * @param num numbers of newline
+     */
+
+    public ln(num: number = 1): string {
+        if (num < 1) num = 1;
+        
+        return '\n'.repeat( num );
     }
 }

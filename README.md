@@ -150,6 +150,9 @@ It creates a pdf. This returns other methods:
     getBuffer(cb?: (v?: any) => void, options?: any ): void;
     getBlob(cb?: (v?: any) => void, options?: any ): void;
 
+### ln(number?)
+
+It adds new lines, receive the number of new lines. (default 1 new line)
 
 
 > **NOTE:** more details check the official [documentation](https://pdfmake.github.io/docs/getting-started/client-side/).
