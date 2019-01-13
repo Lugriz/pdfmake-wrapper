@@ -41,7 +41,7 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
      * @param align The alignment
      */
 
-    public alignment(align: string): T {
+    public alignment(align: 'center' | 'left' | 'right' | 'justify'): T {
         this.content.alignment = align;
         return this as any;
     }
@@ -65,7 +65,7 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
     }
 
     /**
-     * Set tbe margin 
+     * Set a margin 
      * @param margin Margins
      */
 
@@ -75,7 +75,7 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
     }
 
     /**
-     * Set style 
+     * Set a style 
      */
 
     public style(style: string | string[]): T {
@@ -84,7 +84,7 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
     }
 
     /**
-     * Set color 
+     * Set a color 
      */
 
     public color(color: string): T {
@@ -93,7 +93,7 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
     }
 
     /**
-     * Set background 
+     * Set a background 
      */
 
     public background(background: string): T {
@@ -102,11 +102,20 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
     }
 
     /**
-     * Set link 
+     * Set a link 
      */
 
     public link(link: string): T {
         this.content.link = link;
+        return this as any;
+    }
+
+    /**
+     * Set a link to any page
+     */
+
+    public linkToPage(page: number): T {
+        this.content.linkToPage = page;
         return this as any;
     }
 

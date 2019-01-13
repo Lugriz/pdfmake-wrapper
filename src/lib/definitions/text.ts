@@ -12,7 +12,7 @@ export class Txt extends StyleDefinition<Txt, IText> {
      */
     
     constructor(
-        private _text: string | string[] | Text[]     
+        private _text: string | (string | IText)[]     
     ) {
         super();
         this.content.text = this._text;

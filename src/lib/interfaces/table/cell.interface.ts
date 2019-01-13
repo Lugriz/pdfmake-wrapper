@@ -5,8 +5,8 @@ import { IStyleDefinition } from '../';
  */
 
 export interface ICell extends IStyleDefinition {
-    colSpan: number;
-    rowSpan: number;
-    fillColor: string;
-    border: [boolean, boolean?, boolean?, boolean?]
+    readonly colSpan?: number;
+    readonly rowSpan?: number;
+    readonly fillColor?: string;
+    readonly border?: [boolean, boolean?, boolean?, boolean?]
 }

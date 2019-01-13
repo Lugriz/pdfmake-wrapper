@@ -1,4 +1,4 @@
-import { IInfo, IImg, ICreatePDF } from './interfaces/interfaces';
+import { IInfo, IImg, ICreatePDF } from './interfaces';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;

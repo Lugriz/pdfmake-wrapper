@@ -1,20 +1,25 @@
 # pdfmake-wrapper
 
-This package is a wrapper to [pdfmake](http://pdfmake.org) library
+This package is a wrapper to [pdfmake](http://pdfmake.org) library (This library is working with pdfmake@0.1.40)
+
+You can check the examples in the original pdfmake repository (https://github.com/bpampuch/pdfmake/blob/master/examples/)[https://github.com/bpampuch/pdfmake/blob/master/examples/]
+
 
 
 ## Installation
 
-You need to install the pdfmake and pdfmake-wrapper. This package includes pdfmake in its dependencies.
+Install pdfmake-wrapper. This package includes **pdfmake** in its dependencies.
 
 > $ npm install pdfmake-wrapper --save
 
 
+
 ## Usage
 
-import the package in your code, create an instance and use it:
+import the package in your code and create an instance and use it:
 
 ```javascript
+// Simple pdf
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
 
 const pdf = new PdfMakeWrapper();
@@ -24,7 +29,9 @@ pdf.add('Hello world!');
 pdf.create().download();
 ```
 
-**NOTE:** All classes are called as the original pdfmake library properties (text, columns, tables, etc..):
+**NOTE:** Most classes are called as the original pdfmake library properties (columns, tables, etc..), but there are exceptions like *text* which is represented as **Txt**, it's the same with *Image* which is represented as **Img** and other similar examples. The reason of the it's that exist native objects in the browser like **Image**, **Text**, etc..
+
+Comparing the original pdfmake library and pdfmake-wrapper:
 
 ```javascript
 // Original pdfmake library
@@ -38,28 +45,60 @@ pdfmake.createPDF( doc ).download();
 
 
 // using pdfmake-wrapper
-
-import { PdfMakeWrapper, Text } from 'pdfmake-wrapper';
+import { PdfMakeWrapper, Txt } from 'pdfmake-wrapper';
 
 const pdf = new PdfMakeWrapper();
 
-pdf.add( new Text('Hello world!').bold().end );
+pdf.add( new Txt('Hello world!').bold().end );
 
 pdf.create().download();
 
 ```
 
 
+
 ## PdfMakeWrapper members
 
+PdfMakeWrapper is the main class, this class contains the content and other configurations of the document.
 
-### add( any )
 
-It adds (push) a value to the content of the PDF
+### add( content: any )
 
-### images( any )
+It adds (push) a value to the content
 
-It adds an object of images
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.add('Hello world!');
+
+/**
+ * Internally:
+ * {
+ *      content: [
+ *          'Hello world!',
+ *      ]
+ * }
+*/
+
+pdf.add('Second item');
+
+/**
+ * Internally:
+ * {
+ *      content: [
+ *          'Hello world!',
+ *          'Second item'
+ *      ]
+ * }
+*/
+```
+
+
+### images( images: any )
+
+It adds an object of images (later it's explained the use of the images)
 
 ```javascript
 import { PdfMakeWrapper, Img } from 'pdfmake-wrapper';
@@ -90,57 +129,295 @@ async function main() {
 main();
 ```
 
-### styles( any )
+
+### styles( styles: any )
 
 It adds an object of styles
 
-### defaultStyle( any )
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.styles({
+    style1: {
+        bold: true
+    },
+    style2: {
+        italics: true
+    }
+});
+
+/**
+ * Internally:
+ * {
+ *      content: [],
+ *      styles: {
+ *          style1: {
+ *              bold: true
+ *          },
+ *          style2: {
+ *              italics: true
+ *          }
+ *      }
+ * }
+*/
+```
+
+
+### defaultStyle( styles: any )
 
 It adds an object of defaultStyle
 
-### header( any )
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
 
-It defines the header of the document
+const pdf = new PdfMakeWrapper();
 
-### footer( any )
+pdf.defaultStyle({
+    bold: true,
+    fontSize: 15
+});
 
-It defines the footer of the document
+/**
+ * Internally:
+ * {
+ *      content: [],
+ *      defaultStyle: {
+ *          bold: true,
+ *          fontSize: 15
+ *      }
+ * }
+*/
+```
 
-### background( any )
 
-It defines the background of the document
+### header( header: any )
 
-### pageSize( string )
+It defines the header of the document. The header is displayed on each page
 
-It defines the pageSize of the document
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
 
-### pageMargins( number | [number, number] | [number, number, number, number] )
+const pdf = new PdfMakeWrapper();
 
-It defines the pageMargins of the document
+pdf.header('This is a header');
 
-### pageOrientation( string )
+/**
+ * Internally:
+ * {
+ *      header: 'This is a header',
+ *      content: []
+ * }
+*/
+```
 
-It defines the pageOrientation of the document
 
-### pageBreakBefore( (currentNode: any, followingNodesOnPage?: any, nodesOnNextPage?: any, previousNodesOnPage?: any) => boolean )
+### footer( footer: any )
 
-It defines the pageBreakBefore of the document
+It defines the footer of the document. The footer is displayed on each page
 
-### info( any )
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.footer('This is a footer');
+
+/**
+ * Internally:
+ * {
+ *      footer: 'This is a footer',
+ *      content: []
+ * }
+*/
+```
+
+
+### background( background: any )
+
+It defines the background of the document. The background is displayed on each page
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.background('This is a background');
+
+/**
+ * Internally:
+ * {
+ *      background: 'This is a background',
+ *      content: []
+ * }
+*/
+```
+
+
+### pageSize( size: string )
+
+It defines the page size of the document
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.pageSize('A4');
+
+/**
+ * Internally:
+ * {
+ *      pageSize: 'A4',
+ *      content: []
+ * }
+*/
+```
+
+
+### pageMargins( margins: number | [number, number] | [number, number, number, number] )
+
+It defines the page margins of the document
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.pageMargins([ 40, 60, 40, 60 ]);
+
+/**
+ * Internally:
+ * {
+ *      pageMargins: [ 40, 60, 40, 60 ],
+ *      content: []
+ * }
+*/
+```
+
+
+### pageOrientation( orientation: string )
+
+It defines the page orientation of the document
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.pageOrientation('landscape');
+
+/**
+ * Internally:
+ * {
+ *      pageOrientation: 'landscape',
+ *      content: []
+ * }
+*/
+```
+
+
+### pageBreakBefore( breakBefore: (currentNode: any, followingNodesOnPage?: any, nodesOnNextPage?: any, previousNodesOnPage?: any) => boolean )
+
+It defines the page break before
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.pageBreakBefore(
+    (currentNode, followingNodesOnPage, nodesOnNextPage, previousNodesOnPage) => {
+        return currentNode.headlineLevel === 1 && followingNodesOnPage.length === 0;
+    }
+);
+
+/**
+ * Internally:
+ * {
+ *      pageBreakBefore: (currentNode, followingNodesOnPage, nodesOnNextPage, previousNodesOnPage) => {
+            return currentNode.headlineLevel === 1 && followingNodesOnPage.length === 0;
+        },
+ *      content: []
+ * }
+*/
+```
+
+
+### info( info: any )
 
 It defines the info of the document
 
-### compress( boolean )
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.info({
+    title: 'A document',
+    author: 'pdfmake-wrapper',
+    subject: 'subject of document',
+});
+
+/**
+ * Internally:
+ * {
+ *      info: {
+ *          title: 'A document',
+ *          author: 'pdfmake-wrapper',
+ *          subject: 'subject of document',
+ *      },
+ *      content: []
+ * }
+*/
+```
+
+
+### compress( compress: boolean )
 
 It defines the compress of the document
 
-### rawContent( any )
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
 
-It defines the raw content of the document, the different to **add** method, this fill the content (it replaces if the content had any definition) and **add** does push to the content
+const pdf = new PdfMakeWrapper();
+
+pdf.compress(true);
+
+/**
+ * Internally:
+ * {
+ *      compress: true,
+ *      content: []
+ * }
+*/
+```
+
+
+### rawContent( content: any )
+
+It defines a raw content, the different to **add** method is that this method fills the full content property (it replaces the content if the content had any definition) and **add** does push to the content
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.rawContent('Simple content');
+
+/**
+ * Internally:
+ * {
+ *      content: 'Simple content'
+ * }
+*/
+```
+
 
 ### create()
 
-It creates a pdf. This returns other methods:
+It creates the pdf. This returns other methods:
 
     download(filename?: string, cb?: (v?: any) => void, options?: any ): void;
     open(options?: any, win?: Window ): void;
@@ -150,37 +427,211 @@ It creates a pdf. This returns other methods:
     getBuffer(cb?: (v?: any) => void, options?: any ): void;
     getBlob(cb?: (v?: any) => void, options?: any ): void;
 
-### ln(number?)
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
 
-It adds new lines, receive the number of new lines. (default 1 new line)
+const pdf = new PdfMakeWrapper();
 
+pdf.create();
+
+/**
+ * Similar to:
+ * 
+ *  pdfMake.createPDF( doc );
+*/
+```
+
+
+### ln( lines: number = 1 )
+
+It adds new lines, receiving the number of new lines. (default 1 new line)
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.add(
+    pdf.ln(2)
+);
+
+/**
+ * Internally:
+ * {
+ *      content: [
+ *          '\n\n'
+ *      ]
+ * }
+*/
+```
 
 > **NOTE:** more details check the official [documentation](https://pdfmake.github.io/docs/getting-started/client-side/).
 
 
 ## Definitions
 
-The definition are the classes that represent the properties of the original pdfmake library. To use a definition you need to import it and then use it:
+The definitions are classes that represent the properties of the original pdfmake library. All the definitions extends of **StyleDefinition** which is an abstract class that contains all the styles (alignment, color, bold, etc...). This class is not accessible, it's internally used to the library. To use a definition you need to import it and then use it:
 
 ```javascript
 // importing definitions
-import { Text, Columns, Table } from 'pdfmake-wrapper';
+import { Txt } from 'pdfmake-wrapper';
 
 //using definition
-new Text('hi!').bold().end // Result: { text: 'hi!', bold: true }
+new Txt('hi!').bold().end // Result: { text: 'hi!', bold: true }
 
-// It's a must finish with end property to return the built object, the otherwise, it'll return the Text Class
+// It's a must finish with end property to return the built object, otherwise, it'll return the Text Class
 ```
 
-All definitions must finish with the **end** property, this property returns the built object, the only exception is **Img** class.
+All definitions must finish with the **end** property, this property (**end**) returns the built object, the only exception is the **Img** class (it'll be explained later).
 
-### Img (class)
 
-This is the unique definition that it doesn't have the same name that the original pdfmake property. The reason is that exists an native **Image** class in the browser.
+### Txt( text: string )
 
-The **Img** class accepts URL, base64 and keys of images, previously load ( pdf.images({ ... }) ).
+It creates a text object
 
-loading an image is asynchronous, to use Img class you need to use **async/await** syntax or use the **then()** method. This class doesn't use for finishing the **end** property, instead, it use **build()** method
+```javascript
+new Txt('Hello world!').end // { text: 'Hello world!' }
+
+new Txt('Hello world!').alignment('center').italics().end // { text: 'Hello world!', alignment: 'center', italics: true }
+```
+**Suggestion:** Use **Txt** when the text requires a format (bold, alignment, etc...), otherwise, use literal string
+
+
+### Columns( columns: any[] )
+
+It creates columns.
+
+```javascript
+new Columns([ 'Hello', 'world' ]).end // { columns: [ 'Hello', 'world' ] }
+
+new Columns([ 'Hello', 'world' ]).columnGap(10).end // { columns: [ 'Hello', 'world' ], columnGap: 10 }
+
+new Columns([ 'Hello', 'world' ]).columnGap(10).bold().end // { columns: [ 'Hello', 'world' ], columnGap: 10, bold: true }
+```
+
+
+### Stack( stack: any[] )
+
+It creates a stack
+
+```javascript
+new Stack([ 'Hello', 'world' ]).end // { stack: [ 'Hello', 'world' ] }
+
+new Stack([ 'Hello', 'world' ]).alignment(10).end // { stack: [ 'Hello', 'world' ], alignment: 10 }
+```
+
+
+### Table( body: any[][] )
+
+It creates a table
+
+```javascript
+// ============== Simple table ================
+
+new Table([
+    [ 'column 1', 'column 2'],
+    [ 'column 1', 'column 2']
+]).end 
+
+/* 
+    Result:
+    { 
+        table: {
+            body: [
+                [ 'column 1', 'column 2'],
+                [ 'column 1', 'column 2']
+            ] 
+        }
+    } 
+*/
+
+// ============= Costum widths ===============
+
+new Table([
+    [ 'column 1', 'column 2'],
+    [ 'column 1', 'column 2']
+]).widhts([ '*', 100 ]).end
+
+/* 
+    Result:
+    { 
+        table: {
+            widths: [ '*', 100 ],
+            body: [
+                [ 'column 1', 'column 2'],
+                [ 'column 1', 'column 2']
+            ] 
+        }
+    } 
+*/
+
+// =============== layout (it accepts custom layout) ===================
+
+new Table([
+    [ 'column 1', 'column 2'],
+    [ 'column 1', 'column 2']
+]).layout('noBorders').end
+
+/* 
+    Result:
+    { 
+        layout: 'noBorders',
+        table: {
+            body: [
+                [ 'column 1', 'column 2'],
+                [ 'column 1', 'column 2']
+            ] 
+        }
+    } 
+*/
+```
+
+
+### Cell( content: any )
+
+It creates a cell, this class is used into a table for adding cell properties to any object
+
+```javascript
+// ============== Simple table using the cell class ================
+
+new Table([
+    [ 
+        new Txt('Column 1').bold().end,
+        new Cell( new Txt('Column 2 with colspan').bold().end ).colSpan(2).end
+    ],
+    [
+        new Txt('Column 1').bold().end,
+        'Column 2',
+        'Column 3'
+    ]
+]).end 
+
+/* 
+    Result:
+    { 
+        table: {
+            body: [
+                [ 
+                    { text:'Column 1', bold: true }, 
+                    { text:'Column 2 with colspan', bold: true, colSpan: 2 }
+                ],
+                [ 
+                    { text:'Column 1', bold: true }, 
+                    'Column 2',
+                    'Column 3'
+                ]
+            ] 
+        }
+    } 
+*/
+```
+
+
+### Img( src: string, previuoslySaved: boolean = false )
+
+The **Img** class accepts URL, base64 and keys of images previously saved using the pdf.images({ ... }) method.
+
+to load an image is asynchronous, to use Img class you need to use **async/await** syntax or use the **then()** method. This class doesn't use the **end** property for ending, instead, it use **build()** method, this method transforms the URL (if an url is passed) to base64.
 
 Using Img class with **async/await**. To use **async/await** you need an async method
 
@@ -188,16 +639,24 @@ Using Img class with **async/await**. To use **async/await** you need an async m
 import { PdfMakeWrapper, Img } from 'pdfmake-wrapper';
 
 // async method
-async function main() {
+async function generate() {
     const pdf = new PdfMakeWrapper();
 
     pdf.add( await new Img('Http://domain.com/picture1.jpeg').build() );
     
     pdf.create().download();
+
+    /**
+     * {
+     *      content: [
+     *          { image: 'data:image/png;base64, ...' }
+     *      ]
+     * }
+    */
 }
 
-main();
-
+// using the generate method
+generate();
 ```
 
 Using Img class with **then** method
@@ -213,6 +672,14 @@ new Img('http://domain.com/picture1.jpeg').build().then( img => {
     
     pdf.create().download();
 });
+
+/**
+ * {
+ *      content: [
+ *          { image: 'data:image/png;base64, ...' }
+ *      ]
+ * }
+*/
 
 ```
 
@@ -231,7 +698,7 @@ async function main() {
     // base64
     pdf.add( await new Img('data:image/jpeg;base64, ...').build() );
 
-    // key. the second param indicates is a key of a previously image
+    // key: the second param indicates that is a key of a previously saved images using the pdf.images({ ... }) method
     pdf.add( await new Img('myPicture1', true).build() );
     
     pdf.create().download();
@@ -240,3 +707,186 @@ async function main() {
 main();
 
 ```
+
+
+### Ul ( items: any[] )
+
+It creates an unordered list
+
+```javascript
+// ============== simple unordered list ============
+new Ul([
+    'item 1',
+    'item 2'
+]).end
+
+/**
+ * Internally:
+ * {
+ *      ul: [
+ *          'item 1',
+ *          'item 2'
+ *      ]
+ * }
+*/
+
+// ============== unordered list with square marker ============
+new Ul([
+    'item 1',
+    'item 2'
+]).type('square').end
+
+/**
+ * Internally:
+ * {
+ *      type: 'square',
+ *      ul: [
+ *          'item 1',
+ *          'item 2'
+ *      ]
+ * }
+*/
+
+```
+
+
+### Ol ( items: any[] )
+
+It creates an ordered list
+
+```javascript
+// ============== simple ordered list ============
+new Ol([
+    'item 1',
+    'item 2'
+]).end
+
+/**
+ * Internally:
+ * {
+ *      ol: [
+ *          'item 1',
+ *          'item 2'
+ *      ]
+ * }
+*/
+
+// ============== ordered list with upper roman numerals marker ============
+new Ol([
+    'item 1',
+    'item 2'
+]).type('upper-roman').end
+
+/**
+ * Internally:
+ * {
+ *      type: 'upper-roman',
+ *      ol: [
+ *          'item 1',
+ *          'item 2'
+ *      ]
+ * }
+*/
+
+// ============== ordered list with a initial number as marker ============
+new Ol([
+    'item 1',
+    'item 2'
+]).start(10).end
+
+/**
+ * Internally:
+ * {
+ *      start: 10,
+ *      ol: [
+ *          'item 1',
+ *          'item 2'
+ *      ]
+ * }
+*/
+
+```
+
+
+### Item ( content: any )
+
+It creates an item, this method adds items properties to the passed content. use it into a list.
+
+```javascript
+// ============== simple example with unordered list ============
+new Ul([
+    new Item({ text: 'item 1' }).listType('square').end,
+
+    new Item(
+        new Txt('Item 2').bold().end
+    ).listType('square').end,
+
+    // new Item('Item 3').listType('square').end ( you can't do this, it only accepts an object )
+]).end
+
+/**
+ * Internally:
+ * {
+ *      ul: [
+ *          { text: 'item 1', listType: 'square' },
+ *          { text: 'item 2', bold: true, listType: 'square' }
+ *      ]
+ * }
+*/
+
+// ============== simple example with ordered list ============
+new Ol([
+    new Item({ text: 'item 1' }).listType('lower-roman').end,
+
+    new Item(
+        new Txt('Item 2').bold().end
+    ).counter(10).end,
+
+    // new Item('Item 3').listType('lower-roman').end ( you can't do this, it only accepts an object )
+]).end
+
+/**
+ * Internally:
+ * {
+ *      ol: [
+ *          { text: 'item 1', listType: 'lower-roman' },
+ *          { text: 'item 2', bold: true, counter: 10 }
+ *      ]
+ * }
+*/
+
+```
+
+**NOTE:** Use **Item** class when you require items properties like counter and listType.
+
+
+### QR ( code: string )
+
+It creates a QR code
+
+```javascript
+// ============== simple qr code ============
+new QR('my code').end
+
+/**
+ * Internally:
+ * {
+ *      qr: 'my code'
+ * }
+*/
+
+// ============== qr code with a fit of 100 ============
+new QR('my code').fit(100).end
+
+/**
+ * Internally:
+ * {
+ *      qr: 'my code',
+ *      fit: 100
+ * }
+*/
+
+```
+
+### Toc (string)
+### Vector ()

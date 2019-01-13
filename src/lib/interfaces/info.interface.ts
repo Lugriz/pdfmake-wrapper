@@ -3,14 +3,14 @@
  */
 
 export interface IInfo {
-    title: string;
-    author?: string;
-    subject?: string;
-    keywords?: string;
-    creator?: string;
-    producer?: string;
-    creationDate?: string;
-    modDate?: string;
-    trapped?: string;
-    [ propName: string ]: string | undefined;
+    readonly title: string;
+    readonly author?: string;
+    readonly subject?: string;
+    readonly keywords?: string;
+    readonly creator?: string;
+    readonly producer?: string;
+    readonly creationDate?: string;
+    readonly modDate?: string;
+    readonly trapped?: string;
+    readonly [ propName: string ]: string | undefined;
 }

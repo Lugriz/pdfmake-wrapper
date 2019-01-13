@@ -2,7 +2,7 @@ import { StyleDefinition } from './style-definition';
 import { IStack } from '../interfaces';
 
 /**
- * Class to create a stack of paragraphs 
+ * Class that create a stack of paragraphs 
  */
 
 export class Stack extends StyleDefinition<Stack, IStack> {

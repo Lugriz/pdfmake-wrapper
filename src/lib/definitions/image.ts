@@ -38,6 +38,18 @@ export class Img extends StyleDefinition<Img, IImg> {
     }
 
     /**
+     * It adds opacity to the image
+     * @param opacity 0 to 1
+     */
+
+    public opacity(opacity: number): Img {
+        if (opacity > 1) opacity = 1;
+
+        this.content.opacity = opacity;
+        return this;
+    }
+
+    /**
      * It converts a image URL to Base64 and set the image
      */
 

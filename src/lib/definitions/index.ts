@@ -3,3 +3,8 @@ export * from './text';
 export * from './columns';
 export * from './table';
 export * from './stack';
+export * from './cell';
+export * from './qr';
+export * from './list/unordered-list';
+export * from './list/ordered-list';
+export * from './list/item';

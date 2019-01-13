@@ -12,4 +12,10 @@ export interface IStyleDefinition extends IContentDefinition {
     readonly bold?: boolean;
     readonly italics?: boolean;
     readonly margin?: number | [number, number] | [number, number, number, number];
+    readonly link?: string;
+    readonly linkToPage?: number;
+    readonly noWrap?: boolean;
+    readonly background?: string;
+    readonly style?: string | string[];
+    readonly color?: string;
 }

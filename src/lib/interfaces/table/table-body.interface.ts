@@ -3,9 +3,9 @@
  */
 
 export interface ITableBody {
-    widths?: string | number | ( string | number )[];
-    heights?: (row: number) => (number | number[]) | number | number[];
-    body: any[][];
-    dontBreakRows?: boolean;
-    keepWithHeaderRows?: number;
+    readonly widths?: string | number | ( string | number )[];
+    readonly heights?: (row: number) => (number | number[]) | number | number[];
+    readonly body: any[][];
+    readonly dontBreakRows?: boolean;
+    readonly keepWithHeaderRows?: number;
 }
