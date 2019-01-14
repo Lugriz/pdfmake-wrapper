@@ -2,7 +2,7 @@
 
 This package is a wrapper to [pdfmake](http://pdfmake.org) library (This library is working with pdfmake@0.1.40)
 
-You can check the examples in the original pdfmake repository (https://github.com/bpampuch/pdfmake/blob/master/examples/)[https://github.com/bpampuch/pdfmake/blob/master/examples/]
+You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
 ## Installation
 
