@@ -1,5 +1,5 @@
-import { StyleDefinition } from './style-definition';
-import { ITable, ICustomTableLayout } from '../interfaces';
+import { StyleDefinition } from '../style-definition';
+import { ITable, ICustomTableLayout } from '../../interfaces';
 
 /**
  * Class to create a table

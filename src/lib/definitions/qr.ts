@@ -12,7 +12,7 @@ export class QR extends StyleDefinition<QR, IQR> {
      */
 
     constructor(
-        private _code: any[]
+        private _code: string
     ) {
         super();
         this.content.qr = this._code;

@@ -1,4 +1,4 @@
-import { IInfo, IImg, ICreatePDF } from './interfaces';
+import { IInfo, IImg, ICreatePDF, IText } from './interfaces';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -164,6 +164,14 @@ export class PdfMakeWrapper {
 
     public compress(compress: boolean): void {
         this.definition.compress = compress;
+    }
+
+    /** 
+     * Set a watermark
+    */
+
+    public watermark(watermark: string | IText): void {
+        this.definition.watermark = watermark;
     }
 
     /** 

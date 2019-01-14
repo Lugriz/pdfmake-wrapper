@@ -4,15 +4,11 @@ This package is a wrapper to [pdfmake](http://pdfmake.org) library (This library
 
 You can check the examples in the original pdfmake repository (https://github.com/bpampuch/pdfmake/blob/master/examples/)[https://github.com/bpampuch/pdfmake/blob/master/examples/]
 
-
-
 ## Installation
 
 Install pdfmake-wrapper. This package includes **pdfmake** in its dependencies.
 
 > $ npm install pdfmake-wrapper --save
-
-
 
 ## Usage
 
@@ -55,12 +51,9 @@ pdf.create().download();
 
 ```
 
-
-
 ## PdfMakeWrapper members
 
 PdfMakeWrapper is the main class, this class contains the content and other configurations of the document.
-
 
 ### add( content: any )
 
@@ -95,7 +88,6 @@ pdf.add('Second item');
 */
 ```
 
-
 ### images( images: any )
 
 It adds an object of images (later it's explained the use of the images)
@@ -128,7 +120,6 @@ async function main() {
 
 main();
 ```
-
 
 ### styles( styles: any )
 
@@ -164,7 +155,6 @@ pdf.styles({
 */
 ```
 
-
 ### defaultStyle( styles: any )
 
 It adds an object of defaultStyle
@@ -191,7 +181,6 @@ pdf.defaultStyle({
 */
 ```
 
-
 ### header( header: any )
 
 It defines the header of the document. The header is displayed on each page
@@ -211,7 +200,6 @@ pdf.header('This is a header');
  * }
 */
 ```
-
 
 ### footer( footer: any )
 
@@ -233,7 +221,6 @@ pdf.footer('This is a footer');
 */
 ```
 
-
 ### background( background: any )
 
 It defines the background of the document. The background is displayed on each page
@@ -253,7 +240,6 @@ pdf.background('This is a background');
  * }
 */
 ```
-
 
 ### pageSize( size: string )
 
@@ -275,7 +261,6 @@ pdf.pageSize('A4');
 */
 ```
 
-
 ### pageMargins( margins: number | [number, number] | [number, number, number, number] )
 
 It defines the page margins of the document
@@ -296,7 +281,6 @@ pdf.pageMargins([ 40, 60, 40, 60 ]);
 */
 ```
 
-
 ### pageOrientation( orientation: string )
 
 It defines the page orientation of the document
@@ -316,7 +300,6 @@ pdf.pageOrientation('landscape');
  * }
 */
 ```
-
 
 ### pageBreakBefore( breakBefore: (currentNode: any, followingNodesOnPage?: any, nodesOnNextPage?: any, previousNodesOnPage?: any) => boolean )
 
@@ -343,7 +326,6 @@ pdf.pageBreakBefore(
  * }
 */
 ```
-
 
 ### info( info: any )
 
@@ -373,7 +355,6 @@ pdf.info({
 */
 ```
 
-
 ### compress( compress: boolean )
 
 It defines the compress of the document
@@ -394,7 +375,6 @@ pdf.compress(true);
 */
 ```
 
-
 ### rawContent( content: any )
 
 It defines a raw content, the different to **add** method is that this method fills the full content property (it replaces the content if the content had any definition) and **add** does push to the content
@@ -414,6 +394,39 @@ pdf.rawContent('Simple content');
 */
 ```
 
+### watermark( watermark: string | ITxt ) - ( ITxt is the format(interface) of a Txt object: { text: 'hi', ... } )
+
+It creates a watermark, it's applied to each page
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+// ============= Simple watermark =============
+
+pdf.watermark('Simple watermark');
+
+/**
+ * Internally:
+ * {
+ *      watermark: 'Simple watermark'
+ * }
+*/
+
+
+// ============= watermark with Txt object =============
+
+pdf.watermark( new Txt('watermark with Txt object').color('blue').end );
+
+/**
+ * Internally:
+ * {
+ *      watermark: { text: 'watermark with Txt object', color: 'blue' }
+ * }
+*/
+
+```
 
 ### create()
 
@@ -441,7 +454,6 @@ pdf.create();
 */
 ```
 
-
 ### ln( lines: number = 1 )
 
 It adds new lines, receiving the number of new lines. (default 1 new line)
@@ -467,7 +479,6 @@ pdf.add(
 
 > **NOTE:** more details check the official [documentation](https://pdfmake.github.io/docs/getting-started/client-side/).
 
-
 ## Definitions
 
 The definitions are classes that represent the properties of the original pdfmake library. All the definitions extends of **StyleDefinition** which is an abstract class that contains all the styles (alignment, color, bold, etc...). This class is not accessible, it's internally used to the library. To use a definition you need to import it and then use it:
@@ -484,7 +495,6 @@ new Txt('hi!').bold().end // Result: { text: 'hi!', bold: true }
 
 All definitions must finish with the **end** property, this property (**end**) returns the built object, the only exception is the **Img** class (it'll be explained later).
 
-
 ### Txt( text: string )
 
 It creates a text object
@@ -494,8 +504,8 @@ new Txt('Hello world!').end // { text: 'Hello world!' }
 
 new Txt('Hello world!').alignment('center').italics().end // { text: 'Hello world!', alignment: 'center', italics: true }
 ```
-**Suggestion:** Use **Txt** when the text requires a format (bold, alignment, etc...), otherwise, use literal string
 
+**Suggestion:** Use **Txt** when the text requires a format (bold, alignment, etc...), otherwise, use literal string
 
 ### Columns( columns: any[] )
 
@@ -509,7 +519,6 @@ new Columns([ 'Hello', 'world' ]).columnGap(10).end // { columns: [ 'Hello', 'wo
 new Columns([ 'Hello', 'world' ]).columnGap(10).bold().end // { columns: [ 'Hello', 'world' ], columnGap: 10, bold: true }
 ```
 
-
 ### Stack( stack: any[] )
 
 It creates a stack
@@ -519,7 +528,6 @@ new Stack([ 'Hello', 'world' ]).end // { stack: [ 'Hello', 'world' ] }
 
 new Stack([ 'Hello', 'world' ]).alignment(10).end // { stack: [ 'Hello', 'world' ], alignment: 10 }
 ```
-
 
 ### Table( body: any[][] )
 
@@ -626,7 +634,6 @@ new Table([
 */
 ```
 
-
 ### Img( src: string, previuoslySaved: boolean = false )
 
 The **Img** class accepts URL, base64 and keys of images previously saved using the pdf.images({ ... }) method.
@@ -660,7 +667,6 @@ generate();
 ```
 
 Using Img class with **then** method
-
 
 ```javascript
 import { PdfMakeWrapper, Img } from 'pdfmake-wrapper';
@@ -708,7 +714,6 @@ main();
 
 ```
 
-
 ### Ul ( items: any[] )
 
 It creates an unordered list
@@ -748,7 +753,6 @@ new Ul([
 */
 
 ```
-
 
 ### Ol ( items: any[] )
 
@@ -807,7 +811,6 @@ new Ol([
 
 ```
 
-
 ### Item ( content: any )
 
 It creates an item, this method adds items properties to the passed content. use it into a list.
@@ -859,7 +862,6 @@ new Ol([
 
 **NOTE:** Use **Item** class when you require items properties like counter and listType.
 
-
 ### QR ( code: string )
 
 It creates a QR code
@@ -888,5 +890,132 @@ new QR('my code').fit(100).end
 
 ```
 
-### Toc (string)
-### Vector ()
+### TextReference ( id: string ) and PageReference ( id: string )
+
+This classes create a reference to any text (Txt) object that contains an **id** property.
+
+Using TextReference. This class will return the string(Text) of the text object that is referenced when the PDF is created.
+
+```javascript
+import { PdfMakeWrapper, Txt, TextReference } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.add(
+    new TextReference('titlePage2').end
+);
+
+pdf.add(
+    new Txt('This is the text to be referenced').pageBreak('before').id('titlePage2').end
+);
+
+/**
+ * Internally:
+ * {
+ *      content: [
+ *          { textReference: 'titlePage2' },
+ *          { text: 'This is the text to be referenced', pageBreak: 'before', id: 'titlePage2' }
+ *      ]
+ * }
+*/
+```
+
+Using PageReference. This class will return the page number of the text object that is referenced when the PDF is created.
+
+```javascript
+import { PdfMakeWrapper, Txt, PageReference } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.add(
+    new PageReference('titlePage2').end
+);
+
+pdf.add(
+    new Txt('This is the text to be referenced').pageBreak('before').id('titlePage2').end
+);
+
+/**
+ * Internally:
+ * {
+ *      content: [
+ *          { pageReference: 'titlePage2' },
+ *          { text: 'This is the text to be referenced', pageBreak: 'before', id: 'titlePage2' }
+ *      ]
+ * }
+*/
+```
+
+### Toc ( toc: any )
+
+It creates a table of content.
+
+```javascript
+import { PdfMakeWrapper, Toc, Txt } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.add(
+    new Toc( 
+        new Txt('INDEX').bold().end 
+    ).textStyle({ italics: true }).end
+);
+
+/**
+ * Internally:
+ * {
+ *      content: [
+ *          { 
+ *              toc: {
+ *                  title: { text: 'INDEX', bold: true },
+ *                  textStyle: { italics: true }
+ *              }
+ *          }
+ *      ]
+ * }
+*/
+```
+
+**NOTE:** In this moment it's only created the table of content, but there isn't content to display
+
+### TocItem ( text: IText )
+
+To display content in the table of content, it's required to set a *tocItem*, To do that use **TocItem** class, now the **Toc** created will display a list of content with the page number.
+
+```javascript
+import { PdfMakeWrapper, Toc, TocItem, Txt } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+pdf.add(
+    new Toc( 
+        new Txt('INDEX').bold().end 
+    ).textStyle({ italics: true }).end
+);
+
+pdf.add(
+    new TocItem(
+        new Txt('Second page').pageBreak('before').end
+    ).tocStyle({ color: 'red' }).end;
+);
+
+/**
+ * Internally:
+ * {
+ *      content: [
+ *          { 
+ *              toc: {
+ *                  title: { text: 'INDEX', bold: true },
+ *                  textStyle: { italics: true }
+ *              }
+ *          }, 
+ *          {
+ *              text: 'Second page',
+ *              pageBreak: 'before',
+ *              tocItem: true,
+ *              tocStyle: { color: 'red' }
+ *          }
+ *      ]
+ * }
+*/
+```

@@ -17,5 +17,34 @@ export class Txt extends StyleDefinition<Txt, IText> {
         super();
         this.content.text = this._text;
     }
+
+    /**
+     * preserve leading spaces
+     */
+
+    public preserveLeadingSpaces(): Txt {
+        this.content.preserveLeadingSpaces = true;
+        return this;
+    }
+
+    /**
+     * Set opacity to the text
+     */
+
+    public opacity(opacity: number): Txt {
+        if (opacity > 1) opacity = 1;
+        
+        this.content.opacity = opacity;
+        return this;
+    }
+
+    /**
+     * Set an id to the text object. This is useful for referencing the text object
+     */
+
+    public id(id: string): Txt {
+        this.content.id = id;
+        return this;
+    }
     
 }

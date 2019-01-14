@@ -18,4 +18,8 @@ export interface IStyleDefinition extends IContentDefinition {
     readonly background?: string;
     readonly style?: string | string[];
     readonly color?: string;
+    readonly decoration?: string;
+    readonly decorationStyle?: string;
+    readonly decorationColor?: string;
+    readonly fontFeatures?: string[];
 }

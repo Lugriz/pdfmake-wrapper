@@ -1,5 +1,5 @@
-import { StyleDefinition } from './style-definition';
-import { ICell } from '../interfaces';
+import { StyleDefinition } from '../style-definition';
+import { ICell } from '../../interfaces';
 
 /**
  * Class to create a cell of a table

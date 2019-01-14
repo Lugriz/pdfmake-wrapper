@@ -127,4 +127,40 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
         this.content.noWrap = noWrap;
         return this as any;
     }
+
+    /**
+     * Set decoration 
+     */
+
+    public decoration(decoration: 'underline' | 'lineThrough' | 'overline'): T {
+        this.content.decoration = decoration;
+        return this as any;
+    }
+
+    /**
+     * Set decorationStyle 
+     */
+
+    public decorationStyle(decorationStyle: 'dashed' | 'dotted' | 'double' | 'wavy'): T {
+        this.content.decorationStyle = decorationStyle;
+        return this as any;
+    }
+
+    /**
+     * Set decorationColor 
+     */
+
+    public decorationColor(decorationColor: string): T {
+        this.content.decorationColor = decorationColor;
+        return this as any;
+    }
+
+    /**
+     * Set fontFeatures 
+     */
+
+    public fontFeatures(fontFeatures: ('smcp' | 'c2sc' | 'onum')[]): T {
+        this.content.fontFeatures = fontFeatures;
+        return this as any;
+    }
 }
