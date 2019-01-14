@@ -123,8 +123,8 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
      * Set noWrap 
      */
 
-    public noWrap(noWrap: boolean): T {
-        this.content.noWrap = noWrap;
+    public noWrap(): T {
+        this.content.noWrap = true;
         return this as any;
     }
 
