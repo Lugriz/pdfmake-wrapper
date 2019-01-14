@@ -70,7 +70,7 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
      */
 
     public margin(margin: number | [number, number] | [number, number, number, number]): T {
-        this.content.margin = true;
+        this.content.margin = margin;
         return this as any;
     }
 
