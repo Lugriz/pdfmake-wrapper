@@ -4,6 +4,13 @@ This package is a wrapper to [pdfmake](http://pdfmake.org) library (This library
 
 You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
+## Lastest
+
+### Img class
+
+    - **BUG:** Img class did not work in Chrome browser and the PDF was not created. When the **build** method of the **Img** class was called, this transforms the URL resource to base64, internally **loadend** method was called of the **Image** class.
+    - **FIX:** The *loadend* method was changed by *load* method.
+
 ## Installation
 
 Install pdfmake-wrapper. This package includes **pdfmake** in its dependencies.

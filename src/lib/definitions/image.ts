@@ -67,9 +67,9 @@ export class Img extends StyleDefinition<Img, IImg> {
         
                     let img = new Image();
 
-                    img.crossOrigin = '*';
+                    img.crossOrigin = 'Anonymous';
             
-                    img.onloadend = () => {
+                    img.onload = () => {
                         let canvas = document.createElement('canvas') as HTMLCanvasElement;
                         let context = canvas.getContext('2d') as CanvasDrawImage;
             
