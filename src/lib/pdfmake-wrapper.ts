@@ -1,32 +1,31 @@
-import { IInfo, IImg, ICreatePDF, IText } from './interfaces';
+import { IInfo, IImg, ICreatePDF, IText, IFontTypes, IFonts, IStyleDefinition } from './interfaces';
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-
-// declare var pdfMake: any;
 
 /**
  * Main class that contains the essencial for build the PDF
  */
-
 export class PdfMakeWrapper {
 
     /**
      * It defines the pdf definition
      */
-
     private definition: any = {
         content: []
     };
 
-    constructor() {}
+    /**
+     * The font config that is being used
+     */
+    private static usedFont: { font: string };
+
+    constructor() {
+        this.defaultStyle({});
+    }
 
     /**
      * It adds content to the PDF body
      * @param content any content
      */
-
     public add(content: any): void {
         this.definition.content.push( content );
     }
@@ -35,18 +34,17 @@ export class PdfMakeWrapper {
      * Preload images setting a name to each images
      * 
      * @example 
-     * { pricture1: 'data:image/jpeg;base64...' } or { pricture1: new Img('/path/image.png').end }
+     * { picture1: 'data:image/jpeg;base64...' } or { picture1: await new Img('/path/image.png').build() }
      * 
-     * @param imgs Ditionary of default images
+     * @param imgs Dictionary of default images
      */
-
     public images(imgs: { [propName: string]: IImg | string }): void {
-
-        let newImgs: any = {};
+        const REGEX_BASE64_IMAGE: RegExp = /^data:image\/(jpeg|png|jpg);base64,/;
+        const newImgs: any = {};
 
         for (let p in imgs) {
 
-            if (typeof imgs[ p ] === 'string' && /^data:image\/(jpeg|png|jpg);base64,/.test( imgs[ p ] as string ) ) {
+            if (typeof imgs[ p ] === 'string' && REGEX_BASE64_IMAGE.test( imgs[ p ] as string ) ) {
                 newImgs[ p ] = imgs[ p ];
 
             // it's probably that the first condition is not passed for the regex condition, but it's a string yet
@@ -67,21 +65,24 @@ export class PdfMakeWrapper {
      * 
      * @param styles Dictionary of default styles
      */
-
-    public styles(styles: { [propName: string]: { [propName: string]: string | number | boolean } }): void {
+    public styles(styles: { [propName: string]: IStyleDefinition }): void {
         this.definition.styles = styles;
     }
 
     /**
-     * Preload styles setting name to each custom style that is applied to whole PDF
+     * Preload styles setting name to each custom style that is applied to whole PDF.
+     * Some styles won't work
      * 
      * @example 
      * { style1: { bold: true, fontSize: 15 } }
      * 
      * @param styles Dictionary of default styles
      */
+    public defaultStyle(styles: IStyleDefinition ): void {
+        if (PdfMakeWrapper.usedFont) {
+            styles = { ...styles, ...PdfMakeWrapper.usedFont };
+        }
 
-    public defaultStyle(styles: { [propName: string]: string | number | boolean } ): void {
         this.definition.defaultStyle = styles;
     }
 
@@ -89,7 +90,6 @@ export class PdfMakeWrapper {
      * Set a header definition
      * @param header Data that is applied as header
      */
-
     public header(header: any): void {
         this.definition.header = header;
     }
@@ -98,7 +98,6 @@ export class PdfMakeWrapper {
      * Set a footer definition
      * @param footer Data that is applied as footer
      */
-    
     public footer(footer: any): void {
         this.definition.footer = footer;
     }
@@ -107,7 +106,6 @@ export class PdfMakeWrapper {
      * Set a background layer definition
      * @param background Data that is applied as background
      */
-    
     public background(background: any): void {
         this.definition.background = background;
     }
@@ -116,7 +114,6 @@ export class PdfMakeWrapper {
      * Set the page size
      * @param size The page size
      */
-
     public pageSize(size: string): void {
         this.definition.pageSize = size;
     }
@@ -125,7 +122,6 @@ export class PdfMakeWrapper {
      * Set the page margin
      * @param margin The page margin
      */
-
     public pageMargins(margin: number | [number, number] | [number, number, number, number]): void {
         this.definition.pageMargins = margin;
     }
@@ -134,7 +130,6 @@ export class PdfMakeWrapper {
      * Set the page orientation
      * @param orientation the orientation
      */
-
     public pageOrientation(orientation: string): void {
         this.definition.pageOrientation = orientation;
     }
@@ -143,7 +138,6 @@ export class PdfMakeWrapper {
      * Break the page before the condition defined
      * @param breakBefore Function that defines the break of the page
      */
-
     public pageBreakBefore(breakBefore: (currentNode: any, followingNodesOnPage?: any, nodesOnNextPage?: any, previousNodesOnPage?: any) => boolean): void {
         this.definition.pageBreakBefore = breakBefore;
     }
@@ -152,7 +146,6 @@ export class PdfMakeWrapper {
      * Set metadata to the document, you can set a custom metadata
      * @param info The metadata 
      */
-
     public info(info: IInfo): void {
         this.definition.info = info;
     }
@@ -161,7 +154,6 @@ export class PdfMakeWrapper {
      * It defines if use compress
      * @param compress 
      */
-
     public compress(compress: boolean): void {
         this.definition.compress = compress;
     }
@@ -169,7 +161,6 @@ export class PdfMakeWrapper {
     /** 
      * Set a watermark
     */
-
     public watermark(watermark: string | IText): void {
         this.definition.watermark = watermark;
     }
@@ -177,16 +168,55 @@ export class PdfMakeWrapper {
     /** 
      * Set a raw content
     */
-
     public rawContent(content: any): void {
         this.definition.content = content;
     }
 
     /**
+     * Sets custom fonts. This changes the global font types
+     * @param fonts {{ [propName: string]: string }} The generated fonts object
+     * @param fontTypesConfig {{ [propName: string]: IFontTypes }} The font type configuration
+     * 
+     * @example
+     * import { PdfMakeWrapper } from 'pdfmake-wrapper';
+     * import customFonts 'path/to/custom/fonts';
+     * 
+     * PdfMakeWrapper.setFonts(
+     *  customFonts,
+     *  {
+     *      customFonts: { // The property name can be any
+     *          normal: 'custom-fonts.ttf',
+     *          bold: 'custom-fonts-bold.ttf',
+     *          italics: 'custom-fonts-italics.ttf',
+     *          bolditalics: 'custom-fonts-bolditalics.ttf'
+     *      },
+     *      ...
+     *  }
+     * );
+     */
+    public static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: IFontTypes }): void {
+        pdfMake.vfs = fonts.pdfMake.vfs;
+
+        if (fontTypesConfig)
+            pdfMake.fonts = fontTypesConfig;
+    }
+
+    /**
+     * Sets the font that will be used to generate a PDF
+     * @param fontName The font type configuration name
+     */
+    public static useFont(fontName: string): void {
+        this.usedFont = { font: fontName };
+    }
+
+    /**
      * Create the PDF
      */
-
-    public create(): ICreatePDF {
+    public create(
+        tableLayouts?: { [propName: string]: any }, 
+        fonts?: { [propName: string]: IFontTypes }, 
+        vfs?: { [propName: string]: any }
+    ): ICreatePDF {
         return pdfMake.createPdf( this.definition ) as ICreatePDF;
     }
 
@@ -196,7 +226,6 @@ export class PdfMakeWrapper {
      * It returns new lines
      * @param num numbers of newline
      */
-
     public ln(num: number = 1): string {
         if (num < 1) num = 1;
         

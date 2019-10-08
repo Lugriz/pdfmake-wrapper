@@ -1,4 +1,4 @@
-import { PdfMakeWrapper, Img } from '../src/index';
+import { PdfMakeWrapper } from '../src/index';
 
 describe('Pdfmake wrapper', () => {
     const pdf = new PdfMakeWrapper();

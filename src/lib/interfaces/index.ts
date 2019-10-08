@@ -16,5 +16,7 @@ export * from './list/unordered-list.interface';
 export * from './list/ordered-list.interface';
 export * from './list/list.interface';
 export * from './list/item.interface';
+export * from './fonts/font-types.interface';
+export * from './fonts/fonts.interface';
 
 

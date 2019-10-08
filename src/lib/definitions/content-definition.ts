@@ -23,7 +23,7 @@ export abstract class ContentDefinition<T extends ContentDefinition<T, I>, I> {
      * @param brk when it break a page (before, after)
      */
 
-    public pageBreak(brk: string): T {
+    public pageBreak(brk: 'before' | 'after'): T {
         this.content.pageBreak = brk;
         return this as any;
     }
@@ -34,7 +34,7 @@ export abstract class ContentDefinition<T extends ContentDefinition<T, I>, I> {
      * @param brk the form of page break
      */
 
-    public pageOrientationAndBreak(orientation: string, brk: string): T {
+    public pageOrientationAndBreak(orientation: string, brk: 'before' | 'after'): T {
         this.content.pageOrientation = orientation;
         this.content.pageBreak = brk;
         return this as any;
