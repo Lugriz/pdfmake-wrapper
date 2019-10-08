@@ -51,7 +51,7 @@ export class Cell extends StyleDefinition<Cell, ICell> {
      * @param border define the border top, left, bottom and right
      */
 
-    public border(border: [boolean, boolean?, boolean?, boolean?]): Cell {
+    public border(border: [boolean] | [boolean, boolean] | [boolean, boolean, boolean, boolean]): Cell {
         this.content.border = border;
         return this;
     }
