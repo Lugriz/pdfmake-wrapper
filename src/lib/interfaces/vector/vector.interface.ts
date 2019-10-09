@@ -7,7 +7,7 @@ export interface IVector {
     readonly lineColor?: string;
     readonly lineWidth?: number;
     readonly lineCap?: string;
-    readonly dash?: { length?: number };
+    readonly dash?: { length: number };
     readonly fillOpacity?: number;
     readonly linearGradient?: string[];
 }

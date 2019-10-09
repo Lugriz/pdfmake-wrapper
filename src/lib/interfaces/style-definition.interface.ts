@@ -21,6 +21,6 @@ export interface IStyleDefinition extends IContentDefinition {
     readonly decorationStyle?: 'dashed' | 'dotted' | 'double' | 'wavy';
     readonly decorationColor?: string;
     readonly fontFeatures?: ('smcp' | 'c2sc' | 'onum')[];
-    readonly absolutePosition: IPoint;
-    readonly relativePosition: IPoint;
+    readonly absolutePosition?: IPoint;
+    readonly relativePosition?: IPoint;
 }
