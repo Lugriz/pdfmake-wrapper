@@ -25,5 +25,6 @@ export * from './vector/ellipse.interface';
 export * from './vector/polyline.interface';
 export * from './vector/canvas.interface';
 export * from './svg.interface';
+export * from './permissions.interface';
 
 

@@ -1,4 +1,4 @@
-import { IInfo, IImg, ICreatePDF, IText, IFontTypes, IFonts, IStyleDefinition } from './interfaces';
+import { IInfo, IImg, ICreatePDF, IText, IFontTypes, IFonts, IStyleDefinition, IPermissions } from './interfaces';
 import pdfMake from "pdfmake/build/pdfmake";
 
 /**
@@ -170,6 +170,25 @@ export class PdfMakeWrapper {
     */
     public rawContent(content: any): void {
         this.definition.content = content;
+    }
+
+    /**
+     * Sets a password to the PDF to encrypt it and when an user wants to open the document
+     * a popup will be shown to type the password
+     * @param password 
+     */
+    public userPassword(password: string): void {
+        this.definition.userPassword = password;
+    }
+
+    /**
+     * Sets access privileges providing an owner password and the privileges setting
+     * @param password The password
+     * @param permissions The permission setting
+     */
+    public permissions(password: string, permissions: IPermissions): void {
+        this.definition.ownerPassword = password;
+        this.definition.permissions = permissions;
     }
 
     /**
