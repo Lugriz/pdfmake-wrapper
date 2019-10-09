@@ -12,3 +12,8 @@ export * from './text-reference';
 export * from './list/unordered-list';
 export * from './list/ordered-list';
 export * from './list/item';
+export * from './vector/rect';
+export * from './vector/line';
+export * from './vector/ellipse';
+export * from './vector/polyline';
+export * from './vector/canvas';

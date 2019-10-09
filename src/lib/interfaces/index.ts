@@ -18,5 +18,11 @@ export * from './list/list.interface';
 export * from './list/item.interface';
 export * from './fonts/font-types.interface';
 export * from './fonts/fonts.interface';
+export * from './vector/vector.interface';
+export * from './vector/rect.interface';
+export * from './vector/line.interface';
+export * from './vector/ellipse.interface';
+export * from './vector/polyline.interface';
+export * from './vector/canvas.interface';
 
 

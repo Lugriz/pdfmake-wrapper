@@ -3,7 +3,6 @@ import { ContentDefinition } from './content-definition';
 /**
  * Class that contains the global style definitions
  */
-
 export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extends ContentDefinition<T, I> {
 
     /**
@@ -161,6 +160,26 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
 
     public fontFeatures(fontFeatures: ('smcp' | 'c2sc' | 'onum')[]): T {
         this.content.fontFeatures = fontFeatures;
+        return this as any;
+    }
+
+    /**
+     * Sets the content in an absolute position
+     * @param x coord X
+     * @param y coord Y
+     */
+    public absolutePosition(x: number, y: number): T {
+        this.content.absolutePosition = { x, y };
+        return this as any;
+    }
+
+    /**
+     * Sets the content in an relative position
+     * @param x coord X
+     * @param y coord Y
+     */
+    public relativePosition(x: number, y: number): T {
+        this.content.relativePosition = { x, y };
         return this as any;
     }
 }
