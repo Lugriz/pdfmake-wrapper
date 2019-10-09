@@ -17,3 +17,4 @@ export * from './vector/line';
 export * from './vector/ellipse';
 export * from './vector/polyline';
 export * from './vector/canvas';
+export * from './svg';
