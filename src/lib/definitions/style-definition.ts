@@ -149,6 +149,15 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
     }
 
     /**
+     * Set a specific font to a text
+     * @param fontName The key of the font name
+     */
+    public font(fontName: string): T {
+        this.content.font = fontName;
+        return this as any;
+    }
+
+    /**
      * Sets the content in an absolute position
      * @param x coord X
      * @param y coord Y

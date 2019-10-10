@@ -23,4 +23,5 @@ export interface IStyleDefinition extends IContentDefinition {
     readonly fontFeatures?: ('smcp' | 'c2sc' | 'onum')[];
     readonly absolutePosition?: IPoint;
     readonly relativePosition?: IPoint;
+    readonly font?: string;
 }

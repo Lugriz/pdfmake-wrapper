@@ -1,5 +1,5 @@
 import { IInfo, IImg, ICreatePDF, IText, IFontTypes, IFonts, IStyleDefinition, IPermissions } from './interfaces';
-import pdfMake from "pdfmake/build/pdfmake";
+import pdfMake from 'pdfmake/build/pdfmake';
 
 /**
  * Main class that contains the essencial for build the PDF
@@ -231,11 +231,7 @@ export class PdfMakeWrapper {
     /**
      * Create the PDF
      */
-    public create(
-        tableLayouts?: { [propName: string]: any }, 
-        fonts?: { [propName: string]: IFontTypes }, 
-        vfs?: { [propName: string]: any }
-    ): ICreatePDF {
+    public create(): ICreatePDF {
         return pdfMake.createPdf( this.definition ) as ICreatePDF;
     }
 
