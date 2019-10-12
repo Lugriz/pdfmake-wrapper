@@ -34,10 +34,28 @@ export abstract class ContentDefinition<T extends ContentDefinition<T, I>, I> {
      * @param brk the form of page break
      */
 
-    public pageOrientationAndBreak(orientation: string, brk: 'before' | 'after'): T {
+    public pageOrientationAndBreak(orientation: 'landscape' | 'portrait', brk: 'before' | 'after'): T {
         this.content.pageOrientation = orientation;
         this.content.pageBreak = brk;
         return this as any;
+    }
+
+    /**
+     * Helper to use with automatically page break
+     * @param data Any data
+     */
+    public headlineLevel(data: any): T {
+        this.content.headlineLevel = data;
+        return this as any;
+    }
+
+    /**
+     * Sets an ID to an object, This is useful for referencing an object
+     * @param id ID
+     */
+    public id(id: string): T {
+        this.content.id = id;
+        return this as  any;
     }
 
 }

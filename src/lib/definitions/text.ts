@@ -37,14 +37,5 @@ export class Txt extends StyleDefinition<Txt, IText> {
         this.content.opacity = opacity;
         return this;
     }
-
-    /**
-     * Set an id to the text object. This is useful for referencing the text object
-     */
-
-    public id(id: string): Txt {
-        this.content.id = id;
-        return this;
-    }
     
 }

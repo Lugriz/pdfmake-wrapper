@@ -5,8 +5,7 @@ import { IStyleDefinition } from '.';
  */
 
 export interface IText extends IStyleDefinition {
-    readonly text: string;
+    readonly text: string | (string | IText)[];
     readonly preserveLeadingSpaces?: boolean;
     readonly opacity?: number;
-    readonly id?: string;
 }

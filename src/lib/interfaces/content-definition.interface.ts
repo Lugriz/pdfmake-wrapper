@@ -3,6 +3,8 @@
  */
 
 export interface IContentDefinition {
+    readonly id?: string;
     readonly pageBreak?: string;
     readonly pageOrientation?: string;
+    readonly headlineLevel?: any;
 }

@@ -20,7 +20,7 @@ export class Line extends Vector<Line, ILine> {
      */
     constructor(
         point1: number | [number, number],
-        point2: number | [number, number],
+        point2: number | [number, number]
     ) {
         super('line');
         this.setPoint1(point1);

@@ -1,4 +1,4 @@
-import { IInfo, IImg, ICreatePDF, IText, IFontTypes, IFonts, IStyleDefinition, IPermissions } from './interfaces';
+import { IInfo, IImg, ICreatePDF, IText, IFontTypes, IFonts, IStyleDefinition, IPermissions, ICustomPageSize, IDocumentNode } from './interfaces';
 import pdfMake from 'pdfmake/build/pdfmake';
 
 /**
@@ -114,7 +114,7 @@ export class PdfMakeWrapper {
      * Set the page size
      * @param size The page size
      */
-    public pageSize(size: string): void {
+    public pageSize(size: string | ICustomPageSize): void {
         this.definition.pageSize = size;
     }
 
@@ -130,7 +130,7 @@ export class PdfMakeWrapper {
      * Set the page orientation
      * @param orientation the orientation
      */
-    public pageOrientation(orientation: string): void {
+    public pageOrientation(orientation: 'landscape' | 'portrait'): void {
         this.definition.pageOrientation = orientation;
     }
 
@@ -138,7 +138,7 @@ export class PdfMakeWrapper {
      * Break the page before the condition defined
      * @param breakBefore Function that defines the break of the page
      */
-    public pageBreakBefore(breakBefore: (currentNode: any, followingNodesOnPage?: any, nodesOnNextPage?: any, previousNodesOnPage?: any) => boolean): void {
+    public pageBreakBefore(breakBefore: (currentNode: IDocumentNode, followingNodesOnPage?: IDocumentNode[], nodesOnNextPage?: IDocumentNode[], previousNodesOnPage?: IDocumentNode[]) => boolean): void {
         this.definition.pageBreakBefore = breakBefore;
     }
 

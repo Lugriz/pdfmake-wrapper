@@ -21,9 +21,9 @@ describe('Columns definition class', () => {
         const column = new Columns([
             new Txt('Hello').bold().italics().end,
             'world!'
-        ]);
+        ]).id('1');
 
-        expect( column.end ).toEqual({ columns: [ { text: 'Hello', bold: true, italics: true }, 'world!' ] });
+        expect( column.end ).toEqual({ columns: [ { text: 'Hello', bold: true, italics: true }, 'world!' ], id: '1' });
     });
 
 });

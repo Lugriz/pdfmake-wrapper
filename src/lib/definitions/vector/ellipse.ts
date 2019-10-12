@@ -20,7 +20,7 @@ export class Ellipse extends Vector<Ellipse, IEllipse> {
      */
     constructor(
         point: number | [number, number],
-        radius: number | [number, number],
+        radius: number | [number, number]
     ) {
         super('ellipse');
         this.setPoint(point);

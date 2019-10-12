@@ -18,13 +18,13 @@ describe('Txt definition class', () => {
         expect( 
             new Txt([
                 'Hello',
-                new Txt('world!').fontSize(15).end
+                new Txt('world!').fontSize(15).id('1').end
             ]).end 
         ).toEqual(
             { 
                 text: [
                     'Hello',
-                    { text: 'world!', fontSize: 15 }
+                    { text: 'world!', fontSize: 15, id: '1' }
                 ] 
             }
         );

@@ -26,5 +26,7 @@ export * from './vector/polyline.interface';
 export * from './vector/canvas.interface';
 export * from './svg.interface';
 export * from './permissions.interface';
+export * from './custom-page-size.interface';
+export * from './document-node.interface';
 
 

@@ -20,7 +20,7 @@ export class Rect extends Vector<Rect, IRect> {
      */
     constructor(
         point: number | [number, number],
-        size: number | [number, number],
+        size: number | [number, number]
     ) {
         super('rect');
         this.setPoint(point);
