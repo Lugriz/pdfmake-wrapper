@@ -5,5 +5,5 @@ import { IStyleDefinition } from '.';
  */
 
 export interface IStack extends IStyleDefinition {
-    stack: string[]
+    readonly stack: string[];
 }

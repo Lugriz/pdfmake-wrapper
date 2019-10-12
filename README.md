@@ -4,17 +4,103 @@ This package is a wrapper to [pdfmake](http://pdfmake.org) library
 
 You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
+- [pdfmake-wrapper](#pdfmake-wrapper)
+  - [New features](#new-features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [PdfMakeWrapper members](#pdfmakewrapper-members)
+    - [add(content: any) -> void](#addcontent-any---void)
+    - [images(images: { [prop: string]: IImg | string }) -> void](#imagesimages--prop-string-iimg--string----void)
+    - [styles(styles: { [prop: string]: IStyleDefinition }) -> void](#stylesstyles--prop-string-istyledefinition----void)
+    - [defaultStyle(styles: IStyleDefinition) -> void](#defaultstylestyles-istyledefinition---void)
+    - [header(header: any) -> void](#headerheader-any---void)
+    - [footer(footer: any) -> void](#footerfooter-any---void)
+    - [background(background: any) -> void](#backgroundbackground-any---void)
+    - [pageSize(size: string | ICustomPageSize) -> void](#pagesizesize-string--icustompagesize---void)
+    - [pageMargins(margins: number | [number, number] | [number, number, number, number]) -> void](#pagemarginsmargins-number--number-number--number-number-number-number---void)
+    - [pageOrientation(orientation: 'landscape' | 'portrait') -> void](#pageorientationorientation-landscape--portrait---void)
+    - [pageBreakBefore(breakBefore: (currentNode: IDocumentNode, followingNodesOnPage?: IDocumentNode[], nodesOnNextPage?: IDocumentNode[], previousNodesOnPage?: IDocumentNode[]) => boolean) -> void](#pagebreakbeforebreakbefore-currentnode-idocumentnode-followingnodesonpage-idocumentnode-nodesonnextpage-idocumentnode-previousnodesonpage-idocumentnode--boolean---void)
+    - [info(info: IInfo) -> void](#infoinfo-iinfo---void)
+    - [compress(compress: boolean) -> void](#compresscompress-boolean---void)
+    - [rawContent(content: any) -> void](#rawcontentcontent-any---void)
+    - [watermark(watermark: string | ITxt) -> void](#watermarkwatermark-string--itxt---void)
+    - [userPassword(password: string) -> void](#userpasswordpassword-string---void)
+    - [permissions(password: string, permissions: IPermissions) -> void](#permissionspassword-string-permissions-ipermissions---void)
+    - [create() -> ICreatePDF](#create---icreatepdf)
+    - [ln(lines: number = 1) -> string](#lnlines-number--1---string)
+    - [static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: IFontTypes }) -> void](#static-setfontsfonts-ifonts-fonttypesconfig--propname-string-ifonttypes----void)
+    - [static useFont(fontName: string) -> void](#static-usefontfontname-string---void)
+  - [Definitions](#definitions)
+    - [Txt(text: string) -> Txt](#txttext-string---txt)
+    - [Columns(columns: any[]) - Columns](#columnscolumns-any---columns)
+    - [Stack(stack: any[]) -> Stack](#stackstack-any---stack)
+    - [Table(body: any[][]) -> Table](#tablebody-any---table)
+    - [Cell(content: any) -> Cell](#cellcontent-any---cell)
+    - [Img(src: string, previuoslySaved: boolean = false) -> Img](#imgsrc-string-previuoslysaved-boolean--false---img)
+    - [Ul(items: any[]) -> Ul](#ulitems-any---ul)
+    - [Ol(items: any[]) -> Ol](#olitems-any---ol)
+    - [Item(content: any) -> Item](#itemcontent-any---item)
+    - [QR(code: string) -> OR](#qrcode-string---or)
+    - [TextReference(id: string) -> TextReference and PageReference(id: string) -> PageReference](#textreferenceid-string---textreference-and-pagereferenceid-string---pagereference)
+    - [Toc(toc: any) -> Toc](#toctoc-any---toc)
+    - [TocItem(text: IText) -> TocItem](#tocitemtext-itext---tocitem)
+    - [SVG(svg: string) -> SVG](#svgsvg-string---svg)
+    - [Canvas(IVector[]) -> Canvas](#canvasivector---canvas)
+    - [Line(point1: number | [number, number], point2: number | [number, number]) -> Line](#linepoint1-number--number-number-point2-number--number-number---line)
+    - [Rect(point: number | [number, number], size: number | [number, number]) -> Rect](#rectpoint-number--number-number-size-number--number-number---rect)
+    - [Ellipse(point: number | [number, number], radius: number | [number, number]) -> Ellipse](#ellipsepoint-number--number-number-radius-number--number-number---ellipse)
+    - [Polyline(points: IPoint[] = []) -> Polyline](#polylinepoints-ipoint-----polyline)
+  - [Interfaces](#interfaces)
+    - [General interfaces](#general-interfaces)
+      - [IContentDefinition](#icontentdefinition)
+      - [IStyleDefinition](#istyledefinition)
+      - [ICustomPageSize](#icustompagesize)
+      - [IDocumentNode](#idocumentnode)
+      - [IInfo](#iinfo)
+      - [IPermissions](#ipermissions)
+      - [ICreatePDF](#icreatepdf)
+      - [IFonts](#ifonts)
+      - [IFontTypes](#ifonttypes)
+    - [Definition interfaces](#definition-interfaces)
+      - [IText](#itext)
+      - [IColumns](#icolumns)
+      - [IStack](#istack)
+      - [IImg](#iimg)
+      - [IQR](#iqr)
+      - [ISVG](#isvg)
+      - [IPageReference](#ipagereference)
+      - [ITextReference](#itextreference)
+      - [IToc](#itoc)
+      - [ITocItem](#itocitem)
+      - [IOl](#iol)
+      - [IUl](#iul)
+      - [IItem](#iitem)
+      - [ITable](#itable)
+      - [ITableBody](#itablebody)
+      - [ICustomTableLayout](#icustomtablelayout)
+      - [ICell](#icell)
+      - [ICanvas](#icanvas)
+      - [IVector](#ivector)
+      - [ILine](#iline)
+      - [IRect](#irect)
+      - [IEllipse](#iellipse)
+      - [IPolyline](#ipolyline)
+      - [IPoint](#ipoint)
+  - [Generate custom fonts](#generate-custom-fonts)
+  - [How to use custom fonts](#how-to-use-custom-fonts)
+  - [How to use icons](#how-to-use-icons)
+
 ## New features
 
 * pdfmake needs to be installed on your own.
-* Custom fonts.
-* Icons support.
-* *style*({ ... }) and *defaultStyle*({ ... }) methods implement *IStyleDefinition* interface to help to define the styles correctly.
+* [Custom fonts](#static-usefontfontname-string---void).
+* [Icons support](#how-to-use-icons).
+* *style*({ ... }) and *defaultStyle*({ ... }) methods implement [*IStyleDefinition*](#istyledefinition) interface to help to define the styles correctly.
 * *width* and *height* methods allow string options ('*', 'auto', '10%').
-* Relative and absolute positions are available.
-* Drawing shapes using **Canvas** *class*.
-* Adding *svg* in the PDF.
-* Security implementing passwords and permissions.
+* Relative and absolute positions are available (They are defined in StyleDefinition class, all definition class can use them).
+* Drawing shapes using [**Canvas**](#canvasivector---canvas) *class*.
+* Adding [*svg*](#svgsvg-string---svg) in the PDF.
+* Security implementing [passwords](#userpasswordpassword-string---void) and [permissions](#permissions(password:-string,-permissions:-IPermissions)-->-void).
 
 ## Installation
 
@@ -53,25 +139,7 @@ pdf.create().download();
 
 **NOTE:** Most classes are called as the original pdfmake library properties (columns, tables, etc..), but there are exceptions like *text* which is represented as **Txt**, it's the same with *Image* which is represented as **Img** and other similar examples. The reason is that exist native objects in the browser like **Image**, **Text**, etc..
 
-## Common
-
-* [Generate custom fonts](#generate-custom-fonts)
-* [How to use custom fonts](#how-to-use-custom-fonts)
-* [How to use icons](#how-to-use-icons)
-
 ## PdfMakeWrapper members
-
-* [add(content: any) -> void](#add(content:-any)-->-void)
-* [images(images: { [prop: string]: IImg | string }) -> void](#images(images:-{-[prop:-string]:-IImg-|-string-})-->-void)
-* [styles(styles: { [prop: string]: IStyleDefinition }) -> void](#styles(styles:-{-[prop:-string]:-IStyleDefinition-})-->-void)
-* [defaultStyle(styles: IStyleDefinition) -> void](#defaultStyle(styles:-IStyleDefinition)-->-void)
-* [header(header: any) -> void](#header(header:-any)-->-void)
-* [footer(footer: any) -> void](#footer(footer:-any)-->-void)
-* [background(background: any) -> void](#background(background:-any)-->-void)
-* [pageSize(size: string | ICustomPageSize) -> void](#pageSize(size:-string-|-ICustomPageSize)-->-void)
-* [pageMargins(margins: number | [number, number] | [number, number, number, number]) -> void](#pageMargins(margins:-number-|-[number,-number]-|-[number,-number,-number,-number])-->-void)
-* [pageOrientation(orientation: 'landscape' | 'portrait') -> void](#pageOrientation(orientation:-'landscape'-|-'portrait')-->-void)
-* [pageBreakBefore(breakBefore: (currentNode: IDocumentNode, followingNodesOnPage?: IDocumentNode[], nodesOnNextPage?: IDocumentNode[], previousNodesOnPage?: IDocumentNode[]) => boolean) -> void](#pageBreakBefore(breakBefore:-(currentNode:-IDocumentNode,-followingNodesOnPage?:-IDocumentNode[],-nodesOnNextPage?:-IDocumentNode[],-previousNodesOnPage?:-IDocumentNode[])-=>-boolean)-->-void)
 
 PdfMakeWrapper is the main class, this class contains the content and other configurations of the document.
 
@@ -125,14 +193,14 @@ async function main() {
 
     // In the original PDFmake library will look like this:
 
-    /* 
+    /*
         const doc = {
             content: [],
             images: {
                 picture1: 'base64 image',
                 picture2: 'base64 image'
             }
-        }; 
+        };
     */
 }
 
@@ -1349,40 +1417,476 @@ new Txt('Hello world').end;
 
 An instance of Txt (defintion class) that finishes with *.end* returns us the result object which belongs to the interface **IText**. The interfaces help us to understand what available properties the result object could have.
 
+### General interfaces
+
 #### IContentDefinition
+
+Main interface to define an object definition.
+
+* `readonly` id?: `string`;
+* `readonly` pageBreak?: `string`;
+* `readonly` pageOrientation?: `string`;
+* `readonly` headlineLevel?: `any`;
 
 #### IStyleDefinition
 
+This interface contains all possible styles that an object can have. This one extends from [IContentDefinition](#icontentdefinition).
+
+* `readonly` fontSize?: `number`;
+* `readonly` width?: `number`;
+* `readonly` height?: `number`;
+* `readonly` alignment?: `'center'` | `'left'` | `'right'` | `'justify'`;
+* `readonly` bold?: `boolean`;
+* `readonly` italics?: `boolean`;
+* `readonly` margin?: `number` | [`number`, `number`] | [`number`, `number`, `number`, `number`];
+* `readonly` link?: `string`;
+* `readonly` linkToPage?: `number`;
+* `readonly` noWrap?: `boolean`;
+* `readonly` background?: `string`;
+* `readonly` style?: `string` | `string`[];
+* `readonly` color?: `string`;
+* `readonly` decoration?: `'underline'` | `'lineThrough'` | `'overline'`;
+* `readonly` decorationStyle?: `'dashed'` | `'dotted'` | `'double'` | `'wavy'`;
+* `readonly` decorationColor?: `string`;
+* `readonly` fontFeatures?: (`'smcp'` | `'c2sc'` | `'onum'`)[];
+* `readonly` absolutePosition?: [`IPoint`](#ipoint);
+* `readonly` relativePosition?: [`IPoint`](#ipoint);
+* `readonly` font?: `string`;
+
 #### ICustomPageSize
+
+Defines a custom page size.
+
+* `readonly` width: `number` | `string`;
+* `readonly` height: `number` | `string`;
 
 #### IDocumentNode
 
+Defines the format of a document node which is returned for pageBreakBefore method.
+
+* `readonly` id?: `any`;
+* `readonly` headlineLevel?: `any`;
+* `readonly` text?: `string` | (`string` | `IText`)[];
+* `readonly` ul?: `any`;
+* `readonly` ol?: `any`;
+* `readonly` table?: `any`;
+* `readonly` image?: `any`;
+* `readonly` qr?: `any`;
+* `readonly` canvas?: `any`;
+* `readonly` columns?: `any`;
+* `readonly` style?: `any`;
+* `readonly` pageOrientation?: `string`;
+* `readonly` pageNumbers?: `number`[];
+* `readonly` pages?: `number`;
+* `readonly` stack?: `boolean`;
+* `readonly` startPosition?: `any`;
+* [propName: `string`] : `any`;
+
 #### IInfo
+
+Defines the format when info metadata is provided to the PDF.
+
+* `readonly` title: `string`;
+* `readonly` author?: `string`;
+* `readonly` subject?: `string`;
+* `readonly` keywords?: `string`;
+* `readonly` creator?: `string`;
+* `readonly` producer?: `string`;
+* `readonly` creationDate?: `string`;
+* `readonly` modDate?: `string`;
+* `readonly` trapped?: `string`;
+* `readonly` [ propName: `string` ]: `string` | `undefined`;
 
 #### IPermissions
 
+Defines the possible permissions a document can have.
+
+* `readonly` printing?: `'highResolution'` | `'lowResolution'`;
+* `readonly` modifying?: `boolean`;
+* `readonly` copying?: `boolean`;
+* `readonly` annotating?: `boolean`;
+* `readonly` fillingForms?: `boolean`;
+* `readonly` contentAccessibility?: `boolean`;
+* `readonly` documentAssembly?: `boolean`;
+
 #### ICreatePDF
+
+Defines the result of a [create](#create()-->-ICreatePDF) method.
+
+* download`(filename?: string, cb?: (v?: any) => void, options?: any ): void`;
+* open`(options?: any, win?: Window ): void`;
+* print`(options?: any, win?: Window ): void`;
+* getDataUrl`(cb?: (v?: any) => void, options?: any ): void`;
+* getBase64`(cb?: (v?: any) => void, options?: any ): void`;
+* getBuffer`(cb?: (v?: any) => void, options?: any ): void`;
+* getBlob`(cb?: (v?: any) => void, options?: any ): void`;
 
 #### IFonts
 
+Defines the format of the generated fonts. This is used internally.
+
+* pdfMake: `IVFS`;
+
 #### IFontTypes
 
-#### Ipoint
+Defines the font types.
+
+* normal: `string`;
+* bold: `string`;
+* italics: `string`;
+* bolditalics: `string`;
 
 ### Definition interfaces
 
-All the definition interfaces extend from IStyleDefinition
+All the definition interfaces extend from [IStyleDefinition](#istyledefinition).
 
 #### IText
 
+Defines the possible properties a text object can have.
+
+* `readonly` text: `string` | (`string` | [`IText`](#itext))[];
+* `readonly` preserveLeadingSpaces?: `boolean`;
+* `readonly` opacity?: `number`;
+
+#### IColumns
+
+Defines the possible properties a column object can have.
+
+* `readonly` columns: `any`[];
+* `readonly` columnGap?: `number`;
+
+#### IStack
+
+Defines a stack object.
+
+* `readonly` stack: `string`[];
+
 #### IImg
 
-* image: string;
-* fit?: [number, number];
-* opacity?: number;
+Defines the possible properties an image object can have.
+
+* `readonly` image: `string`;
+* `readonly` fit?: [`number`, `number`];
+* `readonly` opacity?: `number`;
+
+#### IQR
+
+Defines the possible properties a QR object can have.
+
+* `readonly` qr: `string`;
+* `readonly` foreground?: `string`;
+* `readonly` version?: `number`;
+* `readonly` fit?: `number`;
+* `readonly` eccLevel?: `string`;
+* `readonly` mode?: `string`;
+* `readonly` mask?: `number`;
+
+#### ISVG
+
+Defines the possible properties a SVG object can have.
+
+* `readonly` svg: `string`;
+* `readonly` fit?: [`number`, `number`];
+
+#### IPageReference
+
+Defines a page referance object.
+
+* `readonly` pageReference: `string`;
+
+#### ITextReference
+
+Defines a text reference object.
+
+* `readonly` textReference: `string`;
+
+#### IToc
+
+Defines the possible properties a toc object can have.
+
+* `readonly` title: `any`;
+* `readonly` numberStyle?: [`IStyleDefinition`](#istyledefinition);
+* `readonly` textStyle?: [`IStyleDefinition`](#istyledefinition);
+* `readonly` textMargin?: `number` | [`number`, `number`] | [`number`, `number`, `number`, `number`];
+
+#### ITocItem
+
+Defines the possible properties a toc item object can have.
+
+* `readonly` tocItem: `boolean`;
+* `readonly` tocStyle?: [`IStyleDefinition`](#istyledefinition);
+* `readonly` tocMargin?: `number` | [`number`, `number`] | [`number`, `number`, `number`, `number`];
+
+#### IOl
+
+Defines the possible properties an ordered list object can have.
+
+* `readonly` ol: `any`[];
+* `readonly` separator?: `string` | [`string`, `string`];
+* `readonly` reversed?: `boolean`;
+* `readonly` start?: `number`;
+
+#### IUl
+
+Defines an unordered list object.
+
+* `readonly` ul: `any`[];
+
+#### IItem
+
+Defines the possible properties an item object can have.
+
+* `readonly` counter?: `number`;
+* `readonly` listType?: `string`;
+
+#### ITable
+
+Defines the possible properties a table object can have.
+
+* `readonly` table: [`ITableBody`](#itablebody);
+* `readonly` layout?: `string` | [`ICustomTableLayout`](#icustomtablelayout);
+
+#### ITableBody
+
+Defines the possible properties a table body object can have.
+
+* `readonly` widths?: `string` | `number` | ( `string` | `number` )[];
+* `readonly` heights?: `(row: number) => (number | number[])` | `number` | `number`[];
+* `readonly` body: `any`[][];
+* `readonly` dontBreakRows?: `boolean`;
+* `readonly` keepWithHeaderRows?: `number`;
+
+#### ICustomTableLayout
+
+Defines the possible properties a custom table layout object can have.
+
+* hLineWidth?: `(i?:number, node?:any, columnIndex?:any) => number`;
+* vLineWidth?: `(i?:number, node?:any, columnIndex?:any) => number`;
+* hLineColor?: `(i?:number, node?:any, columnIndex?:any) => string`;
+* vLineColor?: `(i?:number, node?:any, columnIndex?:any) => string`;
+* hLineStyle?: `(i?:number, node?:any, columnIndex?:any) => any`;
+* vLineStyle?: `(i?:number, node?:any, columnIndex?:any) => any`;
+* paddingLeft?: `(i?:number, node?:any, columnIndex?:any) => number`;
+* paddingRight?: `(i?:number, node?:any, columnIndex?:any) => number`;
+* paddingTop?: `(i?:number, node?:any, columnIndex?:any) => number`;
+* paddingBottom?: `(i?:number, node?:any, columnIndex?:any) => number`;
+* fillColor?: `(i?:number, node?:any, columnIndex?:any) => string`;
+* defaultBorder?: `boolean`;
+
+#### ICell
+
+Defines the possible properties a cell object can have.
+
+* `readonly` colSpan?: `number`;
+* `readonly` rowSpan?: `number`;
+* `readonly` fillColor?: `string`;
+* `readonly` border?: [`boolean`] | [`boolean`, `boolean`] | [`boolean`, `boolean`, `boolean`, `boolean`];
+
+#### ICanvas
+
+Defines a canvas object.
+
+* `readonly` canvas: [`IVector`](#ivector)[];
+
+#### IVector
+
+Shape (line, ellipse, rect and polyline) interfaces extend from this one.
+
+* `readonly` type: `string`;
+* `readonly` color?: `string`;
+* `readonly` lineColor?: `string`;
+* `readonly` lineWidth?: `number`;
+* `readonly` lineCap?: `string`;
+* `readonly` dash?: `{ length: number }`;
+* `readonly` fillOpacity?: `number`;
+* `readonly` linearGradient?: `string`[];
+
+#### ILine
+
+Defines a line shape.
+
+* `readonly` x1?: `number`;
+* `readonly` x2?: `number`;
+* `readonly` y1?: `number`;
+* `readonly` y2?: `number`;
+
+#### IRect
+
+Defines a rect shape.
+
+* `readonly` x?: `number`;
+* `readonly` y?: `number`;
+* `readonly` w?: `number`;
+* `readonly` h?: `number`;
+* `readonly` r?: `number`;
+
+#### IEllipse
+
+Defines a ellipse shape.
+
+* `readonly` x?: `number`;
+* `readonly` y?: `number`;
+* `readonly` r1?: `number`;
+* `readonly` r2?: `number`;
+
+#### IPolyline
+
+Defines a polyline shape.
+
+* `readonly` closePath?: `boolean`;
+* `readonly` points?: [`IPoint`](#ipoint)[];
+
+#### IPoint
+
+Defines a point.
+
+* `readonly` x: `number`;
+* `readonly` y: `number`;
 
 ## Generate custom fonts
 
+To generate custom fonts, you can use a CLI called [pdfmake-font-generator](https://github.com/Lugriz/pdfmake-font-generator). You need to have your fonts in some directory and this tool will read all fonts and will return an output file containing the generated fonts. This generated file is which you will use to import it to pdfmake-wrapper. for example:
+
+Given a structure like this:
+
+```text
+/myProject
+  /fonts
+    /custom.ttf
+    /custom-bold.ttf
+    /custom-italics.ttf
+    /custom-bolditalics.ttf
+```
+
+You need to generate the fonts as the documentation of the CLI is defined and then an output file is placed in a directory you specified.
+
+**NOTE:** You can have many fonts you need in the same directory.
+
 ## How to use custom fonts
 
+Once generated the fonts, you need to provide your custom fonts to pdfmake-wrapper and configure them.
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "custom/fonts/file"; // custom fonts
+
+// Configuring custom fonts
+PdfMakeWrapper.setFonts(pdfFonts, {
+    myCustom: {
+        normal: 'custom.ttf',
+        bold: 'custom-bold.ttf',
+        italics: 'custom-italics.ttf',
+        bolditalics: 'custom-bolditalics.ttf'
+    }
+});
+
+PdfMakeWrapper.useFont('myCustom');
+```
+
+as recommended in the [useFont](#static-usefontfontname-string---void) method, configure the fonts once is more then enough if you have all your fonts in a same bundle.
+
+**NOTE:** The values of the font types (normal, bold, etc...) are the font filenames.
+
+you can have many fonts generated in the same bundle and you can configure them too.
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "custom/fonts/file"; // custom fonts
+
+// Configuring many custom fonts
+PdfMakeWrapper.setFonts(pdfFonts, {
+    myCustom: {
+        normal: 'custom.ttf',
+        bold: 'custom-bold.ttf',
+        italics: 'custom-italics.ttf',
+        bolditalics: 'custom-bolditalics.ttf'
+    },
+    otherFonts: {
+        normal: 'another.ttf',
+        bold: 'another-bold.ttf',
+        italics: 'another-italics.ttf',
+        bolditalics: 'another-bolditalics.ttf'
+    },
+    ...
+});
+```
+
+if you need to switch of fonts you can use `PdfMakeWrapper.useFont('otherFonts')`.
+
 ## How to use icons
+
+To use icons is similar as using fonts, you can create icons from [http://fontello.com/](http://fontello.com/) and download them (or to use another option). Once downloaded, follow the *custom fonts* process.
+
+Imagine you created and downloaded icons from [http://fontello.com/](http://fontello.com/), inside the downloaded directory there is a `font` directory, take the `.ttf` file to generate icons. You can copy the icons where you have your other custom fonts. for example:
+
+```text
+/myProject
+  /fonts
+    /custom.ttf
+    /custom-bold.ttf
+    /custom-italics.ttf
+    /custom-bolditalics.ttf
+    /fontello-icons.ttf
+```
+
+This will generate a bundle with your custom fonts and icons.
+
+Now, you need configure them. The process is the same as fonts.
+
+```javascript
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "custom/fonts/file"; // custom fonts with icons
+
+// Configuring many custom fonts
+PdfMakeWrapper.setFonts(pdfFonts, {
+    myCustom: {
+        normal: 'custom.ttf',
+        bold: 'custom-bold.ttf',
+        italics: 'custom-italics.ttf',
+        bolditalics: 'custom-bolditalics.ttf'
+    },
+    myIcons: { // configuring icons
+        normal: 'fontello-icons.ttf',
+        bold: 'fontello-icons.ttf',
+        italics: 'fontello-icons.ttf',
+        bolditalics: 'fontello-icons.ttf'
+    },
+    ...
+});
+```
+
+The difference is that you will need to create a style in your pdfmake instance. your must NOT use `PdfMakeWrapper.useFont('myIcons')`, cause this will override the fonts the PDF is using. It is better to create a style in your pdfmake instance or set the custom font to use the `font('myIcons')` method.
+
+```javascript
+// Imagine you already have your fonts and icons configured
+import { PdfMakeWrapper, Txt } from 'pdfmake-wrapper';
+
+const pdf = new PdfMakeWrapper();
+
+// Creating a style
+pdf.styles({
+    icon: {
+        font: 'myIcons' // define the icon to use
+    }
+});
+
+pdf.add(
+    new Txt('').style('icon').end
+);
+
+// or using the font method
+
+const pdf = new PdfMakeWrapper();
+
+pdf.add(
+    new Txt('').font('myIcons').end
+);
+```
+
+The content to pass in the **TxT** constructor is the provided for fontello. Go in the downloaded directory in the *css* directory and take the *fontello-codes.css*, Copy the code in the comment and paste it.
+
+`/css/fontello-codes.css`
+
+```css
+.icon-<some-icon>:before { content: '\e800'; } /* '' */ /*<-- copy the square into the comment*/
+```

@@ -7,5 +7,5 @@ interface IVFS {
  * Defines the type of the generated fonts
  */
 export interface IFonts {
-    pdfMake: IVFS
+    pdfMake: IVFS;
 }

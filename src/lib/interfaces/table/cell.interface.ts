@@ -8,5 +8,5 @@ export interface ICell extends IStyleDefinition {
     readonly colSpan?: number;
     readonly rowSpan?: number;
     readonly fillColor?: string;
-    readonly border?: [boolean, boolean?, boolean?, boolean?]
+    readonly border?: [boolean] | [boolean, boolean] | [boolean, boolean, boolean, boolean];
 }
