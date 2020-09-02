@@ -746,12 +746,12 @@ new Table([
  *   }
  */
 
-// ============= Costum widths ===============
+// ============= Custom widths ===============
 
 new Table([
     [ 'column 1', 'column 2'],
     [ 'column 1', 'column 2']
-]).widhts([ '*', 100 ]).end;
+]).widths([ '*', 100 ]).end;
 
 /**
  *  Result:
