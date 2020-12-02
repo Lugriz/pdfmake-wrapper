@@ -4,14 +4,12 @@ import { IImg } from '../interfaces';
 /**
  * Class to create an image definition
  */
-
 export class Img extends StyleDefinition<Img, IImg> {
 
     /**
      * @param url Image URL or BASE64
      * @param fromDefinition It defines if the image is from definition "images" property
      */
-    
     constructor(
         private url: string,
         private fromDefinition: boolean = false
@@ -22,7 +20,6 @@ export class Img extends StyleDefinition<Img, IImg> {
     /**
      * It gets the content with the image in base64
      */
-
     public async build(): Promise<IImg> {
         return await this.toBase64();
     }
@@ -31,7 +28,6 @@ export class Img extends StyleDefinition<Img, IImg> {
      * It fits the image
      * @param fit {[ number, number ]} 
      */
-
     public fit(fit: [number, number]): Img {
         this.content.fit = fit;
         return this;
@@ -41,7 +37,6 @@ export class Img extends StyleDefinition<Img, IImg> {
      * It adds opacity to the image
      * @param opacity 0 to 1
      */
-
     public opacity(opacity: number): Img {
         if (opacity > 1) opacity = 1;
 
@@ -52,7 +47,6 @@ export class Img extends StyleDefinition<Img, IImg> {
     /**
      * It converts a image URL to Base64 and set the image
      */
-
     private async toBase64(): Promise<IImg> {
         if (/^data:image\/(jpeg|png|jpg);base64,/.test( this.url ) || this.fromDefinition) {
 

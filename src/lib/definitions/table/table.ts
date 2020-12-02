@@ -4,13 +4,11 @@ import { ITable, ICustomTableLayout } from '../../interfaces';
 /**
  * Class to create a table
  */
-
 export class Table extends StyleDefinition<Table, ITable> {
 
     /**
      * @param _body receives an array of arrays
      */
-
     constructor(
         private _body: any[][]
     ) {
@@ -22,7 +20,6 @@ export class Table extends StyleDefinition<Table, ITable> {
     /**
      * @param layout set table layout {lightHorizontalLines|noBorders|headerLineOnly|ICustomTableLayout}
      */
-
     public layout(layout: 'lightHorizontalLines' | 'noBorders' | 'headerLineOnly' | ICustomTableLayout): Table {
         this.content.layout = layout;
         return this;
@@ -31,7 +28,6 @@ export class Table extends StyleDefinition<Table, ITable> {
     /**
      * @param rows set number of header rows
      */
-
     public headerRows(rows: number): Table {
         this.content.table.headerRows = rows;
         return this;
@@ -40,7 +36,6 @@ export class Table extends StyleDefinition<Table, ITable> {
     /**
      * @param widths set table widths
      */
-
     public widths(widths: number | '*' | 'auto' | (string | number)[]): Table {        
         this.content.table.widths = widths;
         return this;
@@ -49,7 +44,6 @@ export class Table extends StyleDefinition<Table, ITable> {
     /**
      * @param heights set table heights
      */
-
     public heights(heights: (row: number) => number | number | number[]): Table {
         this.content.table.heights = heights;
         return this;
@@ -58,7 +52,6 @@ export class Table extends StyleDefinition<Table, ITable> {
     /**
      * @param apply move the table to the next page when it will be cut it for a breaking page
      */
-
     public dontBreakRows(apply: boolean): Table {
         this.content.table.dontBreakRows = apply;
         return this;
@@ -67,7 +60,6 @@ export class Table extends StyleDefinition<Table, ITable> {
     /**
      * @param rows number of rows that are held next to the header
      */
-
     public keepWithHeaderRows(rows: number): Table {
         this.content.table.keepWithHeaderRows = rows;
         return this;
