@@ -240,6 +240,7 @@ export class PdfMakeWrapper {
     /**
      * It returns new lines
      * @param num numbers of newline
+     * @deprecated This will be deprecated in next minor version
      */
     public ln(num: number = 1): string {
         if (num < 1) num = 1;

@@ -1,11 +1,16 @@
 # pdfmake-wrapper
 
-This package is a wrapper to [pdfmake](http://pdfmake.org) library
+<p style="text-align:center">
+    <img src="docs/img/logo.png" alt="Pdfmake-wrapper logo" width="200"/>
+</p>
+
+This library written in Typescript is a wrapper based on [pdfmake](http://pdfmake.org) to generate PDF documents in an easy and readable way.
 
 You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
 - [pdfmake-wrapper](#pdfmake-wrapper)
   - [New features](#new-features)
+  - [Breaking changes](#breaking-changes)
   - [Installation](#installation)
   - [Usage](#usage)
   - [PdfMakeWrapper members](#pdfmakewrapper-members)
@@ -19,7 +24,7 @@ You can check the examples in the original pdfmake repository [https://github.co
     - [pageSize(size: string | ICustomPageSize) -> void](#pagesizesize-string--icustompagesize---void)
     - [pageMargins(margins: number | [number, number] | [number, number, number, number]) -> void](#pagemarginsmargins-number--number-number--number-number-number-number---void)
     - [pageOrientation(orientation: 'landscape' | 'portrait') -> void](#pageorientationorientation-landscape--portrait---void)
-    - [pageBreakBefore(breakBefore: (currentNode: IDocumentNode, followingNodesOnPage?: IDocumentNode[], nodesOnNextPage?: IDocumentNode[], previousNodesOnPage?: IDocumentNode[]) => boolean) -> void](#pagebreakbeforebreakbefore-currentnode-idocumentnode-followingnodesonpage-idocumentnode-nodesonnextpage-idocumentnode-previousnodesonpage-idocumentnode--boolean---void)
+    - [pageBreakBefore(breakBefore: (currentNode: IDocumentNode, followingNodesOnPage?: [IDocumentNode](#idocumentnode)[], nodesOnNextPage?: [IDocumentNode](#idocumentnode)[], previousNodesOnPage?: [IDocumentNode](#idocumentnode)[]) => boolean) -> void](#pagebreakbeforebreakbefore-currentnode-idocumentnode-followingnodesonpage-idocumentnode-nodesonnextpage-idocumentnode-previousnodesonpage-idocumentnode--boolean---void)
     - [info(info: IInfo) -> void](#infoinfo-iinfo---void)
     - [compress(compress: boolean) -> void](#compresscompress-boolean---void)
     - [rawContent(content: any) -> void](#rawcontentcontent-any---void)
@@ -28,13 +33,13 @@ You can check the examples in the original pdfmake repository [https://github.co
     - [permissions(password: string, permissions: IPermissions) -> void](#permissionspassword-string-permissions-ipermissions---void)
     - [create() -> ICreatePDF](#create---icreatepdf)
     - [ln(lines: number = 1) -> string](#lnlines-number--1---string)
-    - [static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: IFontTypes }) -> void](#static-setfontsfonts-ifonts-fonttypesconfig--propname-string-ifonttypes----void)
+    - [static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: [IFontTypes](#ifonttypes) }) -> void](#static-setfontsfonts-ifonts-fonttypesconfig--propname-string-ifonttypes----void)
     - [static useFont(fontName: string) -> void](#static-usefontfontname-string---void)
   - [Definitions](#definitions)
     - [Txt(text: string) -> Txt](#txttext-string---txt)
     - [Columns(columns: any[]) - Columns](#columnscolumns-any---columns)
     - [Stack(stack: any[]) -> Stack](#stackstack-any---stack)
-    - [Table(body: any[][]) -> Table](#tablebody-any---table)
+    - [Table(body: any) -> Table](#tablebody-any---table)
     - [Cell(content: any) -> Cell](#cellcontent-any---cell)
     - [Img(src: string, previuoslySaved: boolean = false) -> Img](#imgsrc-string-previuoslysaved-boolean--false---img)
     - [Ul(items: any[]) -> Ul](#ulitems-any---ul)
@@ -92,15 +97,12 @@ You can check the examples in the original pdfmake repository [https://github.co
 
 ## New features
 
-* pdfmake needs to be installed on your own.
-* [Custom fonts](#static-usefontfontname-string---void).
-* [Icons support](#how-to-use-icons).
-* *style*({ ... }) and *defaultStyle*({ ... }) methods implement [*IStyleDefinition*](#istyledefinition) interface to help to define the styles correctly.
-* *width* and *height* methods allow string options ('*', 'auto', '10%').
-* Relative and absolute positions are available (They are defined in StyleDefinition class, all definition class can use them).
-* Drawing shapes using [**Canvas**](#canvasivector---canvas) *class*.
-* Adding [*svg*](#svgsvg-string---svg) in the PDF.
-* Security implementing [passwords](#userpasswordpassword-string---void) and [permissions](#permissions(password:-string,-permissions:-IPermissions)-->-void).
+- You can access to the interfaces.
+- Server-side support
+
+## Breaking changes
+
+- No breaking changes for now
 
 ## Installation
 
