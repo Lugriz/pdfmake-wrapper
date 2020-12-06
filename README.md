@@ -10,10 +10,10 @@ You can check the examples in the original pdfmake repository [https://github.co
 
 - [pdfmake-wrapper](#pdfmake-wrapper)
   - [New features](#new-features)
-  - [Breaking changes](#breaking-changes)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [PdfMakeWrapper members](#pdfmakewrapper-members)
+  - [DocumentDefinition class](#documentdefinition-class)
+  - [PdfMakeWrapper members (client-side)](#pdfmakewrapper-members-client-side)
     - [add(content: any) -> void](#addcontent-any---void)
     - [images(images: { [prop: string]: IImg | string }) -> void](#imagesimages--prop-string-iimg--string----void)
     - [styles(styles: { [prop: string]: IStyleDefinition }) -> void](#stylesstyles--prop-string-istyledefinition----void)
@@ -94,15 +94,13 @@ You can check the examples in the original pdfmake repository [https://github.co
   - [Generate custom fonts](#generate-custom-fonts)
   - [How to use custom fonts](#how-to-use-custom-fonts)
   - [How to use icons](#how-to-use-icons)
+  - [Working on server-side](#working-on-server-side)
+  - [Contribution](#contribution)
 
 ## New features
 
 - You can access to the interfaces.
 - Server-side support
-
-## Breaking changes
-
-- No breaking changes for now
 
 ## Installation
 
@@ -114,11 +112,28 @@ and
 
 > $ npm install pdfmake-wrapper --save
 
+If you have the *strict* mode to true in your **tsconfig.json**, like this:
+
+```json
+{
+  "compilerOptions": {
+    ...
+    "strict": true
+  }
+}
+```
+
+You need to install the pdfmake types to avoid typing errors:
+
+> $ npm install @types/pdfmake --save-dev
+
 ## Usage
 
 **IMPORTANT:** This version does not implement any fonts. The reason is to allow you to use any fonts you need.
 
-This is a simple example to generate a PDF. Import the package in your code, import the fonts to use and create an instance:
+This is a simple example to generate a PDF on client-side (if you want to use it on server-side, see the [server-side](#working-on-server-side) section).
+
+Import the package in your code, import the fonts to use and create an instance:
 
 ```javascript
 // Import pdfmake-wrapper and the fonts to use
@@ -141,9 +156,13 @@ pdf.create().download();
 
 **NOTE:** Most classes are called as the original pdfmake library properties (columns, tables, etc..), but there are exceptions like *text* which is represented as **Txt**, it's the same with *Image* which is represented as **Img** and other similar examples. The reason is that exist native objects in the browser like **Image**, **Text**, etc..
 
-## PdfMakeWrapper members
+## DocumentDefinition class
 
-PdfMakeWrapper is the main class, this class contains the content and other configurations of the document.
+This is the main class that contains the content and other configurations of the document. This is the content/document builder. All the members (methods) will be described by [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since it extends from this one. You will work directly with this class when working on server-side. To know more about server-side, check the [server-side](#working-on-server-side) section.
+
+## PdfMakeWrapper members (client-side)
+
+When working on client-side, this is the class you need to instantiate. This class extends from [DocumentDefinition](#documentdefinition-class) class. The unique members of this class are the static methods **setFonts**, **useFont** and the **create** instance method, but you have all [DocumentDefinition](#documentdefinition-class) members available in this class.
 
 ### add(content: any) -> void
 
@@ -1892,3 +1911,39 @@ The content to pass in the **TxT** constructor is the provided for fontello. Go 
 ```css
 .icon-<some-icon>:before { content: '\e800'; } /* '' */ /*<-- copy the square into the comment*/
 ```
+
+## Working on server-side
+
+To work on server-side you need to use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since that class is useful on the client-side, remember [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) class and you have all the methods PdfmakeWrapper class has, except **setFonts**, **useFont** and **create** methods which are only useful on client-side.
+
+You can generate your pdf documents like this:
+
+```javascript
+import { DocumentDefinition } from 'pdfmake-wrapper';
+import Pdfmake from 'pdfmake';
+import fs from 'fs';
+
+const printer = new Pdfmake({
+    Roboto: {
+        normal: './your/path/Roboto-Regular.ttf',
+        bold: './your/path/Roboto-Medium.ttf',
+        italics: './your/path/Roboto-Italic.ttf',
+        bolditalics: './your/path/Roboto-MediumItalic.ttf'
+    }
+});
+
+const doc = new DocumentDefinition();
+
+doc.add('Hello world!');
+
+const pdf = printer.createPdfKitDocument(doc.getDefinition());
+
+pdf.pipe(fs.createWriteStream('document.pdf'));
+pdf.end();
+```
+
+**NOTE**: Unlike client-side, when working on server-side, the fonts do not need to be generated, instead, you need to pass the path where you fonts are stored.
+
+## Contribution
+
+If you are interested to contribute to this library, please, check the contribution file [here](CONTRIBUTING.md).

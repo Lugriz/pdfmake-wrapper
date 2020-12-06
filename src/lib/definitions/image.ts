@@ -1,5 +1,6 @@
 import { StyleDefinition } from './style-definition';
 import { IImg } from '../interfaces';
+import { isBase64 } from '../utils/is-base64';
 
 /**
  * Class to create an image definition
@@ -48,14 +49,11 @@ export class Img extends StyleDefinition<Img, IImg> {
      * It converts a image URL to Base64 and set the image
      */
     private async toBase64(): Promise<IImg> {
-        if (/^data:image\/(jpeg|png|jpg);base64,/.test( this.url ) || this.fromDefinition) {
-
+        if (isBase64(this.url) || this.fromDefinition) {
             this.content.image = this.url;
 
             return Promise.resolve( this.content as IImg );
-
         } else {
-
             try {
                 this.content.image = await new Promise((resolve, reject) => {
         
@@ -82,7 +80,6 @@ export class Img extends StyleDefinition<Img, IImg> {
                 });
 
                 return Promise.resolve( this.content as IImg );
-            
             } catch(e) {
                 throw new Error(`The ${ this.url } can't be resolved`);
             }

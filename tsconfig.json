@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",          
-    "module": "es2015",     
+    "module": "CommonJS",     
     "lib": [
       "es2015",
       "dom"
@@ -10,7 +10,7 @@
     "declarationMap": true,
     "sourceMap": true,    
     "outDir": "dist",
-    "removeComments": true,
+    "removeComments": false,
     "downlevelIteration": true,
     "strict": true,
     "moduleResolution": "node",
