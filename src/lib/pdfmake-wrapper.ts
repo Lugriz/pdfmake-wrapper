@@ -1,4 +1,4 @@
-import { ICreatePDF, IFontTypes, IFonts } from './interfaces';
+import { ICreatePDF, IFonts, IFontTypeConfiguration } from './interfaces';
 import { DocumentDefinition } from './document-definition';
 import pdfMake from 'pdfmake/build/pdfmake';
 
@@ -6,16 +6,6 @@ import pdfMake from 'pdfmake/build/pdfmake';
  * Main class that contains the essencial for build the PDF
  */
 export class PdfMakeWrapper extends DocumentDefinition {
-
-    private static usedFont: { font: string };
-
-    constructor() {
-        super();
-
-        if (PdfMakeWrapper.usedFont) {
-            this.defaultStyle(PdfMakeWrapper.usedFont);
-        }
-    }
 
     /**
      * Sets custom fonts. This changes the global font types
@@ -39,20 +29,12 @@ export class PdfMakeWrapper extends DocumentDefinition {
      *  }
      * );
      */
-    public static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: IFontTypes }): void {
+    public static setFonts(fonts: IFonts, fontTypesConfig?: IFontTypeConfiguration): void {
         pdfMake.vfs = fonts.pdfMake.vfs;
 
         if (fontTypesConfig) {
             pdfMake.fonts = fontTypesConfig;
         }
-    }
-
-    /**
-     * Sets the font that will be used to generate a PDF
-     * @param fontName The font type configuration name
-     */
-    public static useFont(fontName: string): void {
-        PdfMakeWrapper.usedFont = { font: fontName };
     }
 
     /**

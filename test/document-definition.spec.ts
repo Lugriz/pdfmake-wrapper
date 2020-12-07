@@ -116,4 +116,17 @@ describe('DocumentDefinition', () => {
             }
         });
     });
+
+    it('Should use default fonts', () => {
+        DocumentDefinition.useFont('myFonts');
+        
+        doc = new DocumentDefinition();
+
+        expect(doc.getDefinition()).toEqual({
+            content: [],
+            defaultStyle: {
+                font: 'myFonts'
+            }
+        });
+    })
 });

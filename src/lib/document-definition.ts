@@ -1,9 +1,12 @@
-import { IInfo, IImg, IText, IStyleDefinition, IPermissions, ICustomPageSize, IDocumentNode } from './interfaces';
+import { IInfo, IImg, IText, IStyleDefinition, IPermissions, ICustomPageSize, IDocumentNode, IUseFont } from './interfaces';
 import { isBase64 } from './utils/is-base64';
+
 /**
  * Class that contains the essencial for the document definition
  */
 export class DocumentDefinition {
+
+    private static usedFont: IUseFont;
 
     /**
      * It defines the pdf definition
@@ -11,6 +14,20 @@ export class DocumentDefinition {
     private definition: any = {
         content: []
     };
+
+    constructor() {
+        if (DocumentDefinition.usedFont) {
+            this.defaultStyle(DocumentDefinition.usedFont);
+        }
+    }
+
+    /**
+     * Sets the font that will be used to generate a PDF
+     * @param fontName The font type configuration name
+     */
+    public static useFont(fontName: string): void {
+        DocumentDefinition.usedFont = { font: fontName };
+    }
 
     /**
      * It adds content to the PDF body

@@ -101,6 +101,7 @@ You can check the examples in the original pdfmake repository [https://github.co
 
 - You can access to the interfaces.
 - Server-side support
+- Code comment snippets
 
 ## Installation
 
@@ -162,7 +163,7 @@ This is the main class that contains the content and other configurations of the
 
 ## PdfMakeWrapper members (client-side)
 
-When working on client-side, this is the class you need to instantiate. This class extends from [DocumentDefinition](#documentdefinition-class) class. The unique members of this class are the static methods **setFonts**, **useFont** and the **create** instance method, but you have all [DocumentDefinition](#documentdefinition-class) members available in this class.
+When working on client-side, this is the class you need to instantiate. This class extends from [DocumentDefinition](#documentdefinition-class) class. The unique members of this class is the static method **setFonts** and the **create** instance method, but you have all [DocumentDefinition](#documentdefinition-class) members available in this class.
 
 ### add(content: any) -> void
 
@@ -1914,7 +1915,7 @@ The content to pass in the **TxT** constructor is the provided for fontello. Go 
 
 ## Working on server-side
 
-To work on server-side you need to use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since that class is useful on the client-side, remember [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) class and you have all the methods PdfmakeWrapper class has, except **setFonts**, **useFont** and **create** methods which are only useful on client-side.
+To work on server-side you need to use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since that class is useful on the client-side, remember [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) class and you have all the methods PdfmakeWrapper class has, except **setFonts** and **create** methods which are only useful on client-side.
 
 You can generate your pdf documents like this:
 
@@ -1931,6 +1932,14 @@ const printer = new Pdfmake({
         bolditalics: './your/path/Roboto-MediumItalic.ttf'
     }
 });
+
+/**
+ * By default, Pdfmake uses the 'Roboto' fonts, if you want 
+ * to use custom fonts, you need to use the useFont method 
+ * like this:
+ * 
+ * DocumentDefinition.useFont('MyCustomFonts');
+ */
 
 const doc = new DocumentDefinition();
 
