@@ -1,6 +1,6 @@
-# pdfmake-wrapper
+# Pdfmake-wrapper
 
-<p style="text-align:center">
+<p align="center">
     <img src="docs/img/logo.png" alt="Pdfmake-wrapper logo" width="200"/>
 </p>
 
@@ -8,7 +8,7 @@ This library written in Typescript is a wrapper based on [pdfmake](http://pdfmak
 
 You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
-- [pdfmake-wrapper](#pdfmake-wrapper)
+- [Pdfmake-wrapper](#pdfmake-wrapper)
   - [New features](#new-features)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -105,7 +105,9 @@ You can check the examples in the original pdfmake repository [https://github.co
 
 ## Installation
 
-To install **pdfmake-wrapper**, you need to install **pdfmake**. This version was built considering **pdfmake@0.1.60**. You can use from **0.1.60** to higher versions.
+This version was built considering **pdfmake@0.1.x**. If you want to use previous versions you can check the releases [here](https://github.com/Lugriz/pdfmake-wrapper/releases).
+
+To use this library you need to install both **pdfmake-wrapper** and **pdfmake**:
 
 > $ npm install pdfmake --save
 
