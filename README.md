@@ -9,7 +9,7 @@ This library written in Typescript is a wrapper based on [pdfmake](http://pdfmak
 You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
 - [Pdfmake-wrapper](#pdfmake-wrapper)
-  - [New features](#new-features)
+  - [New features and future changes](#new-features-and-future-changes)
   - [Installation](#installation)
   - [Usage](#usage)
   - [DocumentDefinition class](#documentdefinition-class)
@@ -97,11 +97,12 @@ You can check the examples in the original pdfmake repository [https://github.co
   - [Working on server-side](#working-on-server-side)
   - [Contribution](#contribution)
 
-## New features
+## New features and future changes
 
 - You can access to the interfaces.
 - Server-side support
 - Code comment snippets
+- **ln()** method will be deprecated in the next version
 
 ## Installation
 
@@ -618,6 +619,8 @@ pdf.create();
 ### ln(lines: number = 1) -> string
 
 Adds new lines. By default '\n'.
+
+**NOTE**: This will be deprecated in a next version
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';

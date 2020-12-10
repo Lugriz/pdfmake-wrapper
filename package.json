@@ -1,7 +1,7 @@
 {
   "name": "pdfmake-wrapper",
   "version": "2.0.0",
-  "description": "Wrapper to pdfmake library",
+  "description": "Wrapper based on pdfmake library to generate PDF documents in an easy and readable way.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -24,7 +24,12 @@
     "pdfmake",
     "pdfmake wrapper",
     "pdf",
-    "generate pdf"
+    "generate pdf",
+    "pdf",
+    "document",
+    "pdf-generation",
+    "typescript",
+    "javascript"
   ],
   "bugs": {
     "email": "insomniocode@gmail.com",
