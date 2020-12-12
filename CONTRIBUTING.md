@@ -7,6 +7,7 @@ Thanks for you interest to contribute. In this document we will describe the ste
 - Don't push either to *master* or *develop*
 - Don't update either the *package.json* or *package-lock.json*
 - Don't create a pull request in master
+- Don't update *create-package-json-lib.js* file
 
 ## How to create a pull request
 

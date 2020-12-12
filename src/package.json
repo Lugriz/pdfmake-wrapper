@@ -1,12 +1,8 @@
 {
   "name": "pdfmake-wrapper",
-  "version": "2.0.0",
-  "description": "Wrapper to pdfmake library",
+  "version": "2.1.0",
+  "description": "Wrapper based on pdfmake library to generate PDF documents in an easy and readable way.",
   "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "build": "tsc; cp src/package.json dist/package.json; cp README.md dist/README.md; cp LICENSE dist/LICENSE"
-  },
   "author": "Insomniocode <insomniocode@gmail.com>",
   "contributors": [
     {
@@ -24,13 +20,18 @@
     "pdfmake",
     "pdfmake wrapper",
     "pdf",
-    "generate pdf"
+    "generate pdf",
+    "pdf",
+    "document",
+    "pdf-generation",
+    "typescript",
+    "javascript"
   ],
   "bugs": {
     "email": "insomniocode@gmail.com",
     "url": "https://github.com/Lugriz/pdfmake-wrapper/issues"
   },
   "peerDependencies": {
-    "pdfmake": "^0.1.60"
+    "pdfmake": "^0.1.68"
   }
 }

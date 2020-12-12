@@ -1,11 +1,12 @@
 {
   "name": "pdfmake-wrapper",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Wrapper based on pdfmake library to generate PDF documents in an easy and readable way.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc; cp src/package.json dist/package.json; cp README.md dist/README.md; cp LICENSE dist/LICENSE"
+    "build": "tsc; npm run create:packagejson; cp src/package.json dist/package.json; cp README.md dist/README.md; cp LICENSE dist/LICENSE",
+    "create:packagejson": "node create-package-json-lib.js"
   },
   "author": "Insomniocode <insomniocode@gmail.com>",
   "contributors": [
@@ -36,12 +37,12 @@
     "url": "https://github.com/Lugriz/pdfmake-wrapper/issues"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.12",
-    "@types/pdfmake": "^0.1.8",
+    "@types/jest": "^23.3.14",
+    "@types/pdfmake": "^0.1.16",
     "jest": "^23.6.0",
-    "pdfmake": "^0.1.60",
+    "pdfmake": "^0.1.68",
     "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "typescript": "^3.9.7"
   },
   "jest": {
     "moduleFileExtensions": [
