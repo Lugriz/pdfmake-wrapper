@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc; npm run create:packagejson; cp src/package.json dist/package.json; cp README.md dist/README.md; cp LICENSE dist/LICENSE",
-    "create:packagejson": "node create-package-json-lib.js"
+    "build": "npm run build:client; npm run build:server; npm run create:packagejson; npm run copy:packagejson; npm run copy:readme; npm run copy:license",
+    "build:client": "tsc --project ./tsconfig.json",
+    "build:server": "tsc --project ./tsconfig.server.json",
+    "create:packagejson": "node create-package-json-lib.js",
+    "copy:packagejson": "cp src/package.json dist/package.json",
+    "copy:readme": "cp README.md dist/README.md",
+    "copy:license": "cp LICENSE dist/LICENSE"
   },
   "author": "Insomniocode <insomniocode@gmail.com>",
   "contributors": [

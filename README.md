@@ -116,7 +116,11 @@ and
 
 > $ npm install pdfmake-wrapper --save
 
-If you have the *strict* mode to true in your **tsconfig.json**, like this:
+we recommend to install the pdfmake types to avoid typing errors:
+
+> $ npm install @types/pdfmake --save-dev
+
+This errors will appear if you don't install the **@types/pdfmake** and you have the *strict* mode to true in your **tsconfig.json** like this:
 
 ```json
 {
@@ -127,9 +131,7 @@ If you have the *strict* mode to true in your **tsconfig.json**, like this:
 }
 ```
 
-You need to install the pdfmake types to avoid typing errors:
-
-> $ npm install @types/pdfmake --save-dev
+**IMPORTANT**: If you have typescript version **<3.6.x** in your project, you may have an error when building the project. This is a typescript breaking changes and you need to update it to **3.6.x** or higher version. Check for more details [here](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#class-field-mitigations).
 
 ## Usage
 
@@ -1920,12 +1922,12 @@ The content to pass in the **TxT** constructor is the provided for fontello. Go 
 
 ## Working on server-side
 
-To work on server-side you need to use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since that class is useful on the client-side, remember [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) class and you have all the methods PdfmakeWrapper class has, except **setFonts** and **create** methods which are only useful on client-side.
+To work on server-side you need to import definitions from **pdfmake-wrapper/server** and use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since that class is useful on the client-side, remember [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) class and you have all the methods PdfmakeWrapper class has, except **setFonts** and **create** methods which are only useful on client-side.
 
 You can generate your pdf documents like this:
 
 ```javascript
-import { DocumentDefinition } from 'pdfmake-wrapper';
+import { DocumentDefinition } from 'pdfmake-wrapper/server';
 import Pdfmake from 'pdfmake';
 import fs from 'fs';
 
