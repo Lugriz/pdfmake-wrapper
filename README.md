@@ -1,14 +1,19 @@
-# pdfmake-wrapper
+# Pdfmake-wrapper
 
-This package is a wrapper to [pdfmake](http://pdfmake.org) library
+<p align="center">
+    <img src="docs/img/logo.png" alt="Pdfmake-wrapper logo" width="200"/>
+</p>
+
+This library written in Typescript is a wrapper based on [pdfmake](http://pdfmake.org) to generate PDF documents in an easy and readable way.
 
 You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
-- [pdfmake-wrapper](#pdfmake-wrapper)
-  - [New features](#new-features)
+- [Pdfmake-wrapper](#pdfmake-wrapper)
+  - [New features and future changes](#new-features-and-future-changes)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [PdfMakeWrapper members](#pdfmakewrapper-members)
+  - [DocumentDefinition class](#documentdefinition-class)
+  - [PdfMakeWrapper members (client-side)](#pdfmakewrapper-members-client-side)
     - [add(content: any) -> void](#addcontent-any---void)
     - [images(images: { [prop: string]: IImg | string }) -> void](#imagesimages--prop-string-iimg--string----void)
     - [styles(styles: { [prop: string]: IStyleDefinition }) -> void](#stylesstyles--prop-string-istyledefinition----void)
@@ -19,7 +24,7 @@ You can check the examples in the original pdfmake repository [https://github.co
     - [pageSize(size: string | ICustomPageSize) -> void](#pagesizesize-string--icustompagesize---void)
     - [pageMargins(margins: number | [number, number] | [number, number, number, number]) -> void](#pagemarginsmargins-number--number-number--number-number-number-number---void)
     - [pageOrientation(orientation: 'landscape' | 'portrait') -> void](#pageorientationorientation-landscape--portrait---void)
-    - [pageBreakBefore(breakBefore: (currentNode: IDocumentNode, followingNodesOnPage?: IDocumentNode[], nodesOnNextPage?: IDocumentNode[], previousNodesOnPage?: IDocumentNode[]) => boolean) -> void](#pagebreakbeforebreakbefore-currentnode-idocumentnode-followingnodesonpage-idocumentnode-nodesonnextpage-idocumentnode-previousnodesonpage-idocumentnode--boolean---void)
+    - [pageBreakBefore(breakBefore: (currentNode: IDocumentNode, followingNodesOnPage?: [IDocumentNode](#idocumentnode)[], nodesOnNextPage?: [IDocumentNode](#idocumentnode)[], previousNodesOnPage?: [IDocumentNode](#idocumentnode)[]) => boolean) -> void](#pagebreakbeforebreakbefore-currentnode-idocumentnode-followingnodesonpage-idocumentnode-nodesonnextpage-idocumentnode-previousnodesonpage-idocumentnode--boolean---void)
     - [info(info: IInfo) -> void](#infoinfo-iinfo---void)
     - [compress(compress: boolean) -> void](#compresscompress-boolean---void)
     - [rawContent(content: any) -> void](#rawcontentcontent-any---void)
@@ -28,13 +33,13 @@ You can check the examples in the original pdfmake repository [https://github.co
     - [permissions(password: string, permissions: IPermissions) -> void](#permissionspassword-string-permissions-ipermissions---void)
     - [create() -> ICreatePDF](#create---icreatepdf)
     - [ln(lines: number = 1) -> string](#lnlines-number--1---string)
-    - [static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: IFontTypes }) -> void](#static-setfontsfonts-ifonts-fonttypesconfig--propname-string-ifonttypes----void)
+    - [static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: [IFontTypes](#ifonttypes) }) -> void](#static-setfontsfonts-ifonts-fonttypesconfig--propname-string-ifonttypes----void)
     - [static useFont(fontName: string) -> void](#static-usefontfontname-string---void)
   - [Definitions](#definitions)
     - [Txt(text: string) -> Txt](#txttext-string---txt)
     - [Columns(columns: any[]) - Columns](#columnscolumns-any---columns)
     - [Stack(stack: any[]) -> Stack](#stackstack-any---stack)
-    - [Table(body: any[][]) -> Table](#tablebody-any---table)
+    - [Table(body: any) -> Table](#tablebody-any---table)
     - [Cell(content: any) -> Cell](#cellcontent-any---cell)
     - [Img(src: string, previuoslySaved: boolean = false) -> Img](#imgsrc-string-previuoslysaved-boolean--false---img)
     - [Ul(items: any[]) -> Ul](#ulitems-any---ul)
@@ -89,22 +94,21 @@ You can check the examples in the original pdfmake repository [https://github.co
   - [Generate custom fonts](#generate-custom-fonts)
   - [How to use custom fonts](#how-to-use-custom-fonts)
   - [How to use icons](#how-to-use-icons)
+  - [Working on server-side](#working-on-server-side)
+  - [Contribution](#contribution)
 
-## New features
+## New features and future changes
 
-* pdfmake needs to be installed on your own.
-* [Custom fonts](#static-usefontfontname-string---void).
-* [Icons support](#how-to-use-icons).
-* *style*({ ... }) and *defaultStyle*({ ... }) methods implement [*IStyleDefinition*](#istyledefinition) interface to help to define the styles correctly.
-* *width* and *height* methods allow string options ('*', 'auto', '10%').
-* Relative and absolute positions are available (They are defined in StyleDefinition class, all definition class can use them).
-* Drawing shapes using [**Canvas**](#canvasivector---canvas) *class*.
-* Adding [*svg*](#svgsvg-string---svg) in the PDF.
-* Security implementing [passwords](#userpasswordpassword-string---void) and [permissions](#permissions(password:-string,-permissions:-IPermissions)-->-void).
+- You can access to the interfaces.
+- Server-side support
+- Code comment snippets
+- **ln()** method will be deprecated in the next version
 
 ## Installation
 
-To install **pdfmake-wrapper**, you need to install **pdfmake**. This version was built considering **pdfmake@0.1.60**. You can use from **0.1.60** to higher versions.
+This version was built considering **pdfmake@0.1.x**. If you want to use previous versions you can check the releases [here](https://github.com/Lugriz/pdfmake-wrapper/releases).
+
+To use this library you need to install both **pdfmake-wrapper** and **pdfmake**:
 
 > $ npm install pdfmake --save
 
@@ -112,11 +116,30 @@ and
 
 > $ npm install pdfmake-wrapper --save
 
+we recommend to install the pdfmake types to avoid typing errors:
+
+> $ npm install @types/pdfmake --save-dev
+
+This errors will appear if you don't install the **@types/pdfmake** and you have the *strict* mode to true in your **tsconfig.json** like this:
+
+```json
+{
+  "compilerOptions": {
+    ...
+    "strict": true
+  }
+}
+```
+
+**IMPORTANT**: If you have typescript version **<3.6.x** in your project, you may have an error when building the project. This is a typescript breaking changes and you need to update it to **3.6.x** or higher version. Check for more details [here](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#class-field-mitigations).
+
 ## Usage
 
 **IMPORTANT:** This version does not implement any fonts. The reason is to allow you to use any fonts you need.
 
-This is a simple example to generate a PDF. Import the package in your code, import the fonts to use and create an instance:
+This is a simple example to generate a PDF on client-side (if you want to use it on server-side, see the [server-side](#working-on-server-side) section).
+
+Import the package in your code, import the fonts to use and create an instance:
 
 ```javascript
 // Import pdfmake-wrapper and the fonts to use
@@ -139,9 +162,13 @@ pdf.create().download();
 
 **NOTE:** Most classes are called as the original pdfmake library properties (columns, tables, etc..), but there are exceptions like *text* which is represented as **Txt**, it's the same with *Image* which is represented as **Img** and other similar examples. The reason is that exist native objects in the browser like **Image**, **Text**, etc..
 
-## PdfMakeWrapper members
+## DocumentDefinition class
 
-PdfMakeWrapper is the main class, this class contains the content and other configurations of the document.
+This is the main class that contains the content and other configurations of the document. This is the content/document builder. All the members (methods) will be described by [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since it extends from this one. You will work directly with this class when working on server-side. To know more about server-side, check the [server-side](#working-on-server-side) section.
+
+## PdfMakeWrapper members (client-side)
+
+When working on client-side, this is the class you need to instantiate. This class extends from [DocumentDefinition](#documentdefinition-class) class. The unique members of this class is the static method **setFonts** and the **create** instance method, but you have all [DocumentDefinition](#documentdefinition-class) members available in this class.
 
 ### add(content: any) -> void
 
@@ -594,6 +621,8 @@ pdf.create();
 ### ln(lines: number = 1) -> string
 
 Adds new lines. By default '\n'.
+
+**NOTE**: This will be deprecated in a next version
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -1890,3 +1919,47 @@ The content to pass in the **TxT** constructor is the provided for fontello. Go 
 ```css
 .icon-<some-icon>:before { content: '\e800'; } /* '' */ /*<-- copy the square into the comment*/
 ```
+
+## Working on server-side
+
+To work on server-side you need to import definitions from **pdfmake-wrapper/server** and use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since that class is useful on the client-side, remember [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) class and you have all the methods PdfmakeWrapper class has, except **setFonts** and **create** methods which are only useful on client-side.
+
+You can generate your pdf documents like this:
+
+```javascript
+import { DocumentDefinition } from 'pdfmake-wrapper/server';
+import Pdfmake from 'pdfmake';
+import fs from 'fs';
+
+const printer = new Pdfmake({
+    Roboto: {
+        normal: './your/path/Roboto-Regular.ttf',
+        bold: './your/path/Roboto-Medium.ttf',
+        italics: './your/path/Roboto-Italic.ttf',
+        bolditalics: './your/path/Roboto-MediumItalic.ttf'
+    }
+});
+
+/**
+ * By default, Pdfmake uses the 'Roboto' fonts, if you want 
+ * to use custom fonts, you need to use the useFont method 
+ * like this:
+ * 
+ * DocumentDefinition.useFont('MyCustomFonts');
+ */
+
+const doc = new DocumentDefinition();
+
+doc.add('Hello world!');
+
+const pdf = printer.createPdfKitDocument(doc.getDefinition());
+
+pdf.pipe(fs.createWriteStream('document.pdf'));
+pdf.end();
+```
+
+**NOTE**: Unlike client-side, when working on server-side, the fonts do not need to be generated, instead, you need to pass the path where you fonts are stored.
+
+## Contribution
+
+If you are interested to contribute to this library, please, check the contribution file [here](CONTRIBUTING.md).

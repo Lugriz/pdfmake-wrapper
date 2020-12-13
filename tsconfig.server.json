@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig",
+    "compilerOptions": {   
+      "module": "CommonJS",     
+      "outDir": "dist/server"
+    },
+    "exclude": [
+        "src/lib/pdfmake-wrapper.ts"
+    ]
+  }

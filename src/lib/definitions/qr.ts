@@ -4,13 +4,11 @@ import { IQR } from '../interfaces';
 /**
  * Class that create a QR code
  */
-
 export class QR extends StyleDefinition<QR, IQR> {
 
     /**
      * @param _code receives a code
      */
-
     constructor(
         private _code: string
     ) {
@@ -22,7 +20,6 @@ export class QR extends StyleDefinition<QR, IQR> {
      * Set a size to the QR
      * @param fit the size
      */
-
     public fit(fit: number): QR {
         this.content.fit = fit;
         return this;
@@ -32,7 +29,6 @@ export class QR extends StyleDefinition<QR, IQR> {
      * Set a version to the QR
      * @param version the version
      */
-
     public version(version: number): QR {
         this.content.version = version;
         return this;
@@ -42,7 +38,6 @@ export class QR extends StyleDefinition<QR, IQR> {
      * Set a foreground to the QR
      * @param foreground the color
      */
-
     public foreground(foreground: string): QR {
         this.content.foreground = foreground;
         return this;
@@ -52,7 +47,6 @@ export class QR extends StyleDefinition<QR, IQR> {
      * Set a ecc level to the QR
      * @param eccLevel the level
      */
-
     public eccLevel(eccLevel: 'L' | 'M' | 'Q' | 'H'): QR {
         this.content.eccLevel = eccLevel;
         return this;
@@ -62,7 +56,6 @@ export class QR extends StyleDefinition<QR, IQR> {
      * Set a mode to the QR
      * @param mode the size
      */
-
     public mode(mode: 'numeric' | 'alphanumeric' | 'octet'): QR {
         this.content.mode = mode;
         return this;
@@ -72,7 +65,6 @@ export class QR extends StyleDefinition<QR, IQR> {
      * Set a mask to the QR
      * @param mask the size
      */
-
     public mask(mask: number): QR {
         this.content.mask = mask;
         return this;

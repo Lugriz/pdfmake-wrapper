@@ -4,13 +4,11 @@ import { ITocItem, IText, IStyleDefinition } from '../../interfaces';
 /**
  * Class to create a toc item
  */
-
 export class TocItem extends StyleDefinition<TocItem, ITocItem> {
 
     /**
      * @param _txt receives a text object and adds it as toc item
      */
-
     constructor(  
         private _txt: IText
     ) {
@@ -27,7 +25,6 @@ export class TocItem extends StyleDefinition<TocItem, ITocItem> {
      * Set a style to de toc item
      * @param style The defined style
      */
-
     public tocStyle(style: IStyleDefinition): TocItem {
         this.content.tocStyle = style;
         return this;
@@ -37,7 +34,6 @@ export class TocItem extends StyleDefinition<TocItem, ITocItem> {
      * Set a margin to de toc item
      * @param margin The defined margin
      */
-
     public tocMargin(margin: number | [number, number] | [number, number, number, number]): TocItem {
         this.content.tocMargin = margin;
         return this;

@@ -10,7 +10,7 @@
     "declarationMap": true,
     "sourceMap": true,    
     "outDir": "dist",
-    "removeComments": true,
+    "removeComments": false,
     "downlevelIteration": true,
     "strict": true,
     "moduleResolution": "node",

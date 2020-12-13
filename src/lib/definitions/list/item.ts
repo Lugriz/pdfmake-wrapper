@@ -4,7 +4,6 @@ import { IItem } from '../../interfaces';
 /**
  * Class to create a list definition
  */
-
 export class Item extends StyleDefinition<Item, IItem> {
 
     constructor(
@@ -21,7 +20,6 @@ export class Item extends StyleDefinition<Item, IItem> {
      * It applies a counter on the marker
      * @param counter The counter of the marker
      */
-
     public counter(counter: number): Item {
         this.content.counter = counter;
         return this;
@@ -31,7 +29,6 @@ export class Item extends StyleDefinition<Item, IItem> {
      * It applies a type of marker
      * @param type The type of the marker
      */
-
     public listType(type: string): Item {
         this.content.listType = type;
         return this;

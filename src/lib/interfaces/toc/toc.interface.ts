@@ -3,7 +3,6 @@ import { IStyleDefinition } from '..';
 /**
  * Interface that defines a text reference
  */
-
 export interface IToc extends IStyleDefinition {  
     readonly title: any;
     readonly numberStyle?: IStyleDefinition;
