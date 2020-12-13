@@ -1,7 +1,6 @@
 /**
  * Interface that defines the Content definition type
  */
-
 export interface IContentDefinition {
     readonly id?: string;
     readonly pageBreak?: string;

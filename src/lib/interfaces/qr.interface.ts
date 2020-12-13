@@ -3,7 +3,6 @@ import { IStyleDefinition } from '.';
 /**
  * Interface that defines a QR
  */
-
 export interface IQR extends IStyleDefinition {  
     readonly qr: string;
     readonly foreground?: string;

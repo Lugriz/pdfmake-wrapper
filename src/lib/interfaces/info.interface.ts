@@ -1,7 +1,6 @@
 /**
  * Interface that defines the format of the info property of the DOC DEFINITION
  */
-
 export interface IInfo {
     readonly title: string;
     readonly author?: string;
@@ -12,5 +11,5 @@ export interface IInfo {
     readonly creationDate?: string;
     readonly modDate?: string;
     readonly trapped?: string;
-    readonly [ propName: string ]: string | undefined;
+    readonly [propName: string]: string | undefined;
 }

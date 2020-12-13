@@ -4,13 +4,11 @@ import { IText } from '../interfaces';
 /**
  * Class to create a text definition
  */
-
 export class Txt extends StyleDefinition<Txt, IText> {
 
     /**
      * @param text Text to print
      */
-    
     constructor(
         private _text: string | (string | IText)[]     
     ) {
@@ -21,7 +19,6 @@ export class Txt extends StyleDefinition<Txt, IText> {
     /**
      * preserve leading spaces
      */
-
     public preserveLeadingSpaces(): Txt {
         this.content.preserveLeadingSpaces = true;
         return this;
@@ -30,7 +27,6 @@ export class Txt extends StyleDefinition<Txt, IText> {
     /**
      * Set opacity to the text
      */
-
     public opacity(opacity: number): Txt {
         if (opacity > 1) opacity = 1;
         
