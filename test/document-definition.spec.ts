@@ -28,6 +28,7 @@ describe('DocumentDefinition', () => {
                 fontSize: 15,
                 margin: [10,10,10,10],
                 lineHeight: 1.15,
+                characterSpacing: 2,
             },
             footer: 'footer',
             images: {
@@ -66,6 +67,7 @@ describe('DocumentDefinition', () => {
             fontSize: 15,
             margin: [10,10,10,10],
             lineHeight: 1.15,
+            characterSpacing:2
         });
         doc.footer('footer');
         doc.images({

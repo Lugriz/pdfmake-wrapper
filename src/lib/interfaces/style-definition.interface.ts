@@ -25,4 +25,5 @@ export interface IStyleDefinition extends IContentDefinition {
     readonly relativePosition?: IPoint;
     readonly font?: string;
     readonly lineHeight?: number;
+    readonly characterSpacing? :number;
 }
