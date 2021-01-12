@@ -26,7 +26,8 @@ describe('DocumentDefinition', () => {
                 color: '#fefefe',
                 bold: true,
                 fontSize: 15,
-                margin: [10,10,10,10]
+                margin: [10,10,10,10],
+                lineHeight: 1.15,
             },
             footer: 'footer',
             images: {
@@ -63,7 +64,8 @@ describe('DocumentDefinition', () => {
             color: '#fefefe',
             bold: true,
             fontSize: 15,
-            margin: [10,10,10,10]
+            margin: [10,10,10,10],
+            lineHeight: 1.15,
         });
         doc.footer('footer');
         doc.images({
