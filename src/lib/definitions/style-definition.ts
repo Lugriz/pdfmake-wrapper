@@ -176,4 +176,22 @@ export abstract class StyleDefinition<T extends StyleDefinition<T, I>, I> extend
         this.content.relativePosition = { x, y };
         return this as any;
     }
+
+    /**
+     * Sets the line height, default 1 accroding to [PDFMake documentations](https://pdfmake.github.io/docs/0.1/document-definition-object/styling/#style-properties)
+     * @param height number
+     */
+    public lineHeight(height: number): T {
+        this.content.lineHeight = height;
+        return this as any;
+    }
+
+    /**
+     * Sets size of the letter spacing in pt
+     * @param spacing 
+     */
+    public characterSpacing(spacing: number): T {
+        this.content.characterSpacing = spacing;
+        return this as any;
+    }
 }
