@@ -1481,6 +1481,8 @@ This interface contains all possible styles that an object can have. This one ex
 * `readonly` absolutePosition?: [`IPoint`](#ipoint);
 * `readonly` relativePosition?: [`IPoint`](#ipoint);
 * `readonly` font?: `string`;
+* `readonly` lineHeight?: `number`;
+* `readonly` characterSpacing?: `number`;
 
 #### ICustomPageSize
 
