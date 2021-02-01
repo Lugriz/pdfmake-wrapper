@@ -12,7 +12,7 @@ Lee esto en otros idiomas: [English](README.md)
 
 - [Pdfmake-wrapper](#pdfmake-wrapper)
   - [Nuevas funciones y futuros cambios](#nuevas-funciones-y-futuros-cambios)
-  - [Installation](#installation)
+  - [Instalación](#instalación)
   - [Usage](#usage)
   - [DocumentDefinition class](#documentdefinition-class)
   - [PdfMakeWrapper members (client-side)](#pdfmakewrapper-members-client-side)
@@ -106,23 +106,23 @@ Lee esto en otros idiomas: [English](README.md)
 - Fragmentos de comentarios de codigo
 - El metodo **ln()** será obsoleto en la próxima versión
 
-## Installation
+## Instalación
 
-This version was built considering **pdfmake@0.1.x**. If you want to use previous versions you can check the releases [here](https://github.com/Lugriz/pdfmake-wrapper/releases).
+Esta version fue construida considerando **pdfmake@0.1.x**. Si deseas usar versiones anteriores puedes consultarlas [aquí](https://github.com/Lugriz/pdfmake-wrapper/releases).
 
-To use this library you need to install both **pdfmake-wrapper** and **pdfmake**:
+Para usar esta libreria es necesario instalar **pdfmake-wrapper** y **pdfmake**:
 
 > $ npm install pdfmake --save
 
-and
+y
 
 > $ npm install pdfmake-wrapper --save
 
-we recommend to install the pdfmake types to avoid typing errors:
+recomendamos instalar los tipos de pdfmake para evitar errores de escritura:
 
 > $ npm install @types/pdfmake --save-dev
 
-This errors will appear if you don't install the **@types/pdfmake** and you have the *strict* mode to true in your **tsconfig.json** like this:
+Estos errores aparecerán si no instalas **@types/pdfmake** y si no tienes en verdadero el modo *strict* en tu archivo **tsconfig.json**, algo así:
 
 ```json
 {
@@ -133,7 +133,7 @@ This errors will appear if you don't install the **@types/pdfmake** and you have
 }
 ```
 
-**IMPORTANT**: If you have typescript version **<3.6.x** in your project, you may have an error when building the project. This is a typescript breaking changes and you need to update it to **3.6.x** or higher version. Check for more details [here](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#class-field-mitigations).
+**IMPORTANTE**: Si tienes la versión **<3.6.x** de typescript en tu proyecto, puedes tener un error al construir el proyecto. Este es un cambio que rompe el typescript y necesitas actualizarlo a la version **3.6.x** o superior. Consulta más detalles [aquí](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#class-field-mitigations).
 
 ## Usage
 
