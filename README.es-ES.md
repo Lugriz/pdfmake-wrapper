@@ -4,12 +4,14 @@
     <img src="docs/img/logo.png" alt="Pdfmake-wrapper logo" width="200"/>
 </p>
 
-This library written in Typescript is a wrapper based on [pdfmake](http://pdfmake.org) to generate PDF documents in an easy and readable way.
+Esta librería escrita en Typescript es un wrapper basado en [pdfmake](http://pdfmake.org) para generar documentos PDF de forma fácil y legible. 
 
-You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
+Puedes consultar los ejemplos en el repositorio original de pdfmake [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
+
+Lee esto en otros idiomas: [English](README.md)
 
 - [Pdfmake-wrapper](#pdfmake-wrapper)
-  - [New features and future changes](#new-features-and-future-changes)
+  - [Nuevas funciones y futuros cambios](#nuevas-funciones-y-futuros-cambios)
   - [Installation](#installation)
   - [Usage](#usage)
   - [DocumentDefinition class](#documentdefinition-class)
@@ -97,12 +99,12 @@ You can check the examples in the original pdfmake repository [https://github.co
   - [Working on server-side](#working-on-server-side)
   - [Contribution](#contribution)
 
-## New features and future changes
+## Nuevas funciones y futuros cambios
 
-- You can access to the interfaces.
-- Server-side support
-- Code comment snippets
-- **ln()** method will be deprecated in the next version
+- Puedes acceder a las interfaces.
+- Soporte del lado del servidor.
+- Fragmentos de comentarios de codigo
+- El metodo **ln()** será obsoleto en la próxima versión
 
 ## Installation
 
