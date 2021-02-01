@@ -8,6 +8,8 @@ This library written in Typescript is a wrapper based on [pdfmake](http://pdfmak
 
 You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
+Read this in other languages: [Spanish](README.es-ES.md)
+
 - [Pdfmake-wrapper](#pdfmake-wrapper)
   - [New features and future changes](#new-features-and-future-changes)
   - [Installation](#installation)
