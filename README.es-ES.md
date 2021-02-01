@@ -14,8 +14,8 @@ Lee esto en otros idiomas: [English](README.md)
   - [Nuevas funciones y futuros cambios](#nuevas-funciones-y-futuros-cambios)
   - [Instalación](#instalación)
   - [Como usarla](#como-usarla)
-  - [DocumentDefinition class](#documentdefinition-class)
-  - [PdfMakeWrapper members (client-side)](#pdfmakewrapper-members-client-side)
+  - [Clase DocumentDefinition](#clase-documentDefinition)
+  - [Miembros de PdfMakeWrapper (lado del cliente)](#miembros-de-pdfmakewrapper-lado-del-cliente)
     - [add(content: any) -> void](#addcontent-any---void)
     - [images(images: { [prop: string]: IImg | string }) -> void](#imagesimages--prop-string-iimg--string----void)
     - [styles(styles: { [prop: string]: IStyleDefinition }) -> void](#stylesstyles--prop-string-istyledefinition----void)
@@ -164,11 +164,11 @@ pdf.create().download();
 
 **NOTA:** La mayoría de las clases se llaman como las propiedades originales de la biblioteca pdfmake (columnas, tablas, etc..), pero hay excepciones como *text* que se representa como **Txt**, es lo mismo con *Image* que se representa como **Img** y otros ejemplos similares. La razón es que existen objetos nativos en el navegador como **Image**, **Text**, etc..
 
-## DocumentDefinition class
+## Clase DocumentDefinition
 
-This is the main class that contains the content and other configurations of the document. This is the content/document builder. All the members (methods) will be described by [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since it extends from this one. You will work directly with this class when working on server-side. To know more about server-side, check the [server-side](#working-on-server-side) section.
+Esta es la clase principal que tien el contenido y otras configuraciones de el documento. Este es el constructor de contenido/documentos. Todos los miembros (métodos) serán descritos por la clase [PdfmakeWrapper](#miembros-de-pdfmakewrapper-lado-del-cliente), ya que se extienden desde ésta. Trabajará directamente con esta clase cuando trabaje en el lado del servidor. Para saber más sobre el lado del servidor, sonsulte la sección - [trabajando del lado del servidor](#trabajando-del-lado-del-servidor).
 
-## PdfMakeWrapper members (client-side)
+## Miembros de PdfMakeWrapper (lado del cliente) 
 
 When working on client-side, this is the class you need to instantiate. This class extends from [DocumentDefinition](#documentdefinition-class) class. The unique members of this class is the static method **setFonts** and the **create** instance method, but you have all [DocumentDefinition](#documentdefinition-class) members available in this class.
 
