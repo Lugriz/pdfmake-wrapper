@@ -13,7 +13,7 @@ Lee esto en otros idiomas: [English](README.md)
 - [Pdfmake-wrapper](#pdfmake-wrapper)
   - [Nuevas funciones y futuros cambios](#nuevas-funciones-y-futuros-cambios)
   - [Instalación](#instalación)
-  - [Usage](#usage)
+  - [Como usarla](#como-usarla)
   - [DocumentDefinition class](#documentdefinition-class)
   - [PdfMakeWrapper members (client-side)](#pdfmakewrapper-members-client-side)
     - [add(content: any) -> void](#addcontent-any---void)
@@ -93,10 +93,10 @@ Lee esto en otros idiomas: [English](README.md)
       - [IEllipse](#iellipse)
       - [IPolyline](#ipolyline)
       - [IPoint](#ipoint)
-  - [Generate custom fonts](#generate-custom-fonts)
+  - [Generar fuentes personalizadas](#generar-fuentes-personalizadas)
   - [How to use custom fonts](#how-to-use-custom-fonts)
   - [How to use icons](#how-to-use-icons)
-  - [Working on server-side](#working-on-server-side)
+  - [trabajando del lado del servidor](#trabajando-del-lado-del-servidor)
   - [Contribution](#contribution)
 
 ## Nuevas funciones y futuros cambios
@@ -135,13 +135,13 @@ Estos errores aparecerán si no instalas **@types/pdfmake** y si no tienes en ve
 
 **IMPORTANTE**: Si tienes la versión **<3.6.x** de typescript en tu proyecto, puedes tener un error al construir el proyecto. Este es un cambio que rompe el typescript y necesitas actualizarlo a la version **3.6.x** o superior. Consulta más detalles [aquí](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#class-field-mitigations).
 
-## Usage
+## Como usarla
 
-**IMPORTANT:** This version does not implement any fonts. The reason is to allow you to use any fonts you need.
+**IMPORTANTE:** Esta versión no iplementa alguna fuente. La razón es permitirte que puedas usar cualquier fuente que necesites.
 
-This is a simple example to generate a PDF on client-side (if you want to use it on server-side, see the [server-side](#working-on-server-side) section).
+Este es un ejemplo sencillo para generar un PDF desde lado del cliente (si desea usarlo en el lado del servidor, consulta la sección [trabajando del lado del servidor](#trabajando-en-el-lado-del-servidor)).
 
-Import the package in your code, import the fonts to use and create an instance:
+Importa el paquete en su código, importa las fuentes para usar y cree una instancia:
 
 ```javascript
 // Import pdfmake-wrapper and the fonts to use
@@ -158,11 +158,11 @@ pdf.add('Hello world!');
 pdf.create().download();
 ```
 
-**KEEP IN MIND:** Fonts are instantiated in the global scope (window), for that reason configuring the fonts once is more than enough.
+**TENER EN CUENTA:** Las fuentes son instanciadas en el ámbito global (window), por lo que configurarlas una sola vez es mas que suficiente.  
 
-**RECOMMENDATIONS:** It is recommended to use *PdfMakeWrapper.setFonts(fonts)* in a bootstrap code, config module or main module. Configuring the fonts more times will have sense if you have bundles of separate generated fonts, but it is more common to have one bundle with many types of fonts. The last one is recommended. More about fonts configuration in the *custom fonts* section.
+**RECOMENDACIONES:** Se recomienda usar *PdfMakeWrapper.setFonts(fonts)* en un codigo de arranque, módulo de configuración o módulo principal. Tendrá sentido configurar las fuentes más de una vez si se tiene paquetes de fuentes generadas por separado, pero es más común tener un paquete con muchos tipos de fuentes. Este último es el recomendado. Más información sobre la configuración de fuentes en la sección **fuentes personalizadas**.
 
-**NOTE:** Most classes are called as the original pdfmake library properties (columns, tables, etc..), but there are exceptions like *text* which is represented as **Txt**, it's the same with *Image* which is represented as **Img** and other similar examples. The reason is that exist native objects in the browser like **Image**, **Text**, etc..
+**NOTA:** La mayoría de las clases se llaman como las propiedades originales de la biblioteca pdfmake (columnas, tablas, etc..), pero hay excepciones como *text* que se representa como **Txt**, es lo mismo con *Image* que se representa como **Img** y otros ejemplos similares. La razón es que existen objetos nativos en el navegador como **Image**, **Text**, etc..
 
 ## DocumentDefinition class
 
@@ -1774,7 +1774,7 @@ Defines a point.
 * `readonly` x: `number`;
 * `readonly` y: `number`;
 
-## Generate custom fonts
+## Generar fuentes personalizadas
 
 To generate custom fonts, you can use a CLI called [pdfmake-font-generator](https://github.com/Lugriz/pdfmake-font-generator). You need to have your fonts in some directory and this tool will read all fonts and will return an output file containing the generated fonts. This generated file is which you will use to import it to pdfmake-wrapper. for example:
 
@@ -1793,7 +1793,7 @@ You need to generate the fonts as the documentation of the CLI is defined and th
 
 **NOTE:** You can have many fonts you need in the same directory.
 
-## How to use custom fonts
+## Como usar fuentes personalizadas
 
 Once generated the fonts, you need to provide your custom fonts to pdfmake-wrapper and configure them.
 
@@ -1922,7 +1922,7 @@ The content to pass in the **TxT** constructor is the provided for fontello. Go 
 .icon-<some-icon>:before { content: '\e800'; } /* '' */ /*<-- copy the square into the comment*/
 ```
 
-## Working on server-side
+## Trabajando en el lado del Servidor
 
 To work on server-side you need to import definitions from **pdfmake-wrapper/server** and use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since that class is useful on the client-side, remember [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) class and you have all the methods PdfmakeWrapper class has, except **setFonts** and **create** methods which are only useful on client-side.
 
