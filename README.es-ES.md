@@ -174,7 +174,7 @@ When working on client-side, this is the class you need to instantiate. This cla
 
 ### add(content: any) -> void
 
-Adds (push) a value to the content.
+Añade (push) un valor al contenido.  
 
 ```javascript
 const pdf = new PdfMakeWrapper();
