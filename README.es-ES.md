@@ -338,7 +338,7 @@ pdf.footer('This is a footer');
 
 ### background(background: any) -> void
 
-Defines the background of the document. The background is displayed on each page.
+Define el fondo del documento. El fondo se muestra en cada página.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
