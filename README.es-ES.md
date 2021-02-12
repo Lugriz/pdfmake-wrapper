@@ -721,7 +721,7 @@ new Txt('hi!').bold().end // Result: { text: 'hi!', bold: true }
 
 ### Txt(text: string) -> Txt
 
-Creates a text object.
+Crea un objeto de texto.
 
 ```javascript
 new Txt('Hello world!').end // { text: 'Hello world!' }
@@ -729,7 +729,7 @@ new Txt('Hello world!').end // { text: 'Hello world!' }
 new Txt('Hello world!').alignment('center').italics().end // { text: 'Hello world!', alignment: 'center', italics: true }
 ```
 
-**Suggestion:** Use **Txt** when the text requires a format (bold, alignment, etc...), otherwise, use literal string.
+**Sugerencia:** Usar **Txt** cuando el texto requiera un formato (negrita, alineación, etc...), caso contrario, utilizar cadena literal.
 
 ### Columns(columns: any[]) - Columns
 
