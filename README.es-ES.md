@@ -579,7 +579,7 @@ pdf.userPassword('123');
 
 ### permissions(password: string, permissions: [IPermissions](#ipermissions)) -> void
 
-Sets privileges access providing an owner password and a privileges config. More about it [here](https://pdfmake.github.io/docs/document-definition-object/security/).
+Establece el acceso a privilegios proporcionando una contraseña de propietario y una configuración de privilegios. Más información [aquí](https://pdfmake.github.io/docs/document-definition-object/security/).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
