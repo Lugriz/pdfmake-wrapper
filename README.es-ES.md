@@ -733,7 +733,7 @@ new Txt('Hello world!').alignment('center').italics().end // { text: 'Hello worl
 
 ### Columns(columns: any[]) - Columns
 
-Creates columns.
+Crea columnas.
 
 ```javascript
 new Columns([ 'Hello', 'world' ]).end // { columns: [ 'Hello', 'world' ] }
