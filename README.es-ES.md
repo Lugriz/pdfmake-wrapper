@@ -37,7 +37,7 @@ Lee esto en otros idiomas: [English](README.md)
     - [ln(lines: number = 1) -> string](#lnlines-number--1---string)
     - [static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: [IFontTypes](#ifonttypes) }) -> void](#static-setfontsfonts-ifonts-fonttypesconfig--propname-string-ifonttypes----void)
     - [static useFont(fontName: string) -> void](#static-usefontfontname-string---void)
-  - [Definitions](#definitions)
+  - [Definiciones](#definiciones)
     - [Txt(text: string) -> Txt](#txttext-string---txt)
     - [Columns(columns: any[]) - Columns](#columnscolumns-any---columns)
     - [Stack(stack: any[]) -> Stack](#stackstack-any---stack)
@@ -700,23 +700,24 @@ PdfMakeWrapper.useFont('myCustom');
 **RECOMENDACIÓN:** Se recomienda usar el método *useFont('...')* en un código de arranque. Si tienes más fuentes configuradas puedes llamar al método *useFont('...')* en otras partes de tu código si necesitas otra fuente.
 
 > **NOTA:** Para más detalles, consulte la [documentación oficial](https://pdfmake.github.io/docs/getting-started/client-side/).
-## Definitions
+## Definiciones
 
-Definitions are classes that represent objects that pdfmake can read, for example, text, images, tables, columns, etc. All definitions extend from **StyleDefinition** which is an abstract class that contains all the styles (alignment, color, bold, etc...) and this one extends from **ContentDefinition** which is also an abstract class. These classes are not accessible, They are internally used to the library. To use a definition you need to import it and then use it:
+Las definiciones son clases que representan objetos que pdfmake puede leer, por ejemplo, texto, imágenes, tablas, columnas, etc. Todas las definiciones extienden de **StyleDefinition** que es una clase abstracta que contiene todos los estilos (alineación, color, negrita, etc...) y ésta extiende de **ContentDefinition** que también es una clase abstracta. Estas clases no son accesibles, se usan internamente en la biblioteca. Para utilizar una definición es necesario importarla y luego usarla:
 
 ```javascript
-// importing definitions
+// importando definiciones
 import { Txt } from 'pdfmake-wrapper';
 
-//using definition
+//usando definiciones
 new Txt('hi!').bold().end // Result: { text: 'hi!', bold: true }
 
-// It's a must finish with end property to return the built object, otherwise, it'll return the Text Class
+//Es necesario finalizar con la propiedad `end` para devolver el objeto construido, caso contrario, devolverá la clase Text
 ```
 
-**IMPORTANT:** All definitions must finish with the **end** property, this property (**end**) returns the built object, the only exception is the **Img** class (it'll be explained later). Each definition has its own interface when finishing with **_.end_**, for example, **_new Txt('some text').end_** corresponds to **IText**.
+**IMPORTANTE:** Todas las definiciones deben terminar con la propiedad **end**, esta propiedad (**end**) devuelve el objeto construido, la única excepción es la clase **Img** (se explicará más adelante).  Cada definición tiene su propia interfaz al terminar con **_.end_**, por ejemplo, **_new Txt('algún texto').end_** corresponde a **IText**.
 
-**KEEP IN MIND:** Definition classes build objects that pdfmake can read and these objects have an format determinated from an interface (some properties are optional, but they show us the possible properties the object could have). Some methods will not work with some definitions, for example, you can not **bold** an image.
+
+**TENER EN CUENTA:** Las clases de definición construyen objetos que pdfmake puede leer y estos objetos tienen un formato determinado a partir de una interfaz (algunas propiedades son opcionales, pero nos muestran las posibles propiedades que podría tener el objeto). Algunos métodos no funcionarán con algunas definiciones, por ejemplo, no se puede asignar **negrita** a una imagen.
 
 ### Txt(text: string) -> Txt
 
