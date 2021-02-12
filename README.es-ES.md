@@ -358,7 +358,7 @@ pdf.background('This is a background');
 
 ### pageSize(size: string | [ICustomPageSize](#icustompagesize)) -> void
 
-Defines the page size of the document. More about page sizes [here](https://pdfmake.github.io/docs/document-definition-object/page/).
+Define el tamaño de la página del documento. Más información sobre el tamaño de las páginas [aquí](https://pdfmake.github.io/docs/document-definition-object/page/).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
