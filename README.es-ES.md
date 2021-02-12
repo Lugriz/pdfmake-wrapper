@@ -298,7 +298,7 @@ pdf.defaultStyle({
 
 ### header(header: any) -> void
 
-Defines the header of the document. The header is displayed on each page.
+Define la cabecera del documento. La cabecera se muestra en cada página.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
