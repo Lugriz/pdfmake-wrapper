@@ -467,7 +467,7 @@ pdf.pageBreakBefore(
 
 ### info(info: [IInfo](#iinfo)) -> void
 
-Defines metadata to the document. More about it [here](https://pdfmake.github.io/docs/document-definition-object/document-medatadata/).
+Define los metadatos del documento. Más información [aquí](https://pdfmake.github.io/docs/document-definition-object/document-medatadata/).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
