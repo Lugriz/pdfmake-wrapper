@@ -1542,7 +1542,7 @@ Defines the possible permissions a document can have.
 
 #### ICreatePDF
 
-Defines the result of a [create](#create()-->-ICreatePDF) method.
+Define el resultado de un método [create](#create()-->-ICreatePDF).
 
 * download`(filename?: string, cb?: (v?: any) => void, options?: any ): void`;
 * open`(options?: any, win?: Window ): void`;
