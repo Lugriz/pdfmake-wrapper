@@ -647,15 +647,15 @@ pdf.add(
 
 ### static setFonts(fonts: [IFonts](#ifonts), fontTypesConfig?: { [propName: string]: [IFontTypes](#ifonttypes) }) -> void
 
-Configures the set of fonts to use and configure the font types.
+Configura el conjunto de fuentes a usar y configura los tipos de fuente.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
-import pdfFonts from "pdfmake/build/vfs_fonts"; // pdfmake default fonts
+import pdfFonts from "pdfmake/build/vfs_fonts"; // fuentes por defecto de pdfmake
 
 /**
- * Configuring the default fonts provided by pdfmake. These are the fonts that pdfmake or pdfmake-wrapper
- * have available to use.
+ * Configurar las fuentes por defecto proporcionadas por pdfmake. Estas son las fuentes que pdfmake o
+ * tienen disponibles para usar.
  */
 
 PdfMakeWrapper.setFonts(pdfFonts);
