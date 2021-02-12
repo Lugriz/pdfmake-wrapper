@@ -421,7 +421,7 @@ pdf.pageMargins(40); // applies 40 margin entire sides
 
 ### pageOrientation(orientation: 'landscape' | 'portrait') -> void
 
-Defines the page orientation of the document.
+Define la orientación de la página del documento.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
