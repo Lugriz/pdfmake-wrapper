@@ -205,7 +205,7 @@ pdf.add('Second item');
 
 ### images(images: { [prop: string]: [IImg](#IImg) | string }) -> void
 
-Adds an object of images that you can reference later using a key (How to use images is explained later).
+Añade un objeto de imágenes al que se puede hacer referencia mas adelante mediante una clave (más adelante se explica cómo usar las imágenes).
 
 ```javascript
 import { PdfMakeWrapper, Img } from 'pdfmake-wrapper';
