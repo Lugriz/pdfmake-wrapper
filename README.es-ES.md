@@ -597,9 +597,9 @@ pdf.permissions('123', {
 });
 ```
 
-### create() -> [ICreatePDF](#icreatepdf)
+### create() -> [ICreatePDF](#create---icreatepdf)
 
-Creates the pdf. This returns other methods ([ICreatePDF](#icreatepdf)).
+Crea el pdf. Esto retorna otros métodos ([ICreatePDF](#icreatepdf)).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
