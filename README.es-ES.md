@@ -745,7 +745,7 @@ new Columns([ 'Hello', 'world' ]).columnGap(10).bold().end // { columns: [ 'Hell
 
 ### Stack(stack: any[]) -> Stack
 
-Creates a stack.
+Crea una pila.
 
 ```javascript
 new Stack([ 'Hello', 'world' ]).end // { stack: [ 'Hello', 'world' ] }
