@@ -272,7 +272,7 @@ pdf.styles({
 
 ### defaultStyle(styles: [IStyleDefinition](#IStyleDefinition)) -> void
 
-Adds a default style that will be applied to the entire PDF.
+Añade un estilo por defecto que se aplicará a todo el PDF.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
