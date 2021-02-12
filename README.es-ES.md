@@ -318,7 +318,7 @@ pdf.header('This is a header');
 
 ### footer(footer: any) -> void
 
-Defines the footer of the document. The footer is displayed on each page.
+Define el pie de página del documento. El pie de página se muestra en cada página.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
