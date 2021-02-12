@@ -238,7 +238,7 @@ main();
 
 ### styles(styles: { [prop: string]: [IStyleDefinition](#IStyleDefinition) }) -> void
 
-Adds an object of styles that you can reference later using a key.
+Añade un objeto de estilos al que se puede hacer referencia posteriormente mediante una clave.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
