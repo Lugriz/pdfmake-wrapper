@@ -495,7 +495,7 @@ pdf.info({
 
 ### compress(compress: boolean) -> void
 
-Document compression. By default true.
+Compresión del documento. Por defecto esta en true/verdadero.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
