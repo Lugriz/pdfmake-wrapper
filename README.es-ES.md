@@ -534,7 +534,7 @@ pdf.rawContent('Simple content');
 
 ### watermark(watermark: string | [ITxt](#itext)) -> void
 
-Creates a watermark, it's applied to each page.
+Crea una marca de agua, que se aplica a cada página.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
