@@ -567,7 +567,7 @@ pdf.watermark( new Txt('watermark with Txt object').color('blue').end );
 
 ### userPassword(password: string) -> void
 
-Encrypt the PDF when a user password is provided, when an user and users will be prompted to enter the password to decrypt the file when opening it.
+Encripta el PDF cuando se provee una contraseña de usuario, cuando un usuario y los usuarios se les pedirá que introduzca la contraseña para descifrar el archivo al abrirlo.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
