@@ -515,7 +515,7 @@ pdf.compress(true);
 
 ### rawContent(content: any) -> void
 
-Defines a raw content. Differences between **add** and this method is that this one fills the full content property (it replaces the content if the content has any definition) and **add** pushes a new element to the content.
+Define un contenido raw o en bruto. Las diferencias entre **add** y este método es que éste rellena la propiedad de contenido completa (reemplaza el contenido si ya tiene alguna definición) y **add** empuja un nuevo elemento al contenido.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
