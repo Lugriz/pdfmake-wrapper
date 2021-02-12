@@ -395,7 +395,7 @@ pdf.pageSize({
 
 ### pageMargins(margins: number | [number, number] | [number, number, number, number]) -> void
 
-Defines the page margins of the document.
+Define los márgenes de la página del documento.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
