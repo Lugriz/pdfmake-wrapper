@@ -622,9 +622,9 @@ pdf.create();
 
 ### ln(lines: number = 1) -> string
 
-Adds new lines. By default '\n'.
+Añade nuevas líneas. Por defecto '\n'.
 
-**NOTE**: This will be deprecated in a next version
+**NOTA**: Esto estará obsoleto en una próxima versión
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
