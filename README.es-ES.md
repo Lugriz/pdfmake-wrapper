@@ -441,7 +441,7 @@ pdf.pageOrientation('landscape'); // 'portrait'
 
 ### pageBreakBefore(breakBefore: (currentNode: [IDocumentNode](#idocumentnode), followingNodesOnPage?: [IDocumentNode](#idocumentnode)[], nodesOnNextPage?: [IDocumentNode](#idocumentnode)[], previousNodesOnPage?: [IDocumentNode](#idocumentnode)[]) => boolean) -> void
 
-Dynamically control page breaks. More about the implementation [here](https://pdfmake.github.io/docs/document-definition-object/page/#dynamically-control-page-breaks-for-instance-to-avoid-orphan-children).
+Controlar dinámicamente los saltos de página. Más información sobre la implementación [aquí](https://pdfmake.github.io/docs/document-definition-object/page/#dynamically-control-page-breaks-for-instance-to-avoid-orphan-children).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
