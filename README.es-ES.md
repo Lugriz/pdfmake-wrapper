@@ -663,9 +663,9 @@ PdfMakeWrapper.setFonts(pdfFonts);
 
 ### static useFont(fontName: string) -> void
 
-Indicates which font to use. You need to have configured your fonts and then decide which font to use.
+Indica el tipo de letra a usar. Es necesario haber configurado las fuentes y luego decidir qué fuente utilizar.
 
-**IMPORTANT:** If you are using the default pdfmake fonts you do not need to indicate which font to use, by default pdfmake has configured them. you just have to provide the fonts as indicated above.
+**IMPORTANTE:** Si está usando las fuentes por defecto de pdfmake no necesita indicar qué fuente usar, por defecto pdfmake las tiene configuradas. sólo tiene que proporcionar las fuentes como se indica arriba.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -697,10 +697,9 @@ PdfMakeWrapper.useFont('myCustom');
  */
 ```
 
-**RECOMMENDATION:** It is recommended to use *useFont('...')* method in a bootstrap code. If you have more fonts configured you can call *useFont('...')* method in other parts of your code if you need another font.
+**RECOMENDACIÓN:** Se recomienda usar el método *useFont('...')* en un código de arranque. Si tienes más fuentes configuradas puedes llamar al método *useFont('...')* en otras partes de tu código si necesitas otra fuente.
 
-> **NOTE:** More details, check the official [documentation](https://pdfmake.github.io/docs/getting-started/client-side/).
-
+> **NOTA:** Para más detalles, consulte la [documentación oficial](https://pdfmake.github.io/docs/getting-started/client-side/).
 ## Definitions
 
 Definitions are classes that represent objects that pdfmake can read, for example, text, images, tables, columns, etc. All definitions extend from **StyleDefinition** which is an abstract class that contains all the styles (alignment, color, bold, etc...) and this one extends from **ContentDefinition** which is also an abstract class. These classes are not accessible, They are internally used to the library. To use a definition you need to import it and then use it:
