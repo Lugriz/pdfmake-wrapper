@@ -1,12 +1,20 @@
 # Pdfmake-wrapper
 
-<p align="center">
+<div align="center">
     <img src="docs/img/logo.png" alt="Pdfmake-wrapper logo" width="200"/>
-</p>
+    <br />
+    <br />
+
+![license](https://img.shields.io/npm/l/pdfmake-wrapper?logo=github)
+![version](https://img.shields.io/npm/v/pdfmake-wrapper?logo=npm)
+![github actions](https://img.shields.io/github/workflow/status/Lugriz/pdfmake-wrapper/test%20project?logo=github-actions)
+</div>
 
 This library written in Typescript is a wrapper based on [pdfmake](http://pdfmake.org) to generate PDF documents in an easy and readable way.
 
-You can check the examples in the original pdfmake repository [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
+---
+
+You can check pdf examples from the original pdfmake repository [here](https://github.com/bpampuch/pdfmake/blob/master/examples/).
 
 - [Pdfmake-wrapper](#pdfmake-wrapper)
   - [New features and future changes](#new-features-and-future-changes)
