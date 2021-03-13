@@ -11,7 +11,8 @@
     "create:packagejson": "node create-package-json-lib.js",
     "copy:packagejson": "cp src/package.json dist/package.json",
     "copy:readme": "cp README.md dist/README.md",
-    "copy:license": "cp LICENSE dist/LICENSE"
+    "copy:license": "cp LICENSE dist/LICENSE",
+    "prepare": "husky install"
   },
   "author": "Insomniocode <insomniocode@gmail.com>",
   "contributors": [
@@ -44,6 +45,7 @@
   "devDependencies": {
     "@types/jest": "^23.3.14",
     "@types/pdfmake": "^0.1.16",
+    "husky": "^5.1.3",
     "jest": "^23.6.0",
     "pdfmake": "^0.1.68",
     "ts-jest": "^23.10.5",
