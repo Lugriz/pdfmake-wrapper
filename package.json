@@ -43,6 +43,8 @@
     "url": "https://github.com/Lugriz/pdfmake-wrapper/issues"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/jest": "^23.3.14",
     "@types/pdfmake": "^0.1.16",
     "husky": "^5.1.3",
