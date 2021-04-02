@@ -12,6 +12,7 @@
     "copy:packagejson": "cp src/package.json dist/package.json",
     "copy:readme": "cp README.md dist/README.md",
     "copy:license": "cp LICENSE dist/LICENSE",
+    "serve:docs": "docsify serve docs",
     "prepare": "husky install"
   },
   "author": "Insomniocode <insomniocode@gmail.com>",
@@ -47,6 +48,7 @@
     "@commitlint/config-conventional": "^12.0.1",
     "@types/jest": "^23.3.14",
     "@types/pdfmake": "^0.1.16",
+    "docsify-cli": "^4.4.3",
     "husky": "^5.1.3",
     "jest": "^23.6.0",
     "pdfmake": "^0.1.68",
