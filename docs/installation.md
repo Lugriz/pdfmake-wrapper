@@ -22,7 +22,7 @@ npm install @types/pdfmake --save-dev
 
 This errors will appear if you don't install the **@types/pdfmake** and you have the *strict* mode to true in your **tsconfig.json** like this:
 
-```json
+```javascript
 {
   "compilerOptions": {
     ...

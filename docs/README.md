@@ -2,27 +2,19 @@
 
 Pdfmake-wrapper is a wrapper based on [pdfmake](http://pdfmake.org) written using Typescript, this means pdfmake-wrapper helps you to write your PDF documents easier than using raw pdfmake and allows you to take advantage of autocompletion.
 
-## Quickstart
+## Features
 
-This is the simplest way to create a PDF document on client side (you need to [install](/installation.md) pdfmake-wrapper previously).
-
-```javascript
-// Import pdfmake-wrapper and the fonts to use
-import { PdfMakeWrapper } from 'pdfmake-wrapper';
-import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
-
-// Set the fonts to use
-PdfMakeWrapper.setFonts(pdfFonts);
-
-const pdf = new PdfMakeWrapper();
-
-pdf.add('Hello world!');
-
-pdf.create().download();
-```
+- Client and server side
+- Custom fonts
+- Svg and images
+- Draw shapes
 
 ## To know more
 
+If you want to know how to use pdfmake-wrapper, visit these links:
+
+- [Installation](/installation.md)
+- [Hello world!](/hello-world.md)
 - [Server side development](quickstart.md)
 - [Custom fonts](quickstart.md)
 
