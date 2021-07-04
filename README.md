@@ -152,7 +152,10 @@ Import the package in your code, import the fonts to use and create an instance:
 ```javascript
 // Import pdfmake-wrapper and the fonts to use
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
-import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
+import * as pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
+
+// If any issue using previous fonts import. you can try this:
+// import * as pdfFonts from "pdfmake/build/vfs_fonts";
 
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);

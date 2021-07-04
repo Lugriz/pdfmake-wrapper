@@ -2,6 +2,18 @@
 
 All changes in this library
 
+## 2.1.2 (2021-07-04)
+
+This version was built using pdfmake v0.1.x
+
+**New features:**
+
+- add lineHeight & characterSpacing
+- add changelog
+- improve contribution file
+- add badges to documentation
+- add commitlint and husky
+
 ## 2.1.1 (2020-12-13)
 
 This version was built using pdfmake v0.1.68
