@@ -1,29 +1,21 @@
 # Pdfmake-wrapper
 
-<div align="center">
+<p align="center">
     <img src="docs/img/logo.png" alt="Pdfmake-wrapper logo" width="200"/>
-    <br />
-    <br />
+</p>
 
-![license](https://img.shields.io/npm/l/pdfmake-wrapper?logo=github)
-![version](https://img.shields.io/npm/v/pdfmake-wrapper?logo=npm)
-![github actions](https://img.shields.io/github/workflow/status/Lugriz/pdfmake-wrapper/test%20project?logo=github-actions)
-</div>
+Esta librería escrita en Typescript es un wrapper basado en [pdfmake](http://pdfmake.org) para generar documentos PDF de forma fácil y legible. 
 
-This library written in Typescript is a wrapper based on [pdfmake](http://pdfmake.org) to generate PDF documents in an easy and readable way.
+Puedes consultar los ejemplos en el repositorio original de pdfmake [https://github.com/bpampuch/pdfmake/blob/master/examples/](https://github.com/bpampuch/pdfmake/blob/master/examples/)
 
----
-
-You can check pdf examples from the original pdfmake repository [here](https://github.com/bpampuch/pdfmake/blob/master/examples/).
-
-Read this in other languages: [Spanish](README.es-ES.md)
+Lee esto en otros idiomas: [English](README.md)
 
 - [Pdfmake-wrapper](#pdfmake-wrapper)
-  - [New features and future changes](#new-features-and-future-changes)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [DocumentDefinition class](#documentdefinition-class)
-  - [PdfMakeWrapper members (client-side)](#pdfmakewrapper-members-client-side)
+  - [Nuevas funciones y futuros cambios](#nuevas-funciones-y-futuros-cambios)
+  - [Instalación](#instalación)
+  - [Como usarla](#como-usarla)
+  - [Clase DocumentDefinition](#clase-documentDefinition)
+  - [Miembros de PdfMakeWrapper (lado del cliente)](#miembros-de-pdfmakewrapper-lado-del-cliente)
     - [add(content: any) -> void](#addcontent-any---void)
     - [images(images: { [prop: string]: IImg | string }) -> void](#imagesimages--prop-string-iimg--string----void)
     - [styles(styles: { [prop: string]: IStyleDefinition }) -> void](#stylesstyles--prop-string-istyledefinition----void)
@@ -45,7 +37,7 @@ Read this in other languages: [Spanish](README.es-ES.md)
     - [ln(lines: number = 1) -> string](#lnlines-number--1---string)
     - [static setFonts(fonts: IFonts, fontTypesConfig?: { [propName: string]: [IFontTypes](#ifonttypes) }) -> void](#static-setfontsfonts-ifonts-fonttypesconfig--propname-string-ifonttypes----void)
     - [static useFont(fontName: string) -> void](#static-usefontfontname-string---void)
-  - [Definitions](#definitions)
+  - [Definiciones](#definiciones)
     - [Txt(text: string) -> Txt](#txttext-string---txt)
     - [Columns(columns: any[]) - Columns](#columnscolumns-any---columns)
     - [Stack(stack: any[]) -> Stack](#stackstack-any---stack)
@@ -101,36 +93,36 @@ Read this in other languages: [Spanish](README.es-ES.md)
       - [IEllipse](#iellipse)
       - [IPolyline](#ipolyline)
       - [IPoint](#ipoint)
-  - [Generate custom fonts](#generate-custom-fonts)
+  - [Generar fuentes personalizadas](#generar-fuentes-personalizadas)
   - [How to use custom fonts](#how-to-use-custom-fonts)
   - [How to use icons](#how-to-use-icons)
-  - [Working on server-side](#working-on-server-side)
+  - [trabajando del lado del servidor](#trabajando-del-lado-del-servidor)
   - [Contribution](#contribution)
 
-## New features and future changes
+## Nuevas funciones y futuros cambios
 
-- You can access to the interfaces.
-- Server-side support
-- Code comment snippets
-- **ln()** method will be deprecated in the next version
+- Puedes acceder a las interfaces.
+- Soporte del lado del servidor.
+- Fragmentos de comentarios de codigo
+- El metodo **ln()** será obsoleto en la próxima versión
 
-## Installation
+## Instalación
 
-This version was built considering **pdfmake@0.1.x**. If you want to use previous versions you can check the releases [here](https://github.com/Lugriz/pdfmake-wrapper/releases).
+Esta version fue construida considerando **pdfmake@0.1.x**. Si deseas usar versiones anteriores puedes consultarlas [aquí](https://github.com/Lugriz/pdfmake-wrapper/releases).
 
-To use this library you need to install both **pdfmake-wrapper** and **pdfmake**:
+Para usar esta libreria es necesario instalar **pdfmake-wrapper** y **pdfmake**:
 
 > $ npm install pdfmake --save
 
-and
+y
 
 > $ npm install pdfmake-wrapper --save
 
-we recommend to install the pdfmake types to avoid typing errors:
+recomendamos instalar los tipos de pdfmake para evitar errores de escritura:
 
 > $ npm install @types/pdfmake --save-dev
 
-This errors will appear if you don't install the **@types/pdfmake** and you have the *strict* mode to true in your **tsconfig.json** like this:
+Estos errores aparecerán si no instalas **@types/pdfmake** y si no tienes en verdadero el modo *strict* en tu archivo **tsconfig.json**, algo así:
 
 ```json
 {
@@ -141,23 +133,20 @@ This errors will appear if you don't install the **@types/pdfmake** and you have
 }
 ```
 
-**IMPORTANT**: If you have typescript version **<3.6.x** in your project, you may have an error when building the project. This is a typescript breaking changes and you need to update it to **3.6.x** or higher version. Check for more details [here](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#class-field-mitigations).
+**IMPORTANTE**: Si tienes la versión **<3.6.x** de typescript en tu proyecto, puedes tener un error al construir el proyecto. Este es un cambio que rompe el typescript y necesitas actualizarlo a la version **3.6.x** o superior. Consulta más detalles [aquí](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#class-field-mitigations).
 
-## Usage
+## Como usarla
 
-**IMPORTANT:** This version does not implement any fonts. The reason is to allow you to use any fonts you need.
+**IMPORTANTE:** Esta versión no iplementa alguna fuente. La razón es permitirte que puedas usar cualquier fuente que necesites.
 
-This is a simple example to generate a PDF on client-side (if you want to use it on server-side, see the [server-side](#working-on-server-side) section).
+Este es un ejemplo sencillo para generar un PDF desde lado del cliente (si desea usarlo en el lado del servidor, consulta la sección [trabajando del lado del servidor](#trabajando-en-el-lado-del-servidor)).
 
-Import the package in your code, import the fonts to use and create an instance:
+Importa el paquete en su código, importa las fuentes para usar y cree una instancia:
 
 ```javascript
 // Import pdfmake-wrapper and the fonts to use
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
-import * as pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
-
-// If any issue using previous fonts import. you can try this:
-// import pdfFonts from "pdfmake/build/vfs_fonts";
+import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
 
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -169,23 +158,23 @@ pdf.add('Hello world!');
 pdf.create().download();
 ```
 
-**KEEP IN MIND:** Fonts are instantiated in the global scope (window), for that reason configuring the fonts once is more than enough.
+**TENER EN CUENTA:** Las fuentes son instanciadas en el ámbito global (window), por lo que configurarlas una sola vez es mas que suficiente.  
 
-**RECOMMENDATIONS:** It is recommended to use *PdfMakeWrapper.setFonts(fonts)* in a bootstrap code, config module or main module. Configuring the fonts more times will have sense if you have bundles of separate generated fonts, but it is more common to have one bundle with many types of fonts. The last one is recommended. More about fonts configuration in the *custom fonts* section.
+**RECOMENDACIONES:** Se recomienda usar *PdfMakeWrapper.setFonts(fonts)* en un codigo de arranque, módulo de configuración o módulo principal. Tendrá sentido configurar las fuentes más de una vez si se tiene paquetes de fuentes generadas por separado, pero es más común tener un paquete con muchos tipos de fuentes. Este último es el recomendado. Más información sobre la configuración de fuentes en la sección **fuentes personalizadas**.
 
-**NOTE:** Most classes are called as the original pdfmake library properties (columns, tables, etc..), but there are exceptions like *text* which is represented as **Txt**, it's the same with *Image* which is represented as **Img** and other similar examples. The reason is that exist native objects in the browser like **Image**, **Text**, etc..
+**NOTA:** La mayoría de las clases se llaman como las propiedades originales de la biblioteca pdfmake (columnas, tablas, etc..), pero hay excepciones como *text* que se representa como **Txt**, es lo mismo con *Image* que se representa como **Img** y otros ejemplos similares. La razón es que existen objetos nativos en el navegador como **Image**, **Text**, etc..
 
-## DocumentDefinition class
+## Clase DocumentDefinition
 
-This is the main class that contains the content and other configurations of the document. This is the content/document builder. All the members (methods) will be described by [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since it extends from this one. You will work directly with this class when working on server-side. To know more about server-side, check the [server-side](#working-on-server-side) section.
+Esta es la clase principal que tien el contenido y otras configuraciones de el documento. Este es el constructor de contenido/documentos. Todos los miembros (métodos) serán descritos por la clase [PdfmakeWrapper](#miembros-de-pdfmakewrapper-lado-del-cliente), ya que se extienden desde ésta. Trabajará directamente con esta clase cuando trabaje en el lado del servidor. Para saber más sobre el lado del servidor, sonsulte la sección - [trabajando del lado del servidor](#trabajando-del-lado-del-servidor).
 
-## PdfMakeWrapper members (client-side)
+## Miembros de PdfMakeWrapper (lado del cliente) 
 
 When working on client-side, this is the class you need to instantiate. This class extends from [DocumentDefinition](#documentdefinition-class) class. The unique members of this class is the static method **setFonts** and the **create** instance method, but you have all [DocumentDefinition](#documentdefinition-class) members available in this class.
 
 ### add(content: any) -> void
 
-Adds (push) a value to the content.
+Añade (push) un valor al contenido.  
 
 ```javascript
 const pdf = new PdfMakeWrapper();
@@ -216,7 +205,7 @@ pdf.add('Second item');
 
 ### images(images: { [prop: string]: [IImg](#IImg) | string }) -> void
 
-Adds an object of images that you can reference later using a key (How to use images is explained later).
+Añade un objeto de imágenes al que se puede hacer referencia mas adelante mediante una clave (más adelante se explica cómo usar las imágenes).
 
 ```javascript
 import { PdfMakeWrapper, Img } from 'pdfmake-wrapper';
@@ -249,7 +238,7 @@ main();
 
 ### styles(styles: { [prop: string]: [IStyleDefinition](#IStyleDefinition) }) -> void
 
-Adds an object of styles that you can reference later using a key.
+Añade un objeto de estilos al que se puede hacer referencia posteriormente mediante una clave.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -283,7 +272,7 @@ pdf.styles({
 
 ### defaultStyle(styles: [IStyleDefinition](#IStyleDefinition)) -> void
 
-Adds a default style that will be applied to the entire PDF.
+Añade un estilo por defecto que se aplicará a todo el PDF.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -309,7 +298,7 @@ pdf.defaultStyle({
 
 ### header(header: any) -> void
 
-Defines the header of the document. The header is displayed on each page.
+Define la cabecera del documento. La cabecera se muestra en cada página.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -329,7 +318,7 @@ pdf.header('This is a header');
 
 ### footer(footer: any) -> void
 
-Defines the footer of the document. The footer is displayed on each page.
+Define el pie de página del documento. El pie de página se muestra en cada página.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -349,7 +338,7 @@ pdf.footer('This is a footer');
 
 ### background(background: any) -> void
 
-Defines the background of the document. The background is displayed on each page.
+Define el fondo del documento. El fondo se muestra en cada página.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -369,7 +358,7 @@ pdf.background('This is a background');
 
 ### pageSize(size: string | [ICustomPageSize](#icustompagesize)) -> void
 
-Defines the page size of the document. More about page sizes [here](https://pdfmake.github.io/docs/document-definition-object/page/).
+Define el tamaño de la página del documento. Más información sobre el tamaño de las páginas [aquí](https://pdfmake.github.io/docs/document-definition-object/page/).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -406,7 +395,7 @@ pdf.pageSize({
 
 ### pageMargins(margins: number | [number, number] | [number, number, number, number]) -> void
 
-Defines the page margins of the document.
+Define los márgenes de la página del documento.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -432,7 +421,7 @@ pdf.pageMargins(40); // applies 40 margin entire sides
 
 ### pageOrientation(orientation: 'landscape' | 'portrait') -> void
 
-Defines the page orientation of the document.
+Define la orientación de la página del documento.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -452,7 +441,7 @@ pdf.pageOrientation('landscape'); // 'portrait'
 
 ### pageBreakBefore(breakBefore: (currentNode: [IDocumentNode](#idocumentnode), followingNodesOnPage?: [IDocumentNode](#idocumentnode)[], nodesOnNextPage?: [IDocumentNode](#idocumentnode)[], previousNodesOnPage?: [IDocumentNode](#idocumentnode)[]) => boolean) -> void
 
-Dynamically control page breaks. More about the implementation [here](https://pdfmake.github.io/docs/document-definition-object/page/#dynamically-control-page-breaks-for-instance-to-avoid-orphan-children).
+Controlar dinámicamente los saltos de página. Más información sobre la implementación [aquí](https://pdfmake.github.io/docs/document-definition-object/page/#dynamically-control-page-breaks-for-instance-to-avoid-orphan-children).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -478,7 +467,7 @@ pdf.pageBreakBefore(
 
 ### info(info: [IInfo](#iinfo)) -> void
 
-Defines metadata to the document. More about it [here](https://pdfmake.github.io/docs/document-definition-object/document-medatadata/).
+Define los metadatos del documento. Más información [aquí](https://pdfmake.github.io/docs/document-definition-object/document-medatadata/).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -506,7 +495,7 @@ pdf.info({
 
 ### compress(compress: boolean) -> void
 
-Document compression. By default true.
+Compresión del documento. Por defecto esta en true/verdadero.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -526,7 +515,7 @@ pdf.compress(true);
 
 ### rawContent(content: any) -> void
 
-Defines a raw content. Differences between **add** and this method is that this one fills the full content property (it replaces the content if the content has any definition) and **add** pushes a new element to the content.
+Define un contenido raw o en bruto. Las diferencias entre **add** y este método es que éste rellena la propiedad de contenido completa (reemplaza el contenido si ya tiene alguna definición) y **add** empuja un nuevo elemento al contenido.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -545,7 +534,7 @@ pdf.rawContent('Simple content');
 
 ### watermark(watermark: string | [ITxt](#itext)) -> void
 
-Creates a watermark, it's applied to each page.
+Crea una marca de agua, que se aplica a cada página.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -578,7 +567,7 @@ pdf.watermark( new Txt('watermark with Txt object').color('blue').end );
 
 ### userPassword(password: string) -> void
 
-Encrypt the PDF when a user password is provided, when an user and users will be prompted to enter the password to decrypt the file when opening it.
+Encripta el PDF cuando se provee una contraseña de usuario, cuando un usuario y los usuarios se les pedirá que introduzca la contraseña para descifrar el archivo al abrirlo.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -590,7 +579,7 @@ pdf.userPassword('123');
 
 ### permissions(password: string, permissions: [IPermissions](#ipermissions)) -> void
 
-Sets privileges access providing an owner password and a privileges config. More about it [here](https://pdfmake.github.io/docs/document-definition-object/security/).
+Establece el acceso a privilegios proporcionando una contraseña de propietario y una configuración de privilegios. Más información [aquí](https://pdfmake.github.io/docs/document-definition-object/security/).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -608,9 +597,9 @@ pdf.permissions('123', {
 });
 ```
 
-### create() -> [ICreatePDF](#icreatepdf)
+### create() -> [ICreatePDF](#create---icreatepdf)
 
-Creates the pdf. This returns other methods ([ICreatePDF](#icreatepdf)).
+Crea el pdf. Esto retorna otros métodos ([ICreatePDF](#icreatepdf)).
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -633,9 +622,9 @@ pdf.create();
 
 ### ln(lines: number = 1) -> string
 
-Adds new lines. By default '\n'.
+Añade nuevas líneas. Por defecto '\n'.
 
-**NOTE**: This will be deprecated in a next version
+**NOTA**: Esto estará obsoleto en una próxima versión
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -658,15 +647,15 @@ pdf.add(
 
 ### static setFonts(fonts: [IFonts](#ifonts), fontTypesConfig?: { [propName: string]: [IFontTypes](#ifonttypes) }) -> void
 
-Configures the set of fonts to use and configure the font types.
+Configura el conjunto de fuentes a usar y configura los tipos de fuente.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
-import pdfFonts from "pdfmake/build/vfs_fonts"; // pdfmake default fonts
+import pdfFonts from "pdfmake/build/vfs_fonts"; // fuentes por defecto de pdfmake
 
 /**
- * Configuring the default fonts provided by pdfmake. These are the fonts that pdfmake or pdfmake-wrapper
- * have available to use.
+ * Configurar las fuentes por defecto proporcionadas por pdfmake. Estas son las fuentes que pdfmake o
+ * tienen disponibles para usar.
  */
 
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -674,9 +663,9 @@ PdfMakeWrapper.setFonts(pdfFonts);
 
 ### static useFont(fontName: string) -> void
 
-Indicates which font to use. You need to have configured your fonts and then decide which font to use.
+Indica el tipo de letra a usar. Es necesario haber configurado las fuentes y luego decidir qué fuente utilizar.
 
-**IMPORTANT:** If you are using the default pdfmake fonts you do not need to indicate which font to use, by default pdfmake has configured them. you just have to provide the fonts as indicated above.
+**IMPORTANTE:** Si está usando las fuentes por defecto de pdfmake no necesita indicar qué fuente usar, por defecto pdfmake las tiene configuradas. sólo tiene que proporcionar las fuentes como se indica arriba.
 
 ```javascript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
@@ -708,31 +697,31 @@ PdfMakeWrapper.useFont('myCustom');
  */
 ```
 
-**RECOMMENDATION:** It is recommended to use *useFont('...')* method in a bootstrap code. If you have more fonts configured you can call *useFont('...')* method in other parts of your code if you need another font.
+**RECOMENDACIÓN:** Se recomienda usar el método *useFont('...')* en un código de arranque. Si tienes más fuentes configuradas puedes llamar al método *useFont('...')* en otras partes de tu código si necesitas otra fuente.
 
-> **NOTE:** More details, check the official [documentation](https://pdfmake.github.io/docs/getting-started/client-side/).
+> **NOTA:** Para más detalles, consulte la [documentación oficial](https://pdfmake.github.io/docs/getting-started/client-side/).
+## Definiciones
 
-## Definitions
-
-Definitions are classes that represent objects that pdfmake can read, for example, text, images, tables, columns, etc. All definitions extend from **StyleDefinition** which is an abstract class that contains all the styles (alignment, color, bold, etc...) and this one extends from **ContentDefinition** which is also an abstract class. These classes are not accessible, They are internally used to the library. To use a definition you need to import it and then use it:
+Las definiciones son clases que representan objetos que pdfmake puede leer, por ejemplo, texto, imágenes, tablas, columnas, etc. Todas las definiciones extienden de **StyleDefinition** que es una clase abstracta que contiene todos los estilos (alineación, color, negrita, etc...) y ésta extiende de **ContentDefinition** que también es una clase abstracta. Estas clases no son accesibles, se usan internamente en la biblioteca. Para utilizar una definición es necesario importarla y luego usarla:
 
 ```javascript
-// importing definitions
+// importando definiciones
 import { Txt } from 'pdfmake-wrapper';
 
-//using definition
+//usando definiciones
 new Txt('hi!').bold().end // Result: { text: 'hi!', bold: true }
 
-// It's a must finish with end property to return the built object, otherwise, it'll return the Text Class
+//Es necesario finalizar con la propiedad `end` para devolver el objeto construido, caso contrario, devolverá la clase Text
 ```
 
-**IMPORTANT:** All definitions must finish with the **end** property, this property (**end**) returns the built object, the only exception is the **Img** class (it'll be explained later). Each definition has its own interface when finishing with **_.end_**, for example, **_new Txt('some text').end_** corresponds to **IText**.
+**IMPORTANTE:** Todas las definiciones deben terminar con la propiedad **end**, esta propiedad (**end**) devuelve el objeto construido, la única excepción es la clase **Img** (se explicará más adelante).  Cada definición tiene su propia interfaz al terminar con **_.end_**, por ejemplo, **_new Txt('algún texto').end_** corresponde a **IText**.
 
-**KEEP IN MIND:** Definition classes build objects that pdfmake can read and these objects have an format determinated from an interface (some properties are optional, but they show us the possible properties the object could have). Some methods will not work with some definitions, for example, you can not **bold** an image.
+
+**TENER EN CUENTA:** Las clases de definición construyen objetos que pdfmake puede leer y estos objetos tienen un formato determinado a partir de una interfaz (algunas propiedades son opcionales, pero nos muestran las posibles propiedades que podría tener el objeto). Algunos métodos no funcionarán con algunas definiciones, por ejemplo, no se puede asignar **negrita** a una imagen.
 
 ### Txt(text: string) -> Txt
 
-Creates a text object.
+Crea un objeto de texto.
 
 ```javascript
 new Txt('Hello world!').end // { text: 'Hello world!' }
@@ -740,11 +729,11 @@ new Txt('Hello world!').end // { text: 'Hello world!' }
 new Txt('Hello world!').alignment('center').italics().end // { text: 'Hello world!', alignment: 'center', italics: true }
 ```
 
-**Suggestion:** Use **Txt** when the text requires a format (bold, alignment, etc...), otherwise, use literal string.
+**Sugerencia:** Usar **Txt** cuando el texto requiera un formato (negrita, alineación, etc...), caso contrario, utilizar cadena literal.
 
 ### Columns(columns: any[]) - Columns
 
-Creates columns.
+Crea columnas.
 
 ```javascript
 new Columns([ 'Hello', 'world' ]).end // { columns: [ 'Hello', 'world' ] }
@@ -756,7 +745,7 @@ new Columns([ 'Hello', 'world' ]).columnGap(10).bold().end // { columns: [ 'Hell
 
 ### Stack(stack: any[]) -> Stack
 
-Creates a stack.
+Crea una pila.
 
 ```javascript
 new Stack([ 'Hello', 'world' ]).end // { stack: [ 'Hello', 'world' ] }
@@ -1494,8 +1483,6 @@ This interface contains all possible styles that an object can have. This one ex
 * `readonly` absolutePosition?: [`IPoint`](#ipoint);
 * `readonly` relativePosition?: [`IPoint`](#ipoint);
 * `readonly` font?: `string`;
-* `readonly` lineHeight?: `number`;
-* `readonly` characterSpacing?: `number`;
 
 #### ICustomPageSize
 
@@ -1555,7 +1542,7 @@ Defines the possible permissions a document can have.
 
 #### ICreatePDF
 
-Defines the result of a [create](#create()-->-ICreatePDF) method.
+Define el resultado de un método [create](#create()-->-ICreatePDF).
 
 * download`(filename?: string, cb?: (v?: any) => void, options?: any ): void`;
 * open`(options?: any, win?: Window ): void`;
@@ -1787,7 +1774,7 @@ Defines a point.
 * `readonly` x: `number`;
 * `readonly` y: `number`;
 
-## Generate custom fonts
+## Generar fuentes personalizadas
 
 To generate custom fonts, you can use a CLI called [pdfmake-font-generator](https://github.com/Lugriz/pdfmake-font-generator). You need to have your fonts in some directory and this tool will read all fonts and will return an output file containing the generated fonts. This generated file is which you will use to import it to pdfmake-wrapper. for example:
 
@@ -1806,7 +1793,7 @@ You need to generate the fonts as the documentation of the CLI is defined and th
 
 **NOTE:** You can have many fonts you need in the same directory.
 
-## How to use custom fonts
+## Como usar fuentes personalizadas
 
 Once generated the fonts, you need to provide your custom fonts to pdfmake-wrapper and configure them.
 
@@ -1935,7 +1922,7 @@ The content to pass in the **TxT** constructor is the provided for fontello. Go 
 .icon-<some-icon>:before { content: '\e800'; } /* '' */ /*<-- copy the square into the comment*/
 ```
 
-## Working on server-side
+## Trabajando en el lado del Servidor
 
 To work on server-side you need to import definitions from **pdfmake-wrapper/server** and use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class, since that class is useful on the client-side, remember [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) class and you have all the methods PdfmakeWrapper class has, except **setFonts** and **create** methods which are only useful on client-side.
 
