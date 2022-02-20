@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint src",
+    "lint": "eslint src/ test/",
     "build": "npm run build:client; npm run build:server; npm run create:packagejson; npm run copy:packagejson; npm run copy:readme; npm run copy:license",
     "build:client": "tsc --project ./tsconfig.json",
     "build:server": "tsc --project ./tsconfig.server.json",
