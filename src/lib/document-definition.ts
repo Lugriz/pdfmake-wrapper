@@ -48,7 +48,7 @@ export class DocumentDefinition {
     public images(imgs: { [propName: string]: IImg | string }): void {
         const newImgs: any = {};
 
-        for (let img in imgs) {
+        for (const img in imgs) {
             if (typeof imgs[img] === 'string' && isBase64(imgs[img] as string)) {
                 newImgs[img] = imgs[img];
 
