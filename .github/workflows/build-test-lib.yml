@@ -19,7 +19,5 @@ jobs:
               run: npm install
             - name: Transpile the lib
               run: npm run build
-            - name: Linting the lib
-              run: npm run lint
             - name: Test the lib
               run: npm test
