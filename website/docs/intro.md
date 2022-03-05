@@ -4,44 +4,23 @@ sidebar_position: 1
 
 # Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Pdfmake-wrapper is a wrapper based on [pdfmake](http://pdfmake.org), but it provides type support that helps to generate PDF documents in an easy and readable way.
 
-## Getting Started
+## Motivation
 
-Get started by **creating a new site**.
+Using pure pdfmake library can be a bit tedious and messy when reading/writing code, since it works using literal objects. Pdfmake-wrapper was created with type compatibility in mind, that's why it was built in Typescript which helps to write code quickly thanks to autocompletion and easy to read thanks to named objects/instances.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Features
 
-### What you'll need
+- Type compatibility
+- Client and server side development
+- Working with multiple and custom fonts
+- Icons support
+- Adding Images from URL (base64 is originally supported)
+- Drawing shapes (Lines, Rects, etc...)
+- QR code
+- Tables
 
-- [Node.js](https://nodejs.org/en/download/) version 14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+and more.
 
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+To learn more about pdfmake-wrapper, go to getting started section.
