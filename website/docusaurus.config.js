@@ -75,7 +75,7 @@ const config = {
               },
               {
                 label: 'API Reference',
-                to: '/docs/intro',
+                to: '/docs/api-references/document-definition',
               },
             ],
           },

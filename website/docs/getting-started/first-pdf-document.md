@@ -4,11 +4,11 @@ sidebar_position: 2
 
 # First PDF Document
 
-This is a simple example to generate a PDF on client-side (if you want to use it on server-side, see the [server-side](#working-on-server-side) section).
+This is a simple example to generate a PDF on client-side (if you want to use it on server-side, see the **[server-side](../guides/working-on-server.md)** section).
 
 To create your first PDF document you need to import **PdfMakeWrapper** and the fonts (*pdfmake* provides default fonts, you can use it), then you should set the fonts to use (to see how to use custom fonts, see custom fonts section) and create a **PdfMakeWrapper** instance to start adding some data to your PDF, finally call **create** method to generate the PDF.
 
-```javascript
+```typescript
 // Import pdfmake-wrapper and the fonts to use
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import * as pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
