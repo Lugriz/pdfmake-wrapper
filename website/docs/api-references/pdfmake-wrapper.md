@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# PdfmakeWrapper
+# PdfMakeWrapper
 
 this class is used when working on client side, this class extends from **[DocumentDefinition class](./document-definition.md)**.
 
