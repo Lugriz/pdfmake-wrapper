@@ -78,7 +78,7 @@ pdf.rawContent(new Txt('Replace previous content').end);
 */
 ```
 
-## images(images: {[prop: string]: [IImg](#IImg) | string}): void
+## images(images: Record<string, [IImg](./definitions/img.md#iimg) | string\>): void
 
 Adds an object of images that you can reference later using its key. This allow you to load images once and reference them in the whole document, intead of loading them any time the image is used through the document.
 
@@ -111,7 +111,7 @@ async function main() {
 main();
 ```
 
-## styles(styles: { [prop: string]: [IStyleDefinition](#IStyleDefinition) }): void
+## styles(styles: Record<string, [IStyleDefinition](./style-definition.md#types)\>): void
 
 Adds an object of styles that you can reference later using its key.
 

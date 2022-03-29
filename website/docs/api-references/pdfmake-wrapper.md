@@ -29,7 +29,7 @@ pdf.create();
  */
 ```
 
-## static setFonts(fonts: [IFonts](#ifonts), fontTypesConfig?: { [propName: string]: [IFontTypes](#ifonttypes) }): void
+## static setFonts(fonts: [IFonts](#ifonts), fontTypesConfig?: Record<string, [IFontTypes](#ifonttypes)\>): void
 
 Sets the fonts to use. you can set either pdfmake default fonts or your custom fonts. More about working with fonts **[here](../guides/working-with-fonts.md)**.
 
