@@ -7,7 +7,7 @@ sidebar_position: 3
 **StyleDefinition** is an abstract and generic class that extends from **[ContentDefinition](./content-definition.md)** class, don't worry about these two classes, you won't use them directly (this classs is not exported by the library), instead they are super classes for all definitions (all definitions extend from **StyleDefinition**), but is useful to learn about all methods it provides.
 
 :::info KEEP IN MIND
-**T** (as a return type) represents the generic type is used at that moment. **"(Any definition instance)"** mains these methods can be used on any definition (Txt, Columns, Stack, Img, etc...). The Only exception is when working with vectors (Line, Ellipse, Rect and Polyline).
+**T** (as a return type) represents the generic type is used at that moment. **"(Any definition instance)"** means these methods can be used on any definition (Txt, Columns, Stack, Img, etc...). The Only exception is when working with vectors (Line, Ellipse, Rect and Polyline).
 :::
 
 :::tip Playground

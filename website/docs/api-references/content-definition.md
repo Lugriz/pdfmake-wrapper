@@ -7,7 +7,7 @@ sidebar_position: 4
 **ContentDefinition** is an abstract and generic class that is used as a super class for **[StyleDefinition](./style-definition.md)**. don't worry about this class, casue you won't use it directly, but is useful to know where some properties and methods come from definitions and their usage. Read **[StyleDefinition](./style-definition.md)** to learn more.
 
 :::info KEEP IN MIND
-**T** (as a return type) represents the generic type is used at that moment. **"(Any definition instance)"** mains these methods can be used on any definition (Txt, Columns, Stack, Img, etc...). The Only exception is when working with vectors (Line, Ellipse, Rect and Polyline).
+**T** (as a return type) represents the generic type is used at that moment. **"(Any definition instance)"** means these methods can be used on any definition (Txt, Columns, Stack, Img, etc...). The Only exception is when working with vectors (Line, Ellipse, Rect and Polyline).
 :::
 
 ## get end(): T
