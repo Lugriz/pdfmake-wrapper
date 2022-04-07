@@ -83,4 +83,4 @@ const result: IImg = await new Img('http://domain.com/picture1.jpeg').build();
 */
 ```
 
-You can take a look to the definition list in **[API References](../../api-references/definitions/text.md)** or some usage in **[Guides](../../guides/using-text.md)** section.
+You can take a look to the definition list in **[API References](../../api-references/definitions/text.md)** or some usage in **[Guides](../../guides/working-with-text.md)** section.
