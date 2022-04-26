@@ -23,7 +23,7 @@ Now, how we did with fonts, you need to generate these icons using [pdfmake-font
 
 Once they are generated, you can use them just like fonts.
 
-```javascript
+```typescript
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import pdfFonts from "custom/fonts/file"; // custom fonts and icons in the same file
 
@@ -55,7 +55,7 @@ Similar to fonts, you can use your icons in these ways.
 
 Creating a style from `PdfMakeWrapper` instance or using `font('myIcons')` method from a **Txt** definition:
 
-```javascript
+```typescript
 // Imagine you already have your fonts and icons configured
 import { PdfMakeWrapper, Txt } from 'pdfmake-wrapper';
 
