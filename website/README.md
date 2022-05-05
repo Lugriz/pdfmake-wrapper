@@ -24,18 +24,14 @@ $ yarn build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+### Deployment on Vercel
 
-Using SSH:
+Deployment to vercel will be made automatically when pushing the code to the repo.
 
-```
-$ USE_SSH=true yarn deploy
-```
+#### Environment variables
 
-Not using SSH:
+These are the variables are used:
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+| Variable     | Description  | Used in file |
+|--------------|--------------|--------------|
+| VERCEL_URL    | URL of the deployment  | docusaurus.config.js |

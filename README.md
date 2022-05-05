@@ -14,7 +14,7 @@ This library written in Typescript is a wrapper based on [pdfmake](http://pdfmak
 
 ---
 
-Go to the new documentation website **[pdfmake-wrapper.org](https://pdfmake-wrapper.org)**. You can check pdf examples from the original pdfmake repository [here](https://github.com/bpampuch/pdfmake/blob/master/examples/).
+Go to the new documentation website **[pdfmakewrapper.org](https://pdfmakewrapper.org)**. You can check pdf examples from the original pdfmake repository [here](https://github.com/bpampuch/pdfmake/blob/master/examples/).
 
 ## Contribution
 
