@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Working on server-side
 
-To work on server-side you need to import definitions from **pdfmake-wrapper/server** and use [DocumentDefinition](#documentdefinition-class) class, instead of [PdfmakeWrapper](#pdfmakewrapper-members-client-side) class. **PdfmakeWrapper** class is useful on the client-side, this is because this class provides some methods that work only in the browser (**setFonts** and **create**), but remember that [PdfmakeWrapper](#pdfmakewrapper-members-client-side) extends from [DocumentDefinition](#documentdefinition-class) which is the class that contains all the methods related to the document itself, except for **setFonts** and **create** methods which are only useful on client-side.
+To work on server-side you need to import definitions from **pdfmake-wrapper/server** and use **[DocumentDefinition](../api-references/document-definition.md)** class, instead of **PdfmakeWrapper** class. **[PdfmakeWrapper](../api-references/pdfmake-wrapper.md)** class is useful on the client-side, this is because this class provides some methods that work only in the browser (**setFonts** and **create**), but remember that **PdfmakeWrapper** extends from **DocumentDefinition** which is the class that contains all the methods related to the document itself, except for **setFonts** and **create** methods which are only useful on client-side.
 
 You can generate your pdf documents like this:
 

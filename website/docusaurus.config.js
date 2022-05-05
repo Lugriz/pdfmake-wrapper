@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Pdfmake-wrapper',
   tagline: 'Generate PDF documents in an easy and readable way',
-  url: 'https://pdfmake-wrapper.org',
+  url: process.env.VERCEL_URL ?? 'https://pdfmake-wrapper.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
