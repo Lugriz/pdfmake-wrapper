@@ -44,7 +44,7 @@ export class Table extends StyleDefinition<Table, ITable> {
     /**
      * @param heights set table heights
      */
-    public heights(heights: (row: number) => number | number | number[]): Table {
+    public heights(heights: number | number[] | ((row: number) => number)): Table {
         this.content.table.heights = heights;
         return this;
     }
