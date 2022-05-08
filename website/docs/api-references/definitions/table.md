@@ -47,7 +47,7 @@ new Table([
 ]).widths([100, 150]).end;
 ```
 
-## heights(heights: (row: number) => number | number | number[]): Table
+## heights(heights: number | number[] | ((row: number) => number)): Table
 
 Defines rows height.
 
