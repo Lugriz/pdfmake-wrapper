@@ -1,5 +1,5 @@
 const fs = require('fs');
-const originalPackageJson = require('./package.json');
+const originalPackageJson = require('../package.json');
 const pdfmakeVersion = originalPackageJson.devDependencies.pdfmake;
 
 // Delete unnecessary properties
@@ -13,4 +13,4 @@ originalPackageJson.peerDependencies = {
 };
 
 // Create package in src
-fs.writeFileSync(`${__dirname}/src/package.json`, JSON.stringify(originalPackageJson, null, 2));
+fs.writeFileSync(`${__dirname}/../dist/package.json`, JSON.stringify(originalPackageJson, null, 2));
