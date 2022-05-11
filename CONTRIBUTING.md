@@ -17,7 +17,7 @@ Thanks for you interest to contribute to **pdfmake-wrapper**. In this document w
 - Don't push either to *master* or *develop*
 - Don't update either the *package.json* or *package-lock.json*
 - Don't create a pull request to master (use **develop** branch instead)
-- Don't update *create-package-json-lib.js* file
+- Don't update *scripts/create-package-json-lib.js* file
 
 ## Before creating a pull request
 

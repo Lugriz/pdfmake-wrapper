@@ -6,11 +6,10 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint src/ test/",
-    "build": "npm run build:client; npm run build:server; npm run create:packagejson; npm run copy:packagejson; npm run copy:readme; npm run copy:license",
+    "build": "npm run build:client; npm run build:server; npm run create:packagejson; npm run copy:readme; npm run copy:license",
     "build:client": "tsc --project ./tsconfig.json",
     "build:server": "tsc --project ./tsconfig.server.json",
-    "create:packagejson": "node create-package-json-lib.js",
-    "copy:packagejson": "cp src/package.json dist/package.json",
+    "create:packagejson": "node ./scripts/create-package-json-lib.js",
     "copy:readme": "cp README.md dist/README.md",
     "copy:license": "cp LICENSE dist/LICENSE",
     "prepare": "husky install"
