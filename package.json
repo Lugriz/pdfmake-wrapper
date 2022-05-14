@@ -11,7 +11,8 @@
     "build:server": "tsc --project ./tsconfig.server.json",
     "create:packagejson": "node ./scripts/create-package-json-lib.js",
     "copy:license": "cp LICENSE dist/LICENSE",
-    "release": "standard-version && npm run build && cd dist/",
+    "release": "standard-version && npm run build && npm run release:info",
+    "release:info": "echo \"GO TO dist/ DIRECTORY AND PUBLISH THE PACKAGE!!!!!\"",
     "prepare": "husky install"
   },
   "author": "Insomniocode <insomniocode@gmail.com>",
