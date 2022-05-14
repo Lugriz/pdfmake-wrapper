@@ -6,12 +6,13 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint src/ test/",
-    "build": "npm run build:client; npm run build:server; npm run create:packagejson; npm run copy:readme; npm run copy:license",
+    "build": "npm run build:client && npm run build:server && npm run create:packagejson && npm run copy:license",
     "build:client": "tsc --project ./tsconfig.json",
     "build:server": "tsc --project ./tsconfig.server.json",
     "create:packagejson": "node ./scripts/create-package-json-lib.js",
-    "copy:readme": "cp README.md dist/README.md",
     "copy:license": "cp LICENSE dist/LICENSE",
+    "release": "standard-version && npm run build && npm run release:info",
+    "release:info": "echo \"GO TO dist/ DIRECTORY AND PUBLISH THE PACKAGE!!!!!\"",
     "prepare": "husky install"
   },
   "author": "Insomniocode <insomniocode@gmail.com>",
@@ -47,6 +48,7 @@
     "husky": "^5.1.3",
     "jest": "^23.6.0",
     "pdfmake": "^0.1.68",
+    "standard-version": "^9.3.2",
     "ts-jest": "^23.10.5",
     "typescript": "^3.9.7"
   },
