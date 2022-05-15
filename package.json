@@ -38,19 +38,19 @@
     "url": "https://github.com/Lugriz/pdfmake-wrapper/issues"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.0.1",
-    "@commitlint/config-conventional": "^12.0.1",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/jest": "^23.3.14",
-    "@types/pdfmake": "^0.1.16",
-    "@typescript-eslint/eslint-plugin": "^5.12.0",
-    "@typescript-eslint/parser": "^5.12.0",
-    "eslint": "^8.9.0",
-    "husky": "^5.1.3",
+    "@types/pdfmake": "^0.1.21",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.15.0",
+    "husky": "^5.2.0",
     "jest": "^23.6.0",
-    "pdfmake": "^0.1.68",
-    "standard-version": "^9.3.2",
+    "pdfmake": "^0.1.72",
+    "standard-version": "^9.5.0",
     "ts-jest": "^23.10.5",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.10"
   },
   "jest": {
     "moduleFileExtensions": [
