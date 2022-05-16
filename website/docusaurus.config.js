@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Pdfmake-wrapper',
   tagline: 'Generate PDF documents in an easy and readable way',
-  url: process.env.VERCEL_URL ?? 'https://pdfmakewrapper.org',
+  url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://pdfmakewrapper.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -24,7 +24,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/lugiz/pdfmake-wrapper/tree/develop/',
+          editUrl: 'https://github.com/lugriz/pdfmake-wrapper/tree/develop/',
         },
         blog: false,
         theme: {
