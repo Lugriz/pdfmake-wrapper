@@ -1,26 +1,21 @@
 {
   "name": "pdfmake-wrapper",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Wrapper based on pdfmake library to generate PDF documents in an easy and readable way.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "npm run build:client; npm run build:server; npm run create:packagejson; npm run copy:packagejson; npm run copy:readme; npm run copy:license",
+    "lint": "eslint src/ test/",
+    "build": "npm run build:client && npm run build:server && npm run create:packagejson && npm run copy:license",
     "build:client": "tsc --project ./tsconfig.json",
     "build:server": "tsc --project ./tsconfig.server.json",
-    "create:packagejson": "node create-package-json-lib.js",
-    "copy:packagejson": "cp src/package.json dist/package.json",
-    "copy:readme": "cp README.md dist/README.md",
+    "create:packagejson": "node ./scripts/create-package-json-lib.js",
     "copy:license": "cp LICENSE dist/LICENSE",
+    "release": "standard-version && npm run build && npm run release:info",
+    "release:info": "echo \"GO TO dist/ DIRECTORY AND PUBLISH THE PACKAGE!!!!!\"",
     "prepare": "husky install"
   },
   "author": "Insomniocode <insomniocode@gmail.com>",
-  "contributors": [
-    {
-      "name": "Nestor Lazcano",
-      "email": "nestornes11@gmail.com"
-    }
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Lugriz/pdfmake-wrapper.git"
@@ -43,15 +38,19 @@
     "url": "https://github.com/Lugriz/pdfmake-wrapper/issues"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.0.1",
-    "@commitlint/config-conventional": "^12.0.1",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/jest": "^23.3.14",
-    "@types/pdfmake": "^0.1.16",
-    "husky": "^5.1.3",
+    "@types/pdfmake": "^0.1.21",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.15.0",
+    "husky": "^5.2.0",
     "jest": "^23.6.0",
-    "pdfmake": "^0.1.68",
+    "pdfmake": "^0.1.72",
+    "standard-version": "^9.5.0",
     "ts-jest": "^23.10.5",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.10"
   },
   "jest": {
     "moduleFileExtensions": [

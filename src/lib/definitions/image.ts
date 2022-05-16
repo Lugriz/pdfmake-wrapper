@@ -57,13 +57,13 @@ export class Img extends StyleDefinition<Img, IImg> {
             try {
                 this.content.image = await new Promise((resolve, reject) => {
         
-                    let img = new Image();
+                    const img = new Image();
 
                     img.crossOrigin = 'Anonymous';
             
                     img.onload = () => {
-                        let canvas = document.createElement('canvas') as HTMLCanvasElement;
-                        let context = canvas.getContext('2d') as CanvasDrawImage;
+                        const canvas = document.createElement('canvas') as HTMLCanvasElement;
+                        const context = canvas.getContext('2d') as CanvasDrawImage;
             
                         canvas.width = img.width;
                         canvas.height = img.height;
