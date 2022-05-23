@@ -6,13 +6,16 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint src/ test/",
-    "build": "npm run build:client && npm run build:server && npm run create:packagejson && npm run copy:license",
+    "prebuild": "rm -rf ./dist",
+    "build": "npm run build:client && npm run build:server",
+    "postbuild": "npm run create:packagejson && npm run copy:license && npm run copy:readme",
     "build:client": "tsc --project ./tsconfig.json",
     "build:server": "tsc --project ./tsconfig.server.json",
     "create:packagejson": "node ./scripts/create-package-json-lib.js",
     "copy:license": "cp LICENSE dist/LICENSE",
-    "release": "standard-version && npm run build && npm run release:info",
-    "release:info": "echo \"GO TO dist/ DIRECTORY AND PUBLISH THE PACKAGE!!!!!\"",
+    "copy:readme": "cp README.md dist/README.md",
+    "release": "standard-version",
+    "postrelease": "npm run build && echo \"GO TO dist/ DIRECTORY AND PUBLISH THE PACKAGE!!!!!\"",
     "prepare": "husky install"
   },
   "author": "Insomniocode <insomniocode@gmail.com>",
@@ -20,7 +23,7 @@
     "type": "git",
     "url": "https://github.com/Lugriz/pdfmake-wrapper.git"
   },
-  "homepage": "https://github.com/Lugriz/pdfmake-wrapper",
+  "homepage": "https://pdfmakewrapper.org",
   "license": "MIT",
   "keywords": [
     "pdfmake",
