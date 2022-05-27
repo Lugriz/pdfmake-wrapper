@@ -5,21 +5,21 @@ sidebar_position: 1
 # Installation
 
 :::info Note
-This version was built considering **pdfmake@0.1.x**. If you want to use previous versions you can check the releases [here](https://github.com/Lugriz/pdfmake-wrapper/releases).
+This version was built considering **pdfmake** from **0.1.72** version, any version higher than **0.1.72** and lower than **0.2.0** should be safe, but if you want to use **pdfmake@0.2.x** versions, please make sure you are not affected for those changes **[here](https://github.com/bpampuch/pdfmake/releases)**.
 :::
 
 To use this library you need to install these three packages:
 
-**pdfmake** is the library that *pdfmake-wrapper* uses under the hook to generate the PDF documents.
+**pdfmake** is the library that *pdfmake-wrapper* uses under the hook to generate the PDF documents (if you want to use **0.2.x** versions, omit **@0.1.x** in the command).
 
 ```bash
-npm install pdfmake --save
+npm install pdfmake@0.1.x --save
 ```
 
 **@types/pdfmake** contains the types for pdfmake to avoid typing errors.
 
 ```bash
-npm install @types/pdfmake --save-dev
+npm install @types/pdfmake@0.1.x --save-dev
 ```
 
 and **pdfmake-wrapper** is the wrapper that provides functionalities that helps to develop those PDF documents in an easy and fast way.
