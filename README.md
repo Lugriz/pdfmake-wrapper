@@ -14,6 +14,9 @@ This library written in Typescript is a wrapper based on [pdfmake](http://pdfmak
 
 ---
 
+> [!IMPORTANT]  
+> This library is no longer maintained, use pdfmake instead.
+
 Go to the new documentation website **[pdfmakewrapper.org](https://pdfmakewrapper.org)**. You can check pdf examples from the original pdfmake repository [here](https://github.com/bpampuch/pdfmake/blob/master/examples/).
 
 ## Contribution
